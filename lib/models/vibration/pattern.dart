@@ -77,7 +77,7 @@ class VibrationPattern {
 @JsonSerializable()
 class VibrationElement {
   const VibrationElement({
-    this.duration = const Duration(milliseconds: 100),
+    this.duration = const Duration(milliseconds: 10),
     this.amplitude = 0,
     this.xy,
   }) : assert(amplitude >= 0 && amplitude <= MAX_VIBRATION_AMPLITUDE,

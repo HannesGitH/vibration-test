@@ -1,3 +1,4 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,30 +18,35 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      title: 'Vibration',
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.pink,
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        primarySwatch: Colors.pink,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-        '/counter': (context) => CounterPage(),
-        '/store': (context) => const VibrationStore(),
-      },
-    );
+    return DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
+      return MaterialApp(
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        title: 'Vibration',
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme ??
+              ColorScheme.fromSwatch(
+                  primarySwatch: Colors.pink, brightness: Brightness.light),
+        ),
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkColorScheme ??
+              ColorScheme.fromSwatch(
+                  primarySwatch: Colors.pink, brightness: Brightness.dark),
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const HomePage(),
+          '/counter': (context) => CounterPage(),
+          '/store': (context) => const VibrationStore(),
+        },
+      );
+    });
   }
 }

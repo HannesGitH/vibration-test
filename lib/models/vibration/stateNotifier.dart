@@ -3,10 +3,19 @@ part of 'vibration.dart';
 class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   VibrationPatternNotifier() : super(defaultPattern);
 
-  int resolutionInMS = 50;
+  int resolutionInMS = 40;
 
   static final defaultPattern = VibrationPattern(
     const [
+      VibrationElement(amplitude: 100, duration: Duration(milliseconds: 0)),
+      VibrationElement(amplitude: 100),
+      VibrationElement(amplitude: 255),
+      VibrationElement(amplitude: 110),
+      VibrationElement(amplitude: 10),
+      VibrationElement(amplitude: 100),
+      VibrationElement(amplitude: 255),
+      VibrationElement(amplitude: 110),
+      VibrationElement(amplitude: 10),
       VibrationElement(amplitude: 100),
       VibrationElement(amplitude: 255),
       VibrationElement(amplitude: 110),
@@ -105,6 +114,9 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     await Vibration.vibrate(
         pattern: state.durationMSsScaled, intensities: state.amplitudes);
     state = state.copyWith(isCurrentlyVibrating: true);
+    await Future.delayed(
+        Duration(milliseconds: state.totalDurationMS ~/ state.speedModifier));
+    state = state.copyWith(isCurrentlyVibrating: false);
   }
 
   void stopVib() {

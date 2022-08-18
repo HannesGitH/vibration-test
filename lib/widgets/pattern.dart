@@ -12,14 +12,14 @@ class PatternController extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(vibrationPatternProvider);
 
-    onTouch(num? x, num? y) {
-      if ((x ?? y) != null)
-        ref.read(vibrationPatternProvider.notifier).changeAmplitudeAtMS(
-              newAmplitude: (MAX_VIBRATION_AMPLITUDE - y!)
-                  .clamp(0, MAX_VIBRATION_AMPLITUDE)
-                  .toInt(),
-              atMS: x!.toInt(),
-            );
+    onTouch(num? relativeX, num? relativeY) {
+      if ((relativeX ?? relativeY) != null) {
+        final num x = relativeX!.clamp(0.01, 1) * pattern.totalDurationMS;
+        final num y = (1 - relativeY!.clamp(0, 1)) * MAX_VIBRATION_AMPLITUDE;
+        ref
+            .read(vibrationPatternProvider.notifier)
+            .changeAmplitudeAtMS(newAmplitude: y.toInt(), atMS: x.toInt());
+      }
     }
 
     final firstDuration =
@@ -27,7 +27,7 @@ class PatternController extends ConsumerWidget {
 
     final data = pattern.points;
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: SizedBox(
           height: MAX_VIBRATION_AMPLITUDE.toDouble(),
           child: LineChartSample2(
@@ -61,7 +61,7 @@ class LineChartSample2 extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Color> gradientColors = [
       Theme.of(context).colorScheme.primary,
-      Theme.of(context).colorScheme.secondary,
+      Theme.of(context).colorScheme.primaryContainer,
     ];
 
     LineChartData mainData() {
@@ -69,9 +69,17 @@ class LineChartSample2 extends StatelessWidget {
         lineTouchData: LineTouchData(
           handleBuiltInTouches: false,
           touchCallback: (flE, ltr) {
-            if (flE.isInterestedForInteractions)
-              onTouchCallBack?.call(
-                  flE.localPosition?.dx, flE.localPosition?.dy);
+            final bounds = context.findRenderObject()?.paintBounds;
+            final totalWidth = bounds?.width ?? 1;
+            final totalHeight = bounds?.height ?? 1;
+
+            final x = (flE.localPosition?.dx != null && bounds != null)
+                ? ((flE.localPosition!.dx - 0 /*bounds.left*/) / totalWidth)
+                : null;
+            final y = (flE.localPosition?.dy != null && bounds != null)
+                ? ((flE.localPosition!.dy + 0 /*bounds.bottom*/) / totalHeight)
+                : null;
+            if (flE.isInterestedForInteractions) onTouchCallBack?.call(x, y);
           },
           enabled: onTouchCallBack != null,
           // getTouchedSpotIndicator: (barData, spotIndexes) => [],
