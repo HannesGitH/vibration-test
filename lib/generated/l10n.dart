@@ -119,6 +119,36 @@ class S {
       args: [],
     );
   }
+
+  /// `default pattern`
+  String get defaultPattern {
+    return Intl.message(
+      'default pattern',
+      name: 'defaultPattern',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `still work in progress`
+  String get stillWorkInProgress {
+    return Intl.message(
+      'still work in progress',
+      name: 'stillWorkInProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vibration Store`
+  String get vibrationStoreTitle {
+    return Intl.message(
+      'Vibration Store',
+      name: 'vibrationStoreTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

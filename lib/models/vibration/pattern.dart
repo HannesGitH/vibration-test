@@ -4,15 +4,25 @@ part of 'vibration.dart';
 class VibrationPattern {
   const VibrationPattern(
     this.elements, {
+    required this.name,
     this.speedModifier = 1.0,
     this.isCurrentlyVibrating = false,
     this.onRepeat = false,
   });
 
+  final String name;
   final List<VibrationElement> elements;
   final num speedModifier;
   final bool isCurrentlyVibrating;
   final bool onRepeat;
+  String get id => name;
+
+  int get id2 => (name +
+          speedModifier.toString() +
+          onRepeat.toString() +
+          elements.map((e) => e.amplitude).join())
+      .codeUnits
+      .fold<int>(0, (p, e) => p * 37 + e);
 
   List<int> get amplitudes => elements.map((e) => e.amplitude).toList();
   List<Duration> get durations => elements.map((e) => e.duration).toList();
@@ -27,12 +37,14 @@ class VibrationPattern {
 
   VibrationPattern copyWith({
     List<VibrationElement>? elements,
+    String? name,
     num? speedModifier,
     bool? isCurrentlyVibrating,
     bool? onRepeat,
   }) {
     return VibrationPattern(
       elements ?? this.elements,
+      name: name ?? this.name,
       speedModifier: speedModifier ?? this.speedModifier,
       isCurrentlyVibrating: isCurrentlyVibrating ?? this.isCurrentlyVibrating,
       onRepeat: onRepeat ?? this.onRepeat,

@@ -3,9 +3,12 @@ part of 'vibration.dart';
 class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   VibrationPatternNotifier() : super(defaultPattern);
 
-  static const defaultPattern = VibrationPattern([
-    VibrationElement(amplitude: 100),
-  ]);
+  static final defaultPattern = VibrationPattern(
+    const [
+      VibrationElement(amplitude: 100),
+    ],
+    name: S.current.defaultPattern,
+  );
 
   void setPattern(VibrationPattern pattern) {
     state = pattern;

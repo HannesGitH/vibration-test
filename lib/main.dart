@@ -5,6 +5,7 @@ import 'pages/counter.dart';
 import 'pages/home.dart';
 
 import 'generated/l10n.dart';
+import 'pages/vibrationStore/main.dart';
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));
@@ -36,8 +37,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => const HomePage(),
         '/counter': (context) => CounterPage(),
+        '/store': (context) => const VibrationStore(),
       },
     );
   }

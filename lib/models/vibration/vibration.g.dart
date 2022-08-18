@@ -11,11 +11,19 @@ VibrationPattern _$VibrationPatternFromJson(Map<String, dynamic> json) =>
       (json['elements'] as List<dynamic>)
           .map((e) => VibrationElement.fromJson(e as Map<String, dynamic>))
           .toList(),
+      name: json['name'] as String,
+      speedModifier: json['speedModifier'] as num? ?? 1.0,
+      isCurrentlyVibrating: json['isCurrentlyVibrating'] as bool? ?? false,
+      onRepeat: json['onRepeat'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$VibrationPatternToJson(VibrationPattern instance) =>
     <String, dynamic>{
+      'name': instance.name,
       'elements': instance.elements,
+      'speedModifier': instance.speedModifier,
+      'isCurrentlyVibrating': instance.isCurrentlyVibrating,
+      'onRepeat': instance.onRepeat,
     };
 
 VibrationElement _$VibrationElementFromJson(Map<String, dynamic> json) =>

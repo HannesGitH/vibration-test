@@ -5,5 +5,8 @@
   "speed": "Speed",
   "repeat": "Repeat",
   "noVibratorFound": "No vibrator found",
-  "noCustomVibrationSupport": "This device does not support custom vibrations"
+  "noCustomVibrationSupport": "This device does not support custom vibrations",
+  "defaultPattern": "default pattern",
+  "stillWorkInProgress": "still work in progress",
+  "vibrationStoreTitle": "Vibration Store"
 }

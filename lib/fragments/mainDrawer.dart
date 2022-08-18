@@ -15,10 +15,16 @@ class MainDrawer extends StatelessWidget {
     //   ),
     // );
 
-    var settingsTile = OpenNewViewTile(
+    var counterTile = OpenNewViewTile(
       title: S.of(context).counter,
-      icon: Icons.settings,
+      icon: Icons.control_point_duplicate_rounded,
       route: '/counter',
+    );
+
+    var storeTile = OpenNewViewTile(
+      title: S.of(context).vibrationStoreTitle,
+      icon: Icons.store,
+      route: '/store',
     );
 
     return Drawer(
@@ -27,12 +33,12 @@ class MainDrawer extends StatelessWidget {
         //padding: EdgeInsets.zero,
         children: <Widget>[
           const MainDrawerHeader(),
-          settingsTile,
+          storeTile,
           const Spacer(),
           const SafeArea(
             child: Padding(
               padding: EdgeInsets.all(8.0),
-              child: const VersionInfo(),
+              child: VersionInfo(),
             ),
           ),
         ],
