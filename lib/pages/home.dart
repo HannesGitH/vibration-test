@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibrationtest/fragments/mainDrawer.dart';
+import 'package:vibrationtest/widgets/pattern.dart';
 import 'package:vibrationtest/widgets/vibration/repeatController.dart';
 import 'package:vibrationtest/widgets/vibration/speedController.dart';
 import 'package:vibrationtest/widgets/vibration/startVibrationFAB.dart';
@@ -29,6 +30,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [
             SpeedController(),
+            PatternController(),
             RepeatController(),
           ],
         ),

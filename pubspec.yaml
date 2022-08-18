@@ -43,6 +43,7 @@ dependencies:
   # to display current app-version
   package_info_plus: ^1.0.6
   fluttertoast: ^8.0.9
+  fl_chart: ^0.55.1
 
 dev_dependencies:
   flutter_test:

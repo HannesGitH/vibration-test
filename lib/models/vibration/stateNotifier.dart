@@ -3,9 +3,14 @@ part of 'vibration.dart';
 class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   VibrationPatternNotifier() : super(defaultPattern);
 
+  int resolutionInMS = 50;
+
   static final defaultPattern = VibrationPattern(
     const [
       VibrationElement(amplitude: 100),
+      VibrationElement(amplitude: 255),
+      VibrationElement(amplitude: 110),
+      VibrationElement(amplitude: 10),
     ],
     name: S.current.defaultPattern,
   );
@@ -14,6 +19,60 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     state = pattern;
     // No need to call "notifyListeners" or anything similar. Calling "state ="
     // will automatically rebuild the UI when necessary.
+  }
+
+  void changeAmplitudeAtMS({required int newAmplitude, required int atMS}) {
+    final closest = state.elements.indexOfClosest((elem) => atMS - elem.xy!.x);
+
+    final replaceNotInsert = closest.e2.abs() <= resolutionInMS;
+
+    final insertBeforeOffset = closest.e2 <= 0 ? 1 : 0;
+    final nextElement =
+        state.elements.safeAt(closest.e1 - insertBeforeOffset + 1);
+    final newElement = state.elements.safeAt(closest.e1)!.copyWith(
+          amplitude: newAmplitude,
+          duration: replaceNotInsert
+              ? null
+              : Duration(
+                  milliseconds: nextElement == null
+                      ? resolutionInMS * 2
+                      : nextElement.xy!.x - atMS),
+        );
+
+    // if (replaceNotInsert) {
+    //   final elements = [
+    //     ...state.elements.safeSublist(0, closest.e1),
+    //     newElement,
+    //     ...state.elements.safeSublist(closest.e1 + 1),
+    //   ];
+
+    //   state = state.copyWith(elements: elements);
+    //   return;
+    // }
+
+    final prevElement = state.elements[closest.e1 - insertBeforeOffset];
+
+    final newPrevElement = (replaceNotInsert)
+        ? prevElement
+        : prevElement.copyWith(
+            duration:
+                Duration(milliseconds: newElement.xy!.x - prevElement.xy!.x),
+          );
+
+    final lhList =
+        state.elements.safeSublist(0, closest.e1 - insertBeforeOffset);
+    final rhList =
+        state.elements.safeSublist(closest.e1 + 1 - insertBeforeOffset);
+    final elements = [
+      ...lhList,
+      newPrevElement,
+      newElement,
+      ...rhList,
+    ];
+
+    debugPrint(elements.map((e) => e.xy).join(', '));
+
+    state = state.copyWith(elements: elements);
   }
 
   void setOnRepeat(bool onRepeat) {
