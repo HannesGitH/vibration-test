@@ -1,0 +1,237 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape
+            android:shape="rectangle"   >
+
+            <solid
+                android:color="@color/colorBackground" >
+            </solid>
+
+            <corners
+                android:radius="11dp"   >
+            </corners>
+
+        </shape>
+    </item>
+    <item>
+        <vector
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#20000000">
+            <group
+
+                android:translateX="23"
+                android:translateY="23"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+    <item>
+        <vector 
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#1e000000">
+            <group
+
+                android:translateX="24"
+                android:translateY="24"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+    <item>
+        <vector
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#1a000000">
+            <group
+
+                android:translateX="25"
+                android:translateY="25"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#19000000" />
+            </group>
+        </vector>
+
+    </item>
+    <!--
+    <item>
+        <vector
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#17000000">
+            <group
+
+                android:translateX="26"
+                android:translateY="26"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+    <item>
+        <vector
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#15000000">
+            <group
+
+                android:translateX="27"
+                android:translateY="27"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+    <item>
+        <vector
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#13000000">
+            <group
+
+                android:translateX="28"
+                android:translateY="28"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+    <item>
+        <vector 
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#11000000">
+            <group
+
+                android:translateX="29"
+                android:translateY="29"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+    <item>
+        <vector
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#0f000000">
+            <group
+
+                android:translateX="30"
+                android:translateY="30"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+
+    </item>
+    <item>
+        <vector 
+            android:width="1dp"
+            android:height="1dp"
+            android:viewportWidth="70"
+            android:viewportHeight="70"
+            android:tint="#0d000000">
+            <group
+
+                android:translateX="31"
+                android:translateY="31"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="#FFFFFFFF"
+                    android:fillType="nonZero"
+                    android:pathData="M1,15c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v4c0,0.55 0.45,1 1,1zM4,17c0.55,0 1,-0.45 1,-1L5,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM22,10v4c0,0.55 0.45,1 1,1s1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1zM20,17c0.55,0 1,-0.45 1,-1L21,8c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1v8c0,0.55 0.45,1 1,1zM16.5,3h-9C6.67,3 6,3.67 6,4.5v15c0,0.83 0.67,1.5 1.5,1.5h9c0.83,0 1.5,-0.67 1.5,-1.5v-15c0,-0.83 -0.67,-1.5 -1.5,-1.5zM16,19L8,19L8,5h8v14z"
+                    android:strokeWidth="1.1"
+                    android:strokeColor="#00000000" />
+            </group>
+        </vector>
+    </item>
+-->
+</layer-list>
