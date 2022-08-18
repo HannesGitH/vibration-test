@@ -1,5 +1,9 @@
 {
   "appTitle": "Custom Vibrator",
   "settings": "Settings",
-  "counter": "counter"
+  "counter": "Counter",
+  "speed": "Speed",
+  "repeat": "Repeat",
+  "noVibratorFound": "No vibrator found",
+  "noCustomVibrationSupport": "This device does not support custom vibrations"
 }

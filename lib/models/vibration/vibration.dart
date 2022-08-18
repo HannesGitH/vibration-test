@@ -1,6 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vibration/vibration.dart';
+import 'package:vibrationtest/fragments/toaster.dart';
+
+import '../../generated/l10n.dart';
 
 part 'stateNotifier.dart';
 part 'stateNotifierProvider.dart';

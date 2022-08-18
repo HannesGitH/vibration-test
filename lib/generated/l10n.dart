@@ -70,11 +70,51 @@ class S {
     );
   }
 
-  /// `counter`
+  /// `Counter`
   String get counter {
     return Intl.message(
-      'counter',
+      'Counter',
       name: 'counter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speed`
+  String get speed {
+    return Intl.message(
+      'Speed',
+      name: 'speed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat`
+  String get repeat {
+    return Intl.message(
+      'Repeat',
+      name: 'repeat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No vibrator found`
+  String get noVibratorFound {
+    return Intl.message(
+      'No vibrator found',
+      name: 'noVibratorFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This device does not support custom vibrations`
+  String get noCustomVibrationSupport {
+    return Intl.message(
+      'This device does not support custom vibrations',
+      name: 'noCustomVibrationSupport',
       desc: '',
       args: [],
     );

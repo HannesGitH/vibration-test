@@ -65,9 +65,9 @@ class MainDrawerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DrawerHeader(
+    return DrawerHeader(
       decoration: BoxDecoration(
-        color: Colors.pink,
+        color: Theme.of(context).colorScheme.surface,
         // gradient: LinearGradient(begin: Alignment.topLeft, colors: [
         //   Theme.of(context).primaryColorDark.withAlpha(200),
         //   Theme.of(context).canvasColor,
@@ -75,7 +75,7 @@ class MainDrawerHeader extends StatelessWidget {
         // ]),
         //color: Theme.of(context).primaryColor,
       ),
-      child: Center(
+      child: const Center(
         child: Image(image: AssetImage('assets/icon/icon.png')),
       ),
     );

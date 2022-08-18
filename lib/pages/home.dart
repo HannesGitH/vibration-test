@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vibrationtest/fragments/mainDrawer.dart';
+import 'package:vibrationtest/widgets/vibration/repeatController.dart';
+import 'package:vibrationtest/widgets/vibration/speedController.dart';
+import 'package:vibrationtest/widgets/vibration/startVibrationFAB.dart';
 
 import '../generated/l10n.dart';
 
@@ -13,6 +16,18 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.of(context).appTitle),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: const [
+            SpeedController(),
+            RepeatController(),
+          ],
+        ),
+      ),
+      floatingActionButton: const StartVibrationFAB(),
     );
   }
 }

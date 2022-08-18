@@ -42,6 +42,7 @@ dependencies:
   localstore: ^1.2.3
   # to display current app-version
   package_info_plus: ^1.0.6
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:

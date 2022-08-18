@@ -23,7 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrator"),
-        "counter": MessageLookupByLibrary.simpleMessage("counter"),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings")
+        "counter": MessageLookupByLibrary.simpleMessage("Counter"),
+        "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
+            "This device does not support custom vibrations"),
+        "noVibratorFound":
+            MessageLookupByLibrary.simpleMessage("No vibrator found"),
+        "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "speed": MessageLookupByLibrary.simpleMessage("Speed")
       };
 }

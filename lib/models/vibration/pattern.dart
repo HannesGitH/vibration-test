@@ -2,18 +2,42 @@ part of 'vibration.dart';
 
 @JsonSerializable()
 class VibrationPattern {
-  const VibrationPattern(this.elements);
+  const VibrationPattern(
+    this.elements, {
+    this.speedModifier = 1.0,
+    this.isCurrentlyVibrating = false,
+    this.onRepeat = false,
+  });
 
   final List<VibrationElement> elements;
+  final num speedModifier;
+  final bool isCurrentlyVibrating;
+  final bool onRepeat;
 
   List<int> get amplitudes => elements.map((e) => e.amplitude).toList();
   List<Duration> get durations => elements.map((e) => e.duration).toList();
   List<int> get durationMSs => elements.map((e) => e.durationMS).toList();
+  List<int> get durationMSsScaled =>
+      durationMSs.map((ms) => ms ~/ speedModifier).toList();
 
   factory VibrationPattern.fromJson(Map<String, dynamic> json) =>
       _$VibrationPatternFromJson(json);
 
   Map<String, dynamic> toJson() => _$VibrationPatternToJson(this);
+
+  VibrationPattern copyWith({
+    List<VibrationElement>? elements,
+    num? speedModifier,
+    bool? isCurrentlyVibrating,
+    bool? onRepeat,
+  }) {
+    return VibrationPattern(
+      elements ?? this.elements,
+      speedModifier: speedModifier ?? this.speedModifier,
+      isCurrentlyVibrating: isCurrentlyVibrating ?? this.isCurrentlyVibrating,
+      onRepeat: onRepeat ?? this.onRepeat,
+    );
+  }
 }
 
 @JsonSerializable()
