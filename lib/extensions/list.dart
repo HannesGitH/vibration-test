@@ -28,6 +28,18 @@ class Tuple<T, E> {
 extension Search<T> on List<T> {
   ///the List has to be sorted already
   Tuple<int, num> indexOfClosest(num Function(T) distanceTo) {
+    return this.asMap().entries.toList().fold(
+      Tuple(0, double.maxFinite),
+      (Tuple<int, num> prev, MapEntry<int, T> curr) {
+        final currDist = distanceTo(curr.value);
+        if (currDist.abs() < prev.e2.abs()) {
+          return Tuple(curr.key, currDist);
+        }
+        return prev;
+      },
+    );
+
+    //my binary search variant sadly wont work like i though
     int factor = 1;
     int divider = 1;
     int prevStep = 0;

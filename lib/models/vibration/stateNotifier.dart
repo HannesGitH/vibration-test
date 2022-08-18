@@ -22,6 +22,7 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   }
 
   void changeAmplitudeAtMS({required int newAmplitude, required int atMS}) {
+    // final oldElements = state.elements;
     final closest = state.elements.indexOfClosest((elem) => atMS - elem.xy!.x);
 
     final replaceNotInsert = closest.e2.abs() <= resolutionInMS;
@@ -49,15 +50,17 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     //   state = state.copyWith(elements: elements);
     //   return;
     // }
+    // if (replaceNotInsert) insertBeforeOffset = 0;
 
-    final prevElement = state.elements[closest.e1 - insertBeforeOffset];
+    final prevElement = state.elements.safeAt(closest.e1 - insertBeforeOffset);
 
-    final newPrevElement = (replaceNotInsert)
-        ? prevElement
-        : prevElement.copyWith(
-            duration:
-                Duration(milliseconds: newElement.xy!.x - prevElement.xy!.x),
-          );
+    final newPrevElement =
+        // (replaceNotInsert)
+        //     ? prevElement
+        //     :
+        prevElement?.copyWith(
+      duration: Duration(milliseconds: atMS - prevElement.xy!.x),
+    );
 
     final lhList =
         state.elements.safeSublist(0, closest.e1 - insertBeforeOffset);
@@ -65,14 +68,15 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
         state.elements.safeSublist(closest.e1 + 1 - insertBeforeOffset);
     final elements = [
       ...lhList,
-      newPrevElement,
+      if (!replaceNotInsert && newPrevElement != null) newPrevElement,
       newElement,
       ...rhList,
     ];
 
-    debugPrint(elements.map((e) => e.xy).join(', '));
-
     state = state.copyWith(elements: elements);
+
+    // debugPrint(
+    //     '${replaceNotInsert ? 'replaced' : 'inserted'} at $atMS ->[${closest.e1}]: \n\t ${oldElements.map((e) => e.xy).join(', ')}\n\t ${elements.map((e) => e.xy).join(', ')}\n\t ${state.elements.map((e) => e.xy).join(', ')}');
   }
 
   void setOnRepeat(bool onRepeat) {
