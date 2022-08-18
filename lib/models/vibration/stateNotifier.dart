@@ -1,26 +1,16 @@
 part of 'vibration.dart';
 
+const int resolutionInMS = 10;
+
 class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   VibrationPatternNotifier() : super(defaultPattern);
 
-  int resolutionInMS = 40;
-
   static final defaultPattern = VibrationPattern(
-    const [
-      VibrationElement(amplitude: 100, duration: Duration(milliseconds: 0)),
-      VibrationElement(amplitude: 100),
-      VibrationElement(amplitude: 255),
-      VibrationElement(amplitude: 110),
-      VibrationElement(amplitude: 10),
-      VibrationElement(amplitude: 100),
-      VibrationElement(amplitude: 255),
-      VibrationElement(amplitude: 110),
-      VibrationElement(amplitude: 10),
-      VibrationElement(amplitude: 100),
-      VibrationElement(amplitude: 255),
-      VibrationElement(amplitude: 110),
-      VibrationElement(amplitude: 10),
-    ],
+    List.generate(
+        100,
+        (index) => VibrationElement(
+              amplitude: (index * 10) % MAX_VIBRATION_AMPLITUDE,
+            )),
     name: S.current.defaultPattern,
   );
 
@@ -34,7 +24,9 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     // final oldElements = state.elements;
     final closest = state.elements.indexOfClosest((elem) => atMS - elem.xy!.x);
 
-    final replaceNotInsert = closest.e2.abs() <= resolutionInMS;
+    final replaceNotInsert = true;
+    //TODO: instertion is kinda buggy
+    //closest.e2.abs() <= resolutionInMS;
 
     final insertBeforeOffset = closest.e2 <= 0 ? 1 : 0;
     final nextElement =
@@ -71,6 +63,7 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       duration: Duration(milliseconds: atMS - prevElement.xy!.x),
     );
 
+    //TODO: wahrscheinlich ist die rhList zu früh beginnend wenn man ganz am anfang ist und nichts inserten will
     final lhList =
         state.elements.safeSublist(0, closest.e1 - insertBeforeOffset);
     final rhList =

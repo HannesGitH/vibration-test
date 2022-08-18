@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vibrationtest/extensions/list.dart';
 
 import '../models/vibration/vibration.dart';
 
@@ -14,7 +15,9 @@ class PatternController extends ConsumerWidget {
 
     onTouch(num? relativeX, num? relativeY) {
       if ((relativeX ?? relativeY) != null) {
-        final num x = relativeX!.clamp(0.01, 1) * pattern.totalDurationMS;
+        final num x = (relativeX!.clamp(0, 1) * pattern.totalDurationMS).clamp(
+            pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
+            pattern.totalDurationMS);
         final num y = (1 - relativeY!.clamp(0, 1)) * MAX_VIBRATION_AMPLITUDE;
         ref
             .read(vibrationPatternProvider.notifier)
@@ -60,8 +63,8 @@ class LineChartSample2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Color> gradientColors = [
-      Theme.of(context).colorScheme.primary,
       Theme.of(context).colorScheme.primaryContainer,
+      Theme.of(context).colorScheme.primary,
     ];
 
     LineChartData mainData() {
@@ -135,6 +138,7 @@ class LineChartSample2 extends StatelessWidget {
 
     return LineChart(
       mainData(),
+      swapAnimationDuration: Duration(milliseconds: 10), // Optional
     );
   }
 }
