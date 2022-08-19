@@ -30,8 +30,12 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [
+            Expanded(
+              flex: 1,
+              child: Spacer(),
+            ),
             SpeedController(),
-            PatternController(),
+            Expanded(flex: 3, child: PatternController()),
             RepeatController(),
           ],
         ),

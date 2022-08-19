@@ -73,18 +73,19 @@ class PatternController extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: MAX_VIBRATION_AMPLITUDE.toDouble(),
-              child: LineChartSample2(
-                onTouchCallBack: onTouch,
-                data: data,
-                min: Point(firstDuration, 0),
-                max: Point(
-                  pattern.totalDurationMS,
-                  MAX_VIBRATION_AMPLITUDE,
+            Expanded(
+              child: SizedBox.expand(
+                child: LineChartSample2(
+                  onTouchCallBack: onTouch,
+                  data: data,
+                  min: Point(firstDuration, 0),
+                  max: Point(
+                    pattern.totalDurationMS,
+                    MAX_VIBRATION_AMPLITUDE,
+                  ),
+                  animationDuration: pattern.doNotAnimate ? 5 : 100,
+                  showDot: pattern.isCurrentlyVibrating,
                 ),
-                animationDuration: pattern.doNotAnimate ? 5 : 100,
-                showDot: pattern.isCurrentlyVibrating,
               ),
             ),
           ],
