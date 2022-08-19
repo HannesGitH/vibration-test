@@ -1,0 +1,30 @@
+on:
+  workflow_call:
+    inputs:
+
+## this would be nice
+# defaults:
+#   run:
+#     shell: bash
+#     working-directory: ./frontend
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v1
+      with:
+        # flutter-version: '2.8.x' 
+        channel: 'stable'
+    - run: |
+        echo hi
+      shell: bash
+    - name: install dependencies and run code gen
+      run: |
+        cd frontend/
+        flutter pub get #make sure this path is correct
+        flutter pub run intl_utils:generate
+      shell: bash
+
