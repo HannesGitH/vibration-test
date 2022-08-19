@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const HomePage(),
-          '/counter': (context) => CounterPage(),
+          '/counter': (context) => const CounterPage(),
           '/store': (context) => const VibrationStore(),
           '/gallery': (context) => const PatternGalleryPage(),
         },

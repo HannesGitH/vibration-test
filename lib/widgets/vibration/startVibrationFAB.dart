@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibrationtest/models/vibration/vibration.dart';
 
-import '../../generated/l10n.dart';
-
 class StartVibrationFAB extends ConsumerWidget {
   const StartVibrationFAB({Key? key}) : super(key: key);
   @override

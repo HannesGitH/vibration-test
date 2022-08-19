@@ -22,10 +22,10 @@ class HomePage extends StatelessWidget {
     ));
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
       appBar: AppBar(
         title: Text(S.of(context).appTitle),
-        actions: [
+        actions: const [
           SaveCurrentPatternButton(),
         ],
       ),
@@ -49,6 +49,8 @@ class HomePage extends StatelessWidget {
 }
 
 class SaveCurrentPatternButton extends ConsumerWidget {
+  const SaveCurrentPatternButton({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);

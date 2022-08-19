@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 part of 'vibration.dart';
 
 const int resolutionInMS = 10;
