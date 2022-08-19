@@ -193,7 +193,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: com.mbgsolutions.inspector
+          packageName: hannepps.tools.vibrationtest
           releaseFiles: app-release.aab
           track: beta #TODO: when stable move to production
           inAppUpdatePriority: 2
