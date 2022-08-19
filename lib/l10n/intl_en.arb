@@ -9,5 +9,6 @@
   "defaultPattern": "default pattern",
   "stillWorkInProgress": "still work in progress",
   "vibrationStoreTitle": "Vibration Store",
-  "pattern": "Pattern"
+  "pattern": "Pattern",
+  "presetTitle": "Presets"
 }

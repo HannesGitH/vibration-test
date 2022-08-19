@@ -159,6 +159,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Presets`
+  String get presetTitle {
+    return Intl.message(
+      'Presets',
+      name: 'presetTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

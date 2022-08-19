@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'pages/counter.dart';
+import 'pages/gallery.dart';
 import 'pages/home.dart';
 
 import 'generated/l10n.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const HomePage(),
           '/counter': (context) => CounterPage(),
           '/store': (context) => const VibrationStore(),
+          '/gallery': (context) => const PatternGalleryPage(),
         },
       );
     });

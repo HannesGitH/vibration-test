@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noVibratorFound":
             MessageLookupByLibrary.simpleMessage("No vibrator found"),
         "pattern": MessageLookupByLibrary.simpleMessage("Pattern"),
+        "presetTitle": MessageLookupByLibrary.simpleMessage("Presets"),
         "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "speed": MessageLookupByLibrary.simpleMessage("Speed"),
