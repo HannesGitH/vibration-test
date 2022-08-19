@@ -46,25 +46,56 @@ class PatternGallery extends ConsumerWidget {
   }
 }
 
-class GalleryPatternPreview extends ConsumerWidget {
+class GalleryPatternPreview extends ConsumerStatefulWidget {
   const GalleryPatternPreview({required this.pattern, super.key});
   final VibrationPattern pattern;
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _GalleryPatternPreviewState();
+}
+
+class _GalleryPatternPreviewState extends ConsumerState<GalleryPatternPreview> {
+  bool isDown = false;
+  bool showOptions = false;
+
+  @override
+  Widget build(BuildContext context) {
     final activePattern = ref.watch(activeVibrationPatternProvider);
     return Hero(
-      tag: pattern.id,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => ref
-            .read(activeVibrationPatternProvider.notifier)
-            .setPattern(pattern),
-        child: AbsorbPointer(
-          child: PatternPreview(
-            pattern: pattern,
-            elevation: activePattern.id == pattern.id ? 200 : 2,
-            child:
-                activePattern.id == pattern.id ? const Icon(Icons.check) : null,
+      tag: widget.pattern.id,
+      child: AnimatedContainer(
+        transform: Matrix4.rotationX(showOptions ? -1.2 : (isDown ? -0.5 : 0)),
+        duration: const Duration(milliseconds: 400),
+        child: Opacity(
+          opacity: isDown ? 0.5 : 1.0,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTapDown: (details) => setState(() {
+              isDown = true;
+            }),
+            onTapUp: (details) => setState(() {
+              isDown = false;
+            }),
+            onTapCancel: () => setState(() {
+              isDown = false;
+            }),
+            onLongPress: () {
+              //TODO: show options like delete, rename, etc.
+              // showOptions ^= true;
+            },
+            onTap: () => ref
+                .read(activeVibrationPatternProvider.notifier)
+                .setPattern(widget.pattern),
+            child: AbsorbPointer(
+              child: PatternPreview(
+                pattern: widget.pattern,
+                elevation: activePattern.id == widget.pattern.id ? 200 : 2,
+                child: activePattern.id == widget.pattern.id
+                    ? const Icon(Icons.check)
+                    : null,
+              ),
+            ),
           ),
         ),
       ),
