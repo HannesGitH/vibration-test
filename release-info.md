@@ -1,1 +1,1 @@
-full-size gallery!
+full-size gallery.
