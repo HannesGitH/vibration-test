@@ -149,6 +149,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Pattern`
+  String get pattern {
+    return Intl.message(
+      'Pattern',
+      name: 'pattern',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

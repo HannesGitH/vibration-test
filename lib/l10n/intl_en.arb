@@ -8,5 +8,6 @@
   "noCustomVibrationSupport": "This device does not support custom vibrations",
   "defaultPattern": "default pattern",
   "stillWorkInProgress": "still work in progress",
-  "vibrationStoreTitle": "Vibration Store"
+  "vibrationStoreTitle": "Vibration Store",
+  "pattern": "Pattern"
 }

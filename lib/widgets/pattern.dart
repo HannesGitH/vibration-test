@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibrationtest/extensions/list.dart';
 
+import '../generated/l10n.dart';
 import '../models/vibration/vibration.dart';
 
 class PatternController extends ConsumerWidget {
@@ -60,18 +61,33 @@ class PatternController extends ConsumerWidget {
     final data = pattern.points;
     return Padding(
         padding: const EdgeInsets.all(20.0),
-        child: SizedBox(
-          height: MAX_VIBRATION_AMPLITUDE.toDouble(),
-          child: LineChartSample2(
-            onTouchCallBack: onTouch,
-            data: data,
-            min: Point(firstDuration, 0),
-            max: Point(
-              pattern.totalDurationMS,
-              MAX_VIBRATION_AMPLITUDE,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(S.of(context).pattern),
+                Text(
+                  pattern.name,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
             ),
-            animationDuration: pattern.doNotAnimate ? 5 : 100,
-          ),
+            SizedBox(
+              height: MAX_VIBRATION_AMPLITUDE.toDouble(),
+              child: LineChartSample2(
+                onTouchCallBack: onTouch,
+                data: data,
+                min: Point(firstDuration, 0),
+                max: Point(
+                  pattern.totalDurationMS,
+                  MAX_VIBRATION_AMPLITUDE,
+                ),
+                animationDuration: pattern.doNotAnimate ? 5 : 100,
+                showDot: pattern.isCurrentlyVibrating,
+              ),
+            ),
+          ],
         ));
   }
 }
@@ -86,6 +102,7 @@ class LineChartSample2 extends StatelessWidget {
     required this.min,
     this.onTouchCallBack,
     this.animationDuration = 100,
+    this.showDot = false,
   });
 
   final List<Point> data;
@@ -93,6 +110,7 @@ class LineChartSample2 extends StatelessWidget {
   final Point min;
   final void Function(num, num)? onTouchCallBack;
   final int animationDuration;
+  final bool showDot;
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +118,16 @@ class LineChartSample2 extends StatelessWidget {
       Theme.of(context).colorScheme.primaryContainer,
       Theme.of(context).colorScheme.primary,
     ];
+
+    FlDotPainter _dotPainter(
+        FlSpot spot, double xPercentage, LineChartBarData bar, int index,
+        {double? size}) {
+      return FlDotCirclePainter(
+        radius: size != null ? size * 2 : 10,
+        color: Theme.of(context).colorScheme.secondary,
+        strokeColor: Colors.transparent,
+      );
+    }
 
     LineChartData mainData() {
       return LineChartData(
@@ -154,7 +182,9 @@ class LineChartSample2 extends StatelessWidget {
             barWidth: 7,
             isStrokeCapRound: true,
             dotData: FlDotData(
-              show: false,
+              getDotPainter: _dotPainter,
+              show: showDot,
+              checkToShowDot: (spot, barData) => barData.spots.first == spot,
             ),
             belowBarData: BarAreaData(
               show: true,

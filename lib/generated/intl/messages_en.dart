@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "This device does not support custom vibrations"),
         "noVibratorFound":
             MessageLookupByLibrary.simpleMessage("No vibrator found"),
+        "pattern": MessageLookupByLibrary.simpleMessage("Pattern"),
         "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "speed": MessageLookupByLibrary.simpleMessage("Speed"),
