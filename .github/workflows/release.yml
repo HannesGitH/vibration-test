@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [web, apk, appbundle]
+        platform: [web, apk, appbundle, linux]
 
     steps:
       - uses: actions/checkout@v2
@@ -71,8 +71,6 @@ jobs:
           cd android
           touch key.properties
           printf "${{ secrets.KEY_PROPERTIES }}" >> key.properties
-          ls 
-          pwd
 
       - name: Build ${{matrix.platform}}
         run: flutter build ${{matrix.platform}}
@@ -91,6 +89,9 @@ jobs:
               },
               "appbundle": {
                 "builtpath": "app/outputs/bundle/release/app-release.aab"
+              },
+              "linux": {
+                "builtpath": "build/linux/release/bundle/"
               }
             }
       - name: upload ${{matrix.platform}} artifact
