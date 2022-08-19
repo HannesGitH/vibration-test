@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [web, apk, appbundle]
+        platform: [web --base-href "/vibration-test/app", apk, appbundle]
 
     steps:
       - uses: actions/checkout@v2
