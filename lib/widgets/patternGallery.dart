@@ -52,16 +52,20 @@ class GalleryPatternPreview extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final activePattern = ref.watch(activeVibrationPatternProvider);
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () =>
-          ref.read(activeVibrationPatternProvider.notifier).setPattern(pattern),
-      child: AbsorbPointer(
-        child: PatternPreview(
-          pattern: pattern,
-          elevation: activePattern.id == pattern.id ? 200 : 2,
-          child:
-              activePattern.id == pattern.id ? const Icon(Icons.check) : null,
+    return Hero(
+      tag: pattern.id,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => ref
+            .read(activeVibrationPatternProvider.notifier)
+            .setPattern(pattern),
+        child: AbsorbPointer(
+          child: PatternPreview(
+            pattern: pattern,
+            elevation: activePattern.id == pattern.id ? 200 : 2,
+            child:
+                activePattern.id == pattern.id ? const Icon(Icons.check) : null,
+          ),
         ),
       ),
     );
