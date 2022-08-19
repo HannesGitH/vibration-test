@@ -70,7 +70,7 @@ class PatternController extends ConsumerWidget {
               pattern.totalDurationMS,
               MAX_VIBRATION_AMPLITUDE,
             ),
-            animationDuration: pattern.patternChangeThroughUser ? 0 : 300,
+            animationDuration: pattern.doNotAnimate ? 5 : 100,
           ),
         ));
   }

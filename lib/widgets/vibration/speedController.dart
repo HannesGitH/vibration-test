@@ -31,11 +31,14 @@ class SpeedController extends ConsumerWidget {
         Slider(
           value: pow(pattern.speedModifier, 1 / power).toDouble(),
           min: pow(0.1, 1 / power).toDouble(),
-          max: pow(50, 1 / power).toDouble(),
+          max: pow(15, 1 / power).toDouble(),
           onChanged: (value) {
             ref
                 .read(vibrationPatternProvider.notifier)
                 .setSpeedModifier(pow(value, power));
+          },
+          onChangeEnd: (value) {
+            ref.read(vibrationPatternProvider.notifier).maybeContinueVib();
           },
           label: S.of(context).speed,
         ),

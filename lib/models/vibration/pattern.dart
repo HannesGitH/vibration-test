@@ -24,7 +24,7 @@ class VibrationPattern {
     this.speedModifier = 1.0,
     this.isCurrentlyVibrating = false,
     this.onRepeat = false,
-    this.patternChangeThroughUser = false,
+    this.doNotAnimate = false,
     // ignore: unnecessary_this
   }) : this.elements = _addPointsToElements(elements);
 
@@ -34,7 +34,7 @@ class VibrationPattern {
   final bool isCurrentlyVibrating;
   final bool onRepeat;
   @JsonKey(ignore: true)
-  final bool patternChangeThroughUser;
+  final bool doNotAnimate;
   String get id => name;
 
   int get id2 => (name +
@@ -65,7 +65,7 @@ class VibrationPattern {
     num? speedModifier,
     bool? isCurrentlyVibrating,
     bool? onRepeat,
-    bool? patternChangeThroughUser,
+    bool? doNotAnimate,
   }) {
     return VibrationPattern(
       elements ?? this.elements,
@@ -73,8 +73,7 @@ class VibrationPattern {
       speedModifier: speedModifier ?? this.speedModifier,
       isCurrentlyVibrating: isCurrentlyVibrating ?? this.isCurrentlyVibrating,
       onRepeat: onRepeat ?? this.onRepeat,
-      patternChangeThroughUser:
-          patternChangeThroughUser ?? this.patternChangeThroughUser,
+      doNotAnimate: doNotAnimate ?? this.doNotAnimate,
     );
   }
 }

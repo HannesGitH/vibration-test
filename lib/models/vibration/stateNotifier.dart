@@ -1,13 +1,14 @@
 part of 'vibration.dart';
 
 const int resolutionInMS = 10;
+const bool animate = true;
 
 class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   VibrationPatternNotifier() : super(defaultPattern);
 
   static final defaultPattern = VibrationPattern(
     List.generate(
-        100,
+        50,
         (index) => VibrationElement(
               amplitude: (index * 10) % MAX_VIBRATION_AMPLITUDE,
             )),
@@ -77,19 +78,24 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       ...rhList,
     ];
 
-    state = state.copyWith(elements: elements, patternChangeThroughUser: true);
+    state = state.copyWith(elements: elements, doNotAnimate: true);
 
     // debugPrint(
     //     '${replaceNotInsert ? 'replaced' : 'inserted'} at $atMS ->[${closest.e1}]: \n\t ${oldElements.map((e) => e.xy).join(', ')}\n\t ${elements.map((e) => e.xy).join(', ')}\n\t ${state.elements.map((e) => e.xy).join(', ')}');
   }
 
   void setOnRepeat(bool onRepeat) {
-    state = state.copyWith(onRepeat: onRepeat, patternChangeThroughUser: false);
+    state = state.copyWith(onRepeat: onRepeat, doNotAnimate: false);
   }
 
   void setSpeedModifier(num speedModifier) {
-    state = state.copyWith(
-        speedModifier: speedModifier, patternChangeThroughUser: false);
+    state = state.copyWith(speedModifier: speedModifier, doNotAnimate: false);
+    if (state.isCurrentlyVibrating) {
+      stopVib();
+      _wasPausedToContinue = true;
+
+      // startVib();
+    }
   }
 
   void resetPattern() {
@@ -109,22 +115,45 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     }
 
     var didFirst = false;
-    state = state.copyWith(
-        isCurrentlyVibrating: true, patternChangeThroughUser: false);
+    state = state.copyWith(isCurrentlyVibrating: true, doNotAnimate: false);
     while ((state.onRepeat || !didFirst) && state.isCurrentlyVibrating) {
       didFirst = true;
       await Vibration.vibrate(
           pattern: state.durationMSsScaled, intensities: state.amplitudes);
-      await Future.delayed(
-          Duration(milliseconds: state.totalDurationMS ~/ state.speedModifier));
+
+      if (animate)
+        await animateVibration();
+      else
+        await Future.delayed(Duration(
+            milliseconds: state.totalDurationMS ~/ state.speedModifier));
     }
-    state = state.copyWith(
-        isCurrentlyVibrating: false, patternChangeThroughUser: false);
+    state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
+  }
+
+  animateVibration() async {
+    for (int i = 0;
+        i < state.elements.length && state.isCurrentlyVibrating;
+        i++) {
+      final e = state.elements.first;
+      // if (e.amplitude != 0)
+      // await Vibration.vibrate(duration: e.durationMS, amplitude: e.amplitude);
+      await Future.delayed(
+          Duration(milliseconds: e.durationMS ~/ state.speedModifier));
+
+      state = state.copyWith(
+          elements: [...state.elements.safeSublist(1), e],
+          doNotAnimate: (i != 0 && i != state.elements.length - 1));
+    }
   }
 
   void stopVib() {
-    state = state.copyWith(
-        isCurrentlyVibrating: false, patternChangeThroughUser: false);
+    state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
     Vibration.cancel();
+  }
+
+  bool _wasPausedToContinue = false;
+  void maybeContinueVib() {
+    if (_wasPausedToContinue) startVib();
+    _wasPausedToContinue = false;
   }
 }
