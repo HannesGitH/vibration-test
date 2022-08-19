@@ -13,16 +13,45 @@ class PatternController extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(vibrationPatternProvider);
 
-    onTouch(num? relativeX, num? relativeY) {
-      if ((relativeX ?? relativeY) != null) {
-        final num x = (relativeX!.clamp(0, 1) * pattern.totalDurationMS).clamp(
-            pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
-            pattern.totalDurationMS);
-        final num y = (1 - relativeY!.clamp(0, 1)) * MAX_VIBRATION_AMPLITUDE;
-        ref
-            .read(vibrationPatternProvider.notifier)
-            .changeAmplitudeAtMS(newAmplitude: y.toInt(), atMS: x.toInt());
+    onTouch(num relativeX, num relativeY) {
+      final notifier = ref.read(vibrationPatternProvider.notifier);
+      num x = max(
+        ((relativeX.clamp(0, 1) + (1 / pattern.elements.length)) *
+            pattern.totalDurationMS),
+        pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
+      );
+      num y = (1 - relativeY.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+      if (_prevTouch != null) {
+        num xp = max(
+          ((_prevTouch!.x.clamp(0, 1) + (1 / pattern.elements.length)) *
+              pattern.totalDurationMS),
+          pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
+        );
+        num yp = (1 - _prevTouch!.y.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+
+        if (xp != x) {
+          if (xp < x) {
+            final tmpx = x;
+            final tmpy = y;
+            y = yp;
+            yp = tmpy;
+            x = xp;
+            xp = tmpx;
+          }
+          final delta = (yp - y) / (xp - x);
+          var currentX = x;
+          while (currentX < xp) {
+            notifier.changeAmplitudeAtMS(
+              atMS: currentX.toInt(),
+              newAmplitude: ((currentX - x) * delta + y).toInt(),
+            );
+            currentX += resolutionInMS;
+          }
+        }
       }
+      // debugPrint('$relativeX $relativeY $x $y');
+
+      notifier.changeAmplitudeAtMS(newAmplitude: y.toInt(), atMS: x.toInt());
     }
 
     final firstDuration =
@@ -41,10 +70,13 @@ class PatternController extends ConsumerWidget {
               pattern.totalDurationMS,
               MAX_VIBRATION_AMPLITUDE,
             ),
+            animationDuration: pattern.patternChangeThroughUser ? 0 : 300,
           ),
         ));
   }
 }
+
+Point? _prevTouch;
 
 class LineChartSample2 extends StatelessWidget {
   const LineChartSample2({
@@ -53,12 +85,14 @@ class LineChartSample2 extends StatelessWidget {
     required this.max,
     required this.min,
     this.onTouchCallBack,
+    this.animationDuration = 100,
   });
 
   final List<Point> data;
   final Point max;
   final Point min;
-  final void Function(num?, num?)? onTouchCallBack;
+  final void Function(num, num)? onTouchCallBack;
+  final int animationDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +116,11 @@ class LineChartSample2 extends StatelessWidget {
             final y = (flE.localPosition?.dy != null && bounds != null)
                 ? ((flE.localPosition!.dy + 0 /*bounds.bottom*/) / totalHeight)
                 : null;
-            if (flE.isInterestedForInteractions) onTouchCallBack?.call(x, y);
+            if (flE.isInterestedForInteractions && (x != null && y != null)) {
+              onTouchCallBack?.call(x, y);
+              _prevTouch = Point(x, y);
+            } else
+              _prevTouch = null;
           },
           enabled: onTouchCallBack != null,
           // getTouchedSpotIndicator: (barData, spotIndexes) => [],
@@ -138,7 +176,8 @@ class LineChartSample2 extends StatelessWidget {
 
     return LineChart(
       mainData(),
-      swapAnimationDuration: Duration(milliseconds: 10), // Optional
+      swapAnimationDuration:
+          Duration(milliseconds: animationDuration), // Optional
     );
   }
 }

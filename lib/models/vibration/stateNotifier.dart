@@ -24,13 +24,16 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     // final oldElements = state.elements;
     final closest = state.elements.indexOfClosest((elem) => atMS - elem.xy!.x);
 
-    final replaceNotInsert = true;
+    final replaceNotInsert =
+        //
+        true;
     //TODO: instertion is kinda buggy
-    //closest.e2.abs() <= resolutionInMS;
+    closest.e2.abs() <= resolutionInMS;
 
     final insertBeforeOffset = closest.e2 <= 0 ? 1 : 0;
-    final nextElement =
-        state.elements.safeAt(closest.e1 - insertBeforeOffset + 1);
+
+    final idx = max(closest.e1 - insertBeforeOffset, 0);
+    final nextElement = state.elements.safeAt(idx + 1);
     final newElement = state.elements.safeAt(closest.e1)!.copyWith(
           amplitude: newAmplitude,
           duration: replaceNotInsert
@@ -53,7 +56,7 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     // }
     // if (replaceNotInsert) insertBeforeOffset = 0;
 
-    final prevElement = state.elements.safeAt(closest.e1 - insertBeforeOffset);
+    final prevElement = state.elements.safeAt(idx);
 
     final newPrevElement =
         // (replaceNotInsert)
@@ -64,10 +67,8 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     );
 
     //TODO: wahrscheinlich ist die rhList zu früh beginnend wenn man ganz am anfang ist und nichts inserten will
-    final lhList =
-        state.elements.safeSublist(0, closest.e1 - insertBeforeOffset);
-    final rhList =
-        state.elements.safeSublist(closest.e1 + 1 - insertBeforeOffset);
+    final lhList = state.elements.safeSublist(0, idx);
+    final rhList = state.elements.safeSublist(idx + 1);
     final elements = [
       ...lhList,
       if (!replaceNotInsert && newPrevElement != null) newPrevElement,
@@ -75,18 +76,19 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       ...rhList,
     ];
 
-    state = state.copyWith(elements: elements);
+    state = state.copyWith(elements: elements, patternChangeThroughUser: true);
 
     // debugPrint(
     //     '${replaceNotInsert ? 'replaced' : 'inserted'} at $atMS ->[${closest.e1}]: \n\t ${oldElements.map((e) => e.xy).join(', ')}\n\t ${elements.map((e) => e.xy).join(', ')}\n\t ${state.elements.map((e) => e.xy).join(', ')}');
   }
 
   void setOnRepeat(bool onRepeat) {
-    state = state.copyWith(onRepeat: onRepeat);
+    state = state.copyWith(onRepeat: onRepeat, patternChangeThroughUser: false);
   }
 
   void setSpeedModifier(num speedModifier) {
-    state = state.copyWith(speedModifier: speedModifier);
+    state = state.copyWith(
+        speedModifier: speedModifier, patternChangeThroughUser: false);
   }
 
   void resetPattern() {
@@ -106,14 +108,17 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     }
     await Vibration.vibrate(
         pattern: state.durationMSsScaled, intensities: state.amplitudes);
-    state = state.copyWith(isCurrentlyVibrating: true);
+    state = state.copyWith(
+        isCurrentlyVibrating: true, patternChangeThroughUser: false);
     await Future.delayed(
         Duration(milliseconds: state.totalDurationMS ~/ state.speedModifier));
-    state = state.copyWith(isCurrentlyVibrating: false);
+    state = state.copyWith(
+        isCurrentlyVibrating: false, patternChangeThroughUser: false);
   }
 
   void stopVib() {
-    state = state.copyWith(isCurrentlyVibrating: false);
+    state = state.copyWith(
+        isCurrentlyVibrating: false, patternChangeThroughUser: false);
     Vibration.cancel();
   }
 }
