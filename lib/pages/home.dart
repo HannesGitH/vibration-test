@@ -47,13 +47,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-class SaveCurrentPatternButton extends ConsumerWidget {
-  const SaveCurrentPatternButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
-    return StorePatternButton(pattern: pattern);
-  }
-}

@@ -10,5 +10,10 @@
   "stillWorkInProgress": "still work in progress",
   "vibrationStoreTitle": "Vibration Store",
   "pattern": "Pattern",
-  "presetTitle": "Presets"
+  "presetTitle": "Presets",
+  "saveCurrentPatternTitle": "Save Pattern",
+  "saveCurrentPatternNameField": "name",
+  "ok": "OK",
+  "patternSavedSuccess": "pattern Saved",
+  "patternSavedFailure": "Pattern could not be saved"
 }

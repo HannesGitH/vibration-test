@@ -169,6 +169,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Save Pattern`
+  String get saveCurrentPatternTitle {
+    return Intl.message(
+      'Save Pattern',
+      name: 'saveCurrentPatternTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `name`
+  String get saveCurrentPatternNameField {
+    return Intl.message(
+      'name',
+      name: 'saveCurrentPatternNameField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pattern Saved`
+  String get patternSavedSuccess {
+    return Intl.message(
+      'pattern Saved',
+      name: 'patternSavedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pattern could not be saved`
+  String get patternSavedFailure {
+    return Intl.message(
+      'Pattern could not be saved',
+      name: 'patternSavedFailure',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

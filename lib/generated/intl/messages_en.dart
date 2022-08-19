@@ -30,9 +30,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "This device does not support custom vibrations"),
         "noVibratorFound":
             MessageLookupByLibrary.simpleMessage("No vibrator found"),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "pattern": MessageLookupByLibrary.simpleMessage("Pattern"),
+        "patternSavedFailure":
+            MessageLookupByLibrary.simpleMessage("Pattern could not be saved"),
+        "patternSavedSuccess":
+            MessageLookupByLibrary.simpleMessage("pattern Saved"),
         "presetTitle": MessageLookupByLibrary.simpleMessage("Presets"),
         "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
+        "saveCurrentPatternNameField":
+            MessageLookupByLibrary.simpleMessage("name"),
+        "saveCurrentPatternTitle":
+            MessageLookupByLibrary.simpleMessage("Save Pattern"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "speed": MessageLookupByLibrary.simpleMessage("Speed"),
         "stillWorkInProgress":

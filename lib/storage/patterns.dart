@@ -13,9 +13,7 @@ Future<void> deletePattern(VibrationPattern pattern) async {
 
 Future<List<VibrationPattern>> getAllPatterns() async {
   final snapshot = (await patternStore.get())?.values;
-  return snapshot
-          ?.map((doc) => VibrationPattern.fromJson(doc.data()))
-          .toList() ??
+  return snapshot?.map((doc) => VibrationPattern.fromJson(doc)).toList() ??
       const [];
 }
 

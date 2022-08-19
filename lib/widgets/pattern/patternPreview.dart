@@ -46,9 +46,12 @@ class PatternPreview extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       child ?? const SizedBox.shrink(),
-                      Text(
-                        pattern.name,
-                        style: Theme.of(context).textTheme.labelSmall,
+                      Expanded(
+                        child: Text(
+                          pattern.name,
+                          style: Theme.of(context).textTheme.labelSmall,
+                          overflow: TextOverflow.fade,
+                        ),
                       ),
                     ],
                   ),

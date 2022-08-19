@@ -70,28 +70,34 @@ class PatternController extends ConsumerWidget {
             ),
             Expanded(
               child: SizedBox.expand(
-                child: Card(
-                  shadowColor: Colors.transparent,
-                  elevation: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 30.0,
-                      top: 30.0,
-                      right: 20.0,
-                      left: 20.0,
-                    ),
-                    child: MyLineChart(
-                      onTouchCallBack: onTouch,
-                      data: data,
-                      min: Point(firstDuration, 0),
-                      max: Point(
-                        pattern.totalDurationMS,
-                        MAX_VIBRATION_AMPLITUDE,
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Card(
+                      shadowColor: Colors.transparent,
+                      elevation: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 30.0,
+                          top: 30.0,
+                          right: 20.0,
+                          left: 20.0,
+                        ),
+                        child: MyLineChart(
+                          onTouchCallBack: onTouch,
+                          data: data,
+                          min: Point(firstDuration, 0),
+                          max: Point(
+                            pattern.totalDurationMS,
+                            MAX_VIBRATION_AMPLITUDE,
+                          ),
+                          animationDuration: pattern.doNotAnimate ? 5 : 100,
+                          showDot: pattern.isCurrentlyVibrating,
+                        ),
                       ),
-                      animationDuration: pattern.doNotAnimate ? 5 : 100,
-                      showDot: pattern.isCurrentlyVibrating,
                     ),
-                  ),
+                    const SaveCurrentPatternButton(),
+                  ],
                 ),
               ),
             ),

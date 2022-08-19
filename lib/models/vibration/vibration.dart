@@ -8,6 +8,7 @@ import 'package:vibrationtest/fragments/toaster.dart';
 import '../../extensions/list.dart';
 
 import '../../generated/l10n.dart';
+import '../../storage/local.dart' as local;
 
 part 'stateNotifier.dart';
 part 'stateNotifierProvider.dart';
