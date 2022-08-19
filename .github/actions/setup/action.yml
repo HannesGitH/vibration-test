@@ -23,7 +23,6 @@ runs:
       shell: bash
     - name: install dependencies and run code gen
       run: |
-        cd frontend/
         flutter pub get #make sure this path is correct
         flutter pub run intl_utils:generate
       shell: bash
