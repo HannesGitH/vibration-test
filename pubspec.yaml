@@ -45,6 +45,7 @@ dependencies:
   fluttertoast: ^8.0.9
   fl_chart: ^0.55.1
   dynamic_color: ^1.4.0
+  intl_utils: ^2.7.0
 
 dev_dependencies:
   flutter_test:

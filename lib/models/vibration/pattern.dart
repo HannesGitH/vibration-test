@@ -23,7 +23,7 @@ class VibrationPattern {
     required this.name,
     this.speedModifier = 1.0,
     this.isCurrentlyVibrating = false,
-    this.onRepeat = false,
+    this.onRepeat = true,
     this.doNotAnimate = false,
     // ignore: unnecessary_this
   }) : this.elements = _addPointsToElements(elements);

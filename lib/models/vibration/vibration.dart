@@ -13,4 +13,6 @@ part 'stateNotifier.dart';
 part 'stateNotifierProvider.dart';
 part 'pattern.dart';
 
+part 'allPatterns.dart';
+
 part 'vibration.g.dart';

@@ -8,15 +8,15 @@ class StartVibrationFAB extends ConsumerWidget {
   const StartVibrationFAB({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    VibrationPattern pattern = ref.watch(vibrationPatternProvider);
+    VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
 
     return FloatingActionButton(
       onPressed: () {
         !pattern.isCurrentlyVibrating
             ? ref
-                .read(vibrationPatternProvider.notifier)
+                .read(activeVibrationPatternProvider.notifier)
                 .startVib(context: context)
-            : ref.read(vibrationPatternProvider.notifier).stopVib();
+            : ref.read(activeVibrationPatternProvider.notifier).stopVib();
       },
       child: Icon(pattern.isCurrentlyVibrating ? Icons.stop : Icons.play_arrow),
     );

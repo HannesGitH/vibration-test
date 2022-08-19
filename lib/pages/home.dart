@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibrationtest/fragments/mainDrawer.dart';
-import 'package:vibrationtest/widgets/pattern.dart';
+import 'package:vibrationtest/widgets/pattern/pattern.dart';
+import 'package:vibrationtest/widgets/patternGallery.dart';
 import 'package:vibrationtest/widgets/vibration/repeatController.dart';
 import 'package:vibrationtest/widgets/vibration/speedController.dart';
 import 'package:vibrationtest/widgets/vibration/startVibrationFAB.dart';
@@ -15,6 +17,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Theme.of(context).colorScheme.surface,
+    ));
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       drawer: MainDrawer(),
@@ -24,21 +29,19 @@ class HomePage extends StatelessWidget {
           SaveCurrentPatternButton(),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            Expanded(
-              flex: 1,
-              child: Spacer(),
-            ),
-            SpeedController(),
-            Expanded(flex: 3, child: PatternController()),
-            RepeatController(),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          Expanded(
+            flex: 1,
+            child: Spacer(),
+          ),
+          Expanded(flex: 2, child: PatternGallery()),
+          SpeedController(),
+          Expanded(flex: 5, child: PatternController()),
+          RepeatController(),
+        ],
       ),
       floatingActionButton: const StartVibrationFAB(),
     );
@@ -48,7 +51,7 @@ class HomePage extends StatelessWidget {
 class SaveCurrentPatternButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    VibrationPattern pattern = ref.watch(vibrationPatternProvider);
+    VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
     return StorePatternButton(pattern: pattern);
   }
 }

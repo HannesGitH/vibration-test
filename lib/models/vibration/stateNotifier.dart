@@ -3,17 +3,17 @@ part of 'vibration.dart';
 const int resolutionInMS = 10;
 const bool animate = true;
 
+final defaultPattern = VibrationPattern(
+  List.generate(
+      50,
+      (index) => VibrationElement(
+            amplitude: (index * 10) % MAX_VIBRATION_AMPLITUDE,
+          )),
+  name: S.current.defaultPattern,
+);
+
 class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   VibrationPatternNotifier() : super(defaultPattern);
-
-  static final defaultPattern = VibrationPattern(
-    List.generate(
-        50,
-        (index) => VibrationElement(
-              amplitude: (index * 10) % MAX_VIBRATION_AMPLITUDE,
-            )),
-    name: S.current.defaultPattern,
-  );
 
   void setPattern(VibrationPattern pattern) {
     state = pattern;

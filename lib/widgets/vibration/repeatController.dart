@@ -8,10 +8,14 @@ class RepeatController extends ConsumerWidget {
   const RepeatController({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    VibrationPattern pattern = ref.watch(vibrationPatternProvider);
+    VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
 
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(
+        left: 20.0,
+        top: 20.0,
+        right: 20.0,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,9 +33,14 @@ class RepeatController extends ConsumerWidget {
                       MaterialStateProperty.resolveWith<Color>((states) {
                     return Theme.of(context).colorScheme.primary;
                   }),
+                  activeTrackColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                  inactiveTrackColor:
+                      Theme.of(context).colorScheme.surfaceVariant,
                   value: pattern.onRepeat,
-                  onChanged:
-                      ref.read(vibrationPatternProvider.notifier).setOnRepeat),
+                  onChanged: ref
+                      .read(activeVibrationPatternProvider.notifier)
+                      .setOnRepeat),
               Icon(Icons.repeat_rounded,
                   color: Theme.of(context)
                       .colorScheme

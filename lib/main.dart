@@ -9,7 +9,7 @@ import 'generated/l10n.dart';
 import 'pages/vibrationStore/main.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -11,7 +11,7 @@ class SpeedController extends ConsumerWidget {
   const SpeedController({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    VibrationPattern pattern = ref.watch(vibrationPatternProvider);
+    VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,6 +24,7 @@ class SpeedController extends ConsumerWidget {
               Text(S.of(context).speed),
               Text(
                 pattern.speedModifier.toStringAsFixed(2),
+                style: Theme.of(context).textTheme.labelSmall,
               ),
             ],
           ),
@@ -34,11 +35,13 @@ class SpeedController extends ConsumerWidget {
           max: pow(15, 1 / power).toDouble(),
           onChanged: (value) {
             ref
-                .read(vibrationPatternProvider.notifier)
+                .read(activeVibrationPatternProvider.notifier)
                 .setSpeedModifier(pow(value, power));
           },
           onChangeEnd: (value) {
-            ref.read(vibrationPatternProvider.notifier).maybeContinueVib();
+            ref
+                .read(activeVibrationPatternProvider.notifier)
+                .maybeContinueVib();
           },
           label: S.of(context).speed,
         ),
