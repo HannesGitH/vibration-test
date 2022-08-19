@@ -1,0 +1,21 @@
+name: test flutter application (unit / widget / integration)
+on: 
+  pull_request:
+
+jobs:
+  run:
+    name: test
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: irrelevant
+      API_URL: irrelevant
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Mastbau-FN/inspector/.github/actions/setup@main
+      - name: run tests and report coverage
+        run: flutter test --coverage
+      - name: comment coverage
+        if: github.event.pull_request
+        uses: romeovs/lcov-reporter-action@v0.2.16 
+        with:
+          github-token: ${{secrets.TOKEN_GITHUB}}

@@ -1,0 +1,200 @@
+on:
+  #pull_request: #ODO: remove
+  push:
+    branches:
+      - main
+      - staging
+      - release
+    
+    paths:
+      - 'release-info.md'
+
+name: Release
+
+env:
+  working-directory: .
+  API_KEY: irrelevant
+  API_URL: irrelevant
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Mastbau-FN/inspector/.github/actions/setup@main
+      - name: run tests and report coverage
+        run: flutter test --coverage
+      - name: comment coverage
+        if: github.event.pull_request
+        uses: romeovs/lcov-reporter-action@v0.2.16 
+        with:
+          github-token: ${{secrets.TOKEN_GITHUB}}
+
+  build-doc:
+    needs: test
+    name: Build Docs
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: irrelevant
+      API_URL: irrelevant
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Mastbau-FN/inspector/.github/actions/setup@main
+      - name: Build Documentation
+        run: |
+          flutter pub global activate dartdoc
+          flutter pub global run dartdoc
+
+      - name: upload doc artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: doc
+          path: ${{ env.working-directory}}/doc/api
+
+  build-app:
+    needs: test
+    name: Build Web + Android (apk+aab)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [web, apk, appbundle]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Mastbau-FN/inspector/.github/actions/setup@main
+
+      - name: create key.properties for signing
+        run: |
+          cd android
+          touch key.properties
+          printf "${{ secrets.KEY_PROPERTIES }}" >> key.properties
+          ls 
+          pwd
+
+      - name: Build ${{matrix.platform}}
+        run: flutter build ${{matrix.platform}}
+
+      - name: map build-type (platform) to path
+        uses: kanga333/variable-mapper@v0.2.2
+        with:
+          key: ${{matrix.platform}}
+          map: |
+            {
+              "web": {
+                "builtpath": "web"
+              },
+              "apk": {
+                "builtpath": "app/outputs/flutter-apk/app-release.apk"
+              },
+              "appbundle": {
+                "builtpath": "app/outputs/bundle/release/app-release.aab"
+              }
+            }
+      - name: upload ${{matrix.platform}} artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{matrix.platform}}
+          path:  ${{env.working-directory}}/build/${{env.builtpath}}
+
+  deploy-web:
+    needs: [build-doc,build-app]
+    name: Deploy Web-App and Docs
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2 # no idea why but apperently this creates a folder structure (i dont need my repo to be checked out tho)
+      - name: download web artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: web
+          path: web
+
+      - name: download doc artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: doc
+          path: doc
+  
+      - run: ls -a && ls -a .. && ls -a ../..
+
+      - name: make gh-pages folder for doc as well as the app
+        run: |
+          cd ..
+          mkdir gh-pages
+          mv doc gh-pages/doc
+          mv web gh-pages/app
+          cd gh-pages && touch .nojekyll 
+        # the last command is needed to serve the .env
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: gh-pages
+
+  release-GH:
+    needs: build-app
+    name: Release to GH
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read release notes
+        id: release-info
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./release-info.md
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: release_v_${{ github.run_number }}${{ github.ref_name != 'release' && '-dev' || ' ' }}
+          release_name: AutoRelease (v${{ github.run_number }})
+          body: ${{ steps.release-info.outputs.content }}
+          draft: false
+          prerelease: false
+      - name: download apk
+        uses: actions/download-artifact@v2
+        with:
+          name: apk
+      - name: upload apk
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app-release.apk
+          asset_name: inspector.apk
+          asset_content_type: application/octet-stream
+
+  release-playstore:
+    if: github.ref_name == 'release'
+    needs: build-app
+    name: Release to the google playstore
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # need release notes
+      - name: download aab
+        uses: actions/download-artifact@v2
+        with:
+          name: appbundle
+      - name: create release notes #TODO make this actual notes
+        run: |
+          cd ..
+          mkdir news
+          touch news/whatsnew-en-US
+          cat ./release-info.md >> news/whatsnew-en-US 
+
+      - name: upload aab
+        uses: r0adkll/upload-google-play@v1.0.15
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: com.mbgsolutions.inspector
+          releaseFiles: app-release.aab
+          track: beta #TODO: when stable move to production
+          inAppUpdatePriority: 2
+          whatsNewDirectory: news
