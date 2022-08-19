@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'myListTile1.dart';
+import 'myListTile.dart';
 
 class OpenNewViewTile extends StatelessWidget {
   final IconData icon;
