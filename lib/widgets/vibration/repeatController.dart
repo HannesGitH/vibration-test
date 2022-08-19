@@ -25,6 +25,10 @@ class RepeatController extends ConsumerWidget {
                       .primary
                       .withOpacity(!pattern.onRepeat ? 1 : 0.2)),
               Switch(
+                  thumbColor:
+                      MaterialStateProperty.resolveWith<Color>((states) {
+                    return Theme.of(context).colorScheme.primary;
+                  }),
                   value: pattern.onRepeat,
                   onChanged:
                       ref.read(vibrationPatternProvider.notifier).setOnRepeat),

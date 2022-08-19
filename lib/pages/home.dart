@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       drawer: MainDrawer(),
       appBar: AppBar(
         title: Text(S.of(context).appTitle),

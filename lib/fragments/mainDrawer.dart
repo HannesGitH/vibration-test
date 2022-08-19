@@ -73,7 +73,7 @@ class MainDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return DrawerHeader(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.surfaceVariant,
         // gradient: LinearGradient(begin: Alignment.topLeft, colors: [
         //   Theme.of(context).primaryColorDark.withAlpha(200),
         //   Theme.of(context).canvasColor,

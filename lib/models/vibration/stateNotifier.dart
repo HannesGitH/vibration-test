@@ -21,6 +21,7 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
   }
 
   void changeAmplitudeAtMS({required int newAmplitude, required int atMS}) {
+    newAmplitude = newAmplitude.clamp(0, MAX_VIBRATION_AMPLITUDE);
     // final oldElements = state.elements;
     final closest = state.elements.indexOfClosest((elem) => atMS - elem.xy!.x);
 
@@ -106,12 +107,17 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       Vibration.vibrate();
       return;
     }
-    await Vibration.vibrate(
-        pattern: state.durationMSsScaled, intensities: state.amplitudes);
+
+    var didFirst = false;
     state = state.copyWith(
         isCurrentlyVibrating: true, patternChangeThroughUser: false);
-    await Future.delayed(
-        Duration(milliseconds: state.totalDurationMS ~/ state.speedModifier));
+    while ((state.onRepeat || !didFirst) && state.isCurrentlyVibrating) {
+      didFirst = true;
+      await Vibration.vibrate(
+          pattern: state.durationMSsScaled, intensities: state.amplitudes);
+      await Future.delayed(
+          Duration(milliseconds: state.totalDurationMS ~/ state.speedModifier));
+    }
     state = state.copyWith(
         isCurrentlyVibrating: false, patternChangeThroughUser: false);
   }
