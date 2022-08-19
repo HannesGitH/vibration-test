@@ -5,6 +5,8 @@ import '../generated/l10n.dart';
 import '../widgets/openNewViewTile.dart';
 
 class MainDrawer extends StatelessWidget {
+  const MainDrawer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // var settingsTile = OpenNewViewTile(
@@ -15,6 +17,7 @@ class MainDrawer extends StatelessWidget {
     //   ),
     // );
 
+    // ignore: unused_local_variable
     var counterTile = OpenNewViewTile(
       title: S.of(context).counter,
       icon: Icons.control_point_duplicate_rounded,

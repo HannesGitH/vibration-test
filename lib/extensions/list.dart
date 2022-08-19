@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 extension SaveList<T> on List<T> {
   T? safeAt(idx) {
     try {
@@ -28,7 +30,7 @@ class Tuple<T, E> {
 extension Search<T> on List<T> {
   ///the List has to be sorted already
   Tuple<int, num> indexOfClosest(num Function(T) distanceTo) {
-    return this.asMap().entries.toList().fold(
+    return asMap().entries.toList().fold(
       Tuple(0, double.maxFinite),
       (Tuple<int, num> prev, MapEntry<int, T> curr) {
         final currDist = distanceTo(curr.value);
