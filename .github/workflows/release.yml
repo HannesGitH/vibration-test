@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [web, apk, appbundle, linux]
+        platform: [web --base-href "/vibration-test/app/", apk, appbundle]
 
     steps:
       - uses: actions/checkout@v2
@@ -123,7 +123,6 @@ jobs:
 
       - name: make gh-pages folder for doc as well as the app
         run: |
-          cd ..
           mkdir gh-pages
           mv doc gh-pages/doc
           mv web gh-pages/app
@@ -185,7 +184,6 @@ jobs:
           name: appbundle
       - name: create release notes #TODO make this actual notes
         run: |
-          cd ..
           mkdir news
           touch news/whatsnew-en-US
           cat ./release-info.md >> news/whatsnew-en-US 
