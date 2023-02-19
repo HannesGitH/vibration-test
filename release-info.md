@@ -1,1 +1,1 @@
-now with hidden buzz mode (long press play button)
+now with hidden buzz mode (long press play button to enable)
