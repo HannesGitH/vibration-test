@@ -219,6 +219,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Buzz Mode`
+  String get buzzMode {
+    return Intl.message(
+      'Buzz Mode',
+      name: 'buzzMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tap anywhere to go brrrrrr`
+  String get buzzmodeInstruction {
+    return Intl.message(
+      'tap anywhere to go brrrrrr',
+      name: 'buzzmodeInstruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `release to stop`
+  String get buzzmodeStopInstruction {
+    return Intl.message(
+      'release to stop',
+      name: 'buzzmodeStopInstruction',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

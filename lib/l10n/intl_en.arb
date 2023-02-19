@@ -15,5 +15,8 @@
   "saveCurrentPatternNameField": "name",
   "ok": "OK",
   "patternSavedSuccess": "pattern Saved",
-  "patternSavedFailure": "Pattern could not be saved"
+  "patternSavedFailure": "Pattern could not be saved",
+  "buzzMode": "Buzz Mode",
+  "buzzmodeInstruction": "tap anywhere to go brrrrrr",
+  "buzzmodeStopInstruction": "release to stop"
 }
