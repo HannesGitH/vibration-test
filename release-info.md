@@ -1,1 +1,1 @@
-gallery. better design. save patterns. much wow.
+now with hidden buzz mode (long press play button)
