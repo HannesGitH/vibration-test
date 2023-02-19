@@ -27,20 +27,8 @@ class BuzzModePage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  !pattern.isCurrentlyVibrating
-                      ? ref
-                          .read(activeVibrationPatternProvider.notifier)
-                          .startVib(context: context)
-                      : ref
-                          .read(activeVibrationPatternProvider.notifier)
-                          .stopVib();
-                },
-                child: Icon(pattern.isCurrentlyVibrating
-                    ? Icons.stop
-                    : Icons.play_arrow),
-              ),
+              Icon(
+                  pattern.isCurrentlyVibrating ? Icons.stop : Icons.play_arrow),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
