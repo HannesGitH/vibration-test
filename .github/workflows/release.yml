@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [web --base-href /vibration-test/app/, apk, appbundle]
+        platform: [web, apk, appbundle]
 
     steps:
       - uses: actions/checkout@v2
@@ -72,9 +72,6 @@ jobs:
           touch key.properties
           printf "${{ secrets.KEY_PROPERTIES }}" >> key.properties
 
-      - name: Build ${{matrix.platform}}
-        run: flutter build ${{matrix.platform}}
-
       - name: map build-type (platform) to path
         uses: kanga333/variable-mapper@v0.2.2
         with:
@@ -82,23 +79,31 @@ jobs:
           map: |
             {
               "web": {
-                "builtpath": "web"
+                "buildpath": "web",
+                "args": " --base-href '/vibration-test/app/'"
               },
               "apk": {
-                "builtpath": "app/outputs/flutter-apk/app-release.apk"
+                "buildpath": "app/outputs/flutter-apk/app-release.apk",
+                "buildargs": ""
               },
               "appbundle": {
-                "builtpath": "app/outputs/bundle/release/app-release.aab"
+                "buildpath": "app/outputs/bundle/release/app-release.aab",
+                "buildargs": ""
               },
               "linux": {
-                "builtpath": "build/linux/release/bundle/"
+                "buildpath": "build/linux/release/bundle/",
+                "buildargs": ""
               }
             }
+
+      - name: Build ${{matrix.platform}}
+        run: flutter build ${{matrix.platform}} ${{env.buildargs}}
+
       - name: upload ${{matrix.platform}} artifact
         uses: actions/upload-artifact@v2
         with:
           name: ${{matrix.platform}}
-          path:  ${{env.working-directory}}/build/${{env.builtpath}}
+          path:  ${{env.working-directory}}/build/${{env.buildpath}}
 
   deploy-web:
     needs: [build-doc,build-app]
