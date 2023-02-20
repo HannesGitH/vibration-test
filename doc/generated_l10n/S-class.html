@@ -11,7 +11,7 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="../static-assets/github.css?v1">
   <link rel="stylesheet" href="../static-assets/styles.css?v1">
@@ -21,12 +21,12 @@
 </head>
 
 
-<body data-base-href="../" data-using-base-href="false">
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
 
 <div id="overlay-under-drawer"></div>
 
 <header id="title">
-  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">vibrationtest</a></li>
     <li><a href="../generated_l10n/generated_l10n-library.html">l10n</a></li>
@@ -36,10 +36,16 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
 </header>
-
 <main>
-
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
@@ -77,7 +83,40 @@
 </dt>
 <dd>
   <code>Custom Vibrator</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
+
+</dd>
+
+        <dt id="buzzMode" class="property">
+  <span class="name"><a href="../generated_l10n/S/buzzMode.html">buzzMode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd>
+  <code>Buzz Mode</code>
+  <div class="features"><span class="feature">read-only</span></div>
+
+</dd>
+
+        <dt id="buzzmodeInstruction" class="property">
+  <span class="name"><a href="../generated_l10n/S/buzzmodeInstruction.html">buzzmodeInstruction</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd>
+  <code>tap anywhere to go brrrrrr</code>
+  <div class="features"><span class="feature">read-only</span></div>
+
+</dd>
+
+        <dt id="buzzmodeStopInstruction" class="property">
+  <span class="name"><a href="../generated_l10n/S/buzzmodeStopInstruction.html">buzzmodeStopInstruction</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd>
+  <code>release to stop</code>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -88,7 +127,7 @@
 </dt>
 <dd>
   <code>Counter</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -99,7 +138,7 @@
 </dt>
 <dd>
   <code>default pattern</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -110,7 +149,7 @@
 </dt>
 <dd class="inherited">
   The hash code for this object.
-  <div class="features">read-only, inherited</div>
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -121,7 +160,7 @@
 </dt>
 <dd>
   <code>This device does not support custom vibrations</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -132,7 +171,7 @@
 </dt>
 <dd>
   <code>No vibrator found</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -143,7 +182,7 @@
 </dt>
 <dd>
   <code>OK</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -154,7 +193,7 @@
 </dt>
 <dd>
   <code>Pattern</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -165,7 +204,7 @@
 </dt>
 <dd>
   <code>Pattern could not be saved</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -176,7 +215,7 @@
 </dt>
 <dd>
   <code>pattern Saved</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -187,7 +226,7 @@
 </dt>
 <dd>
   <code>Presets</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -198,7 +237,7 @@
 </dt>
 <dd>
   <code>Repeat</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -209,7 +248,7 @@
 </dt>
 <dd class="inherited">
   A representation of the runtime type of the object.
-  <div class="features">read-only, inherited</div>
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -220,7 +259,7 @@
 </dt>
 <dd>
   <code>name</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -231,7 +270,7 @@
 </dt>
 <dd>
   <code>Save Pattern</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -242,7 +281,7 @@
 </dt>
 <dd>
   <code>Settings</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -253,7 +292,7 @@
 </dt>
 <dd>
   <code>Speed</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -264,7 +303,7 @@
 </dt>
 <dd>
   <code>still work in progress</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -275,7 +314,7 @@
 </dt>
 <dd>
   <code>Vibration Store</code>
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -297,7 +336,7 @@
 </dt>
 <dd class="inherited">
   Invoked when a non-existent method or property is accessed.
-  <div class="features">inherited</div>
+  <div class="features"><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -310,7 +349,7 @@
 </dt>
 <dd class="inherited">
   A string representation of this object.
-  <div class="features">inherited</div>
+  <div class="features"><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -331,7 +370,7 @@
 </dt>
 <dd class="inherited">
   The equality operator.
-  <div class="features">inherited</div>
+  <div class="features"><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -349,7 +388,7 @@
 </dt>
 <dd>
   
-  <div class="features">read-only</div>
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -416,9 +455,9 @@
   
   
 
-  <div>
-    <span class="signature"><code><a href="../generated_l10n/AppLocalizationDelegate/AppLocalizationDelegate.html">AppLocalizationDelegate</a>()</code></span>
-  </div>
+    <div>
+      <span class="signature"><code><a href="../generated_l10n/AppLocalizationDelegate/AppLocalizationDelegate.html">AppLocalizationDelegate</a>()</code></span>
+    </div>
 </dd>
 
     </dl>
@@ -468,6 +507,9 @@
           <a href="../generated_l10n/S-class.html#instance-properties">Properties</a>
         </li>
           <li><a href="../generated_l10n/S/appTitle.html">appTitle</a></li>
+          <li><a href="../generated_l10n/S/buzzMode.html">buzzMode</a></li>
+          <li><a href="../generated_l10n/S/buzzmodeInstruction.html">buzzmodeInstruction</a></li>
+          <li><a href="../generated_l10n/S/buzzmodeStopInstruction.html">buzzmodeStopInstruction</a></li>
           <li><a href="../generated_l10n/S/counter.html">counter</a></li>
           <li><a href="../generated_l10n/S/defaultPattern.html">defaultPattern</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
@@ -514,7 +556,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.0.16+16
+      2.1.0+17
   </span>
 
   
