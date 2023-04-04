@@ -690,6 +690,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  squiggly_slider:
+    dependency: "direct main"
+    description:
+      path: "../squiggly_seekbar"
+      relative: true
+    source: path
+    version: "0.0.1+1"
   stack_trace:
     dependency: transitive
     description:
@@ -827,5 +834,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
+  dart: ">=2.19.2 <3.0.0"
   flutter: ">=3.4.0-17.0.pre"

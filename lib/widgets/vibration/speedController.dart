@@ -2,6 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:squiggly_slider/slider.dart';
+import 'package:squiggly_slider/squigglySliderTrackShape.dart';
+
 import 'package:vibrationtest/models/vibration/vibration.dart';
 
 import '../../generated/l10n.dart';
@@ -29,7 +33,7 @@ class SpeedController extends ConsumerWidget {
             ],
           ),
         ),
-        Slider(
+        SquigglySlider(
           value: pow(pattern.speedModifier, 1 / power).toDouble(),
           min: pow(0.1, 1 / power).toDouble(),
           max: pow(15, 1 / power).toDouble(),
@@ -44,6 +48,9 @@ class SpeedController extends ConsumerWidget {
                 .maybeContinueVib();
           },
           label: S.of(context).speed,
+          squiggleAmplitude: 20.0,
+          squiggleWavelength: 20.0,
+          squiggleSpeed: 50.0,
         ),
       ],
     );
