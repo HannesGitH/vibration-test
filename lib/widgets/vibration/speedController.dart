@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:squiggly_slider/slider.dart';
-import 'package:squiggly_slider/squigglySliderTrackShape.dart';
 
 import 'package:vibrationtest/models/vibration/vibration.dart';
 
@@ -48,9 +47,11 @@ class SpeedController extends ConsumerWidget {
                 .maybeContinueVib();
           },
           label: S.of(context).speed,
-          squiggleAmplitude: 20.0,
-          squiggleWavelength: 20.0,
-          squiggleSpeed: 50.0,
+          squiggleAmplitude: pattern.isCurrentlyVibrating
+              ? pattern.amplitudes.first.toDouble() / 80
+              : 0.0,
+          squiggleWavelength: 5.0,
+          squiggleSpeed: 0.5,
         ),
       ],
     );

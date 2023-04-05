@@ -47,8 +47,7 @@ dependencies:
   dynamic_color: ^1.4.0
   intl_utils: ^2.7.0
 
-  squiggly_slider: 
-    path: ../squiggly_seekbar
+  squiggly_slider: ^1.0.0
 
 dev_dependencies:
   flutter_test:

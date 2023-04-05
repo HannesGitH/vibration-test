@@ -693,10 +693,11 @@ packages:
   squiggly_slider:
     dependency: "direct main"
     description:
-      path: "../squiggly_seekbar"
-      relative: true
-    source: path
-    version: "0.0.1+1"
+      name: squiggly_slider
+      sha256: "73895ad8d3937f830d487dbc30b712ce02fb8de4d5662ad353c26e13bdbd4e47"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   stack_trace:
     dependency: transitive
     description:

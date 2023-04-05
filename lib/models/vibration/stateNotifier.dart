@@ -106,13 +106,18 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
 
   void startVib({BuildContext? context}) async {
     // TODO: test whether we need to insert 0s in the pattern for durantion of vibration off
-    if (!(await Vibration.hasVibrator() ?? false)) {
+    try {
+      if (!(await Vibration.hasVibrator() ?? false)) {
+        showToast(S.current.noVibratorFound, context: context);
+        return;
+      }
+      if (!(await Vibration.hasCustomVibrationsSupport() ?? false)) {
+        showToast(S.current.noCustomVibrationSupport, context: context);
+        Vibration.vibrate();
+        return;
+      }
+    } catch (e) {
       showToast(S.current.noVibratorFound, context: context);
-      return;
-    }
-    if (!(await Vibration.hasCustomVibrationsSupport() ?? false)) {
-      showToast(S.current.noCustomVibrationSupport, context: context);
-      Vibration.vibrate();
       return;
     }
 
