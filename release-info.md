@@ -1,1 +1,1 @@
-now with hidden buzz mode (long press play button) 
+improved visuals of speed slider (it now vibrates as well 😉)
