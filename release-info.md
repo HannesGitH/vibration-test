@@ -1,1 +1,2 @@
-improved visuals of speed slider (it now vibrates as well 😉)
+improved visuals and ux
+(speedslighter vibrates and chnanging the pattern pauses the animation)
