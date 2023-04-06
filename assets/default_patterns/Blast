@@ -1,0 +1,208 @@
+{
+  "name": "Blast",
+  "elements": [
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 9
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 8
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    },
+    {
+      "duration": 50000,
+      "amplitude": 255
+    }
+  ],
+  "speedModifier": 1,
+  "isCurrentlyVibrating": false,
+  "onRepeat": true
+}

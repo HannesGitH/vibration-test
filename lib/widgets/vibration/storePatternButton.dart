@@ -12,7 +12,7 @@ class SaveCurrentPatternButton extends ConsumerWidget {
   void onSaved(VibrationPattern? pattern, WidgetRef ref) async {
     final success = pattern != null;
     if (success) {
-      await ref.read(allPatternsProvider.notifier).reloadFromFS();
+      await ref.read(allPatternsProvider.notifier).loadAll();
       ref.read(activeVibrationPatternProvider.notifier).setPattern(pattern);
     }
   }

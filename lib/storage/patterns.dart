@@ -26,3 +26,19 @@ Future<VibrationPattern?> getPattern(String id) async {
   final snapshot = (await patternStore.doc(id).get());
   return snapshot == null ? null : VibrationPattern.fromJson(snapshot);
 }
+
+Future<List<VibrationPattern>> getAssetsPatterns() async {
+  final fileNames = json.decode(
+      await rootBundle.loadString("assets/default_patterns/names.json"));
+  List<VibrationPattern> patterns = [];
+  for (String fileName in fileNames) {
+    try {
+      final pattern = VibrationPattern.fromJson(json.decode(
+          await rootBundle.loadString("assets/default_patterns/$fileName")));
+      patterns.add(pattern);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+  return patterns;
+}

@@ -7,11 +7,14 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
           defaultPattern.copyWith(name: 'anderle'),
           defaultPattern.copyWith(name: 'anderl3e'),
         ]) {
-    reloadFromFS();
+    loadAll();
   }
 
-  Future reloadFromFS() async {
-    state = await local.getAllPatterns();
+  Future loadAll() async {
+    state = [
+      ...await local.getAllPatterns(),
+      ...await local.getAssetsPatterns(),
+    ];
   }
 
   void addPattern(VibrationPattern pattern) {
