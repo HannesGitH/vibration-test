@@ -30,7 +30,7 @@ class BuzzModePage extends ConsumerWidget {
         onTapCancel: () {
           ref.read(activeVibrationPatternProvider.notifier).stopVib();
         },
-        splashColor: Theme.of(context).colorScheme.primary,
+        highlightColor: Theme.of(context).colorScheme.background.withOpacity(0),
         child: Stack(
           children: [
             IgnorePointer(
@@ -53,15 +53,8 @@ class BuzzModePage extends ConsumerWidget {
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: Container()),
             Container(
-                color: pattern.isCurrentlyVibrating
-                    ? Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withAlpha((pattern.points.first.y ~/ 2))
-                    : Theme.of(context)
-                        .colorScheme
-                        .background
-                        .withOpacity(0.5)),
+              color: Theme.of(context).colorScheme.background.withOpacity(0.5),
+            ),
             Center(
               child: Card(
                 child: Padding(
