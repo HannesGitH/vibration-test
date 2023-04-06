@@ -5,6 +5,7 @@ import 'package:riverpod/riverpod.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vibration/vibration.dart';
 import 'package:vibrationtest/fragments/toaster.dart';
+import 'package:vibrationtest/widgets/pattern/pattern.dart';
 import '../../extensions/list.dart';
 
 import '../../generated/l10n.dart';

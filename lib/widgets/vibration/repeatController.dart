@@ -15,6 +15,7 @@ class RepeatController extends ConsumerWidget {
         left: 20.0,
         top: 20.0,
         right: 20.0,
+        bottom: 8.0,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

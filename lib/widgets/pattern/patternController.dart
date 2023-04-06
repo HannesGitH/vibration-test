@@ -2,25 +2,36 @@ part of 'pattern.dart';
 
 class PatternController extends ConsumerWidget {
   const PatternController({super.key});
+
+  static Point convertTouchToAmpMs(
+      {required num x_, required num y_, required VibrationPattern pattern}) {
+    num x = max(
+      ((x_.clamp(0, 1) + (1 / pattern.elements.length)) *
+          pattern.totalDurationMS),
+      pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
+    );
+    num y = (1 - y_.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+    return Point(x, y);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
 
-    onTouch(num relativeX, num relativeY) {
+    onTouch(num x_, num y_) {
       final notifier = ref.read(activeVibrationPatternProvider.notifier);
-      num x = max(
-        ((relativeX.clamp(0, 1) + (1 / pattern.elements.length)) *
-            pattern.totalDurationMS),
-        pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
-      );
-      num y = (1 - relativeY.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+
+      // notifier.stopVib();
+
+      final Point touch = convertTouchToAmpMs(x_: x_, y_: y_, pattern: pattern);
+      num x = touch.x;
+      num y = touch.y;
+
       if (_prevTouch != null) {
-        num xp = max(
-          ((_prevTouch!.x.clamp(0, 1) + (1 / pattern.elements.length)) *
-              pattern.totalDurationMS),
-          pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~/ 2),
-        );
-        num yp = (1 - _prevTouch!.y.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+        final Point prev = convertTouchToAmpMs(
+            x_: _prevTouch!.x, y_: _prevTouch!.y, pattern: pattern);
+        num xp = prev.x;
+        num yp = prev.y;
 
         if (xp != x) {
           if (xp < x) {
@@ -51,6 +62,12 @@ class PatternController extends ConsumerWidget {
         pattern.elements.isEmpty ? 0 : pattern.elements.first.durationMS;
 
     final data = pattern.points;
+
+    // if (pattern.isCurrentlyVibrating &&
+    //     _isCurrentlyDown &&
+    //     _prevTouch != null) {
+    //   onTouch(_prevTouch!.x, _prevTouch!.y);
+    // }
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -83,16 +100,66 @@ class PatternController extends ConsumerWidget {
                           right: 20.0,
                           left: 20.0,
                         ),
-                        child: MyLineChart(
-                          onTouchCallBack: onTouch,
-                          data: data,
-                          min: Point(firstDuration, 0),
-                          max: Point(
-                            pattern.totalDurationMS,
-                            MAX_VIBRATION_AMPLITUDE,
-                          ),
-                          animationDuration: pattern.doNotAnimate ? 5 : 100,
-                          showDot: pattern.isCurrentlyVibrating,
+                        child: Stack(
+                          children: [
+                            // MyLineChart(
+                            //   onTouchCallBack: onTouch,
+                            //   data: data,
+                            //   min: Point(firstDuration, 0),
+                            //   max: Point(
+                            //     pattern.totalDurationMS,
+                            //     MAX_VIBRATION_AMPLITUDE,
+                            //   ),
+                            //   animationDuration: pattern.doNotAnimate ? 5 : 100,
+                            //   showDot: pattern.isCurrentlyVibrating,
+                            // ),
+                            Listener(
+                              onPointerDown: (event) => ref
+                                  .read(activeVibrationPatternProvider.notifier)
+                                  .pauseVib(),
+                              onPointerUp: (event) => ref
+                                  .read(activeVibrationPatternProvider.notifier)
+                                  .maybeContinueVib(),
+                              // GestureDetector(
+                              //   behavior: HitTestBehavior.opaque,
+                              // onTapDown: (_) => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .pauseVib(),
+                              // onTapUp: (_) => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              // onTapCancel: () => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              // onLongPressUp: () => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              // onLongPressCancel: () => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              // onLongPressEnd: (details) => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              // onPanEnd: (details) => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              // onPanCancel: () => ref
+                              //     .read(activeVibrationPatternProvider.notifier)
+                              //     .maybeContinueVib(),
+                              child: MyLineChart(
+                                onTouchCallBack: onTouch,
+                                data: data,
+                                min: Point(firstDuration, 0),
+                                max: Point(
+                                  pattern.totalDurationMS,
+                                  MAX_VIBRATION_AMPLITUDE,
+                                ),
+                                animationDuration:
+                                    pattern.doNotAnimate ? 5 : 100,
+                                showDot: pattern.isCurrentlyVibrating,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

@@ -15,3 +15,4 @@ part 'patternController.dart';
 part 'patternPreview.dart';
 
 Point? _prevTouch;
+bool _isCurrentlyDown = false;

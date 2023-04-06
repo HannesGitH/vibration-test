@@ -25,6 +25,7 @@ class VibrationPattern {
     this.isCurrentlyVibrating = false,
     this.onRepeat = true,
     this.doNotAnimate = false,
+    this.wasPausedToContinue = false,
     // ignore: unnecessary_this
   }) : this.elements = _addPointsToElements(elements);
 
@@ -33,6 +34,7 @@ class VibrationPattern {
   final num speedModifier;
   final bool isCurrentlyVibrating;
   final bool onRepeat;
+  final bool wasPausedToContinue;
   @JsonKey(ignore: true)
   final bool doNotAnimate;
   String get id => name;
@@ -66,6 +68,7 @@ class VibrationPattern {
     bool? isCurrentlyVibrating,
     bool? onRepeat,
     bool? doNotAnimate,
+    bool? wasPausedToContinue,
   }) {
     return VibrationPattern(
       elements ?? this.elements,
@@ -74,6 +77,7 @@ class VibrationPattern {
       isCurrentlyVibrating: isCurrentlyVibrating ?? this.isCurrentlyVibrating,
       onRepeat: onRepeat ?? this.onRepeat,
       doNotAnimate: doNotAnimate ?? this.doNotAnimate,
+      wasPausedToContinue: wasPausedToContinue ?? this.wasPausedToContinue,
     );
   }
 }

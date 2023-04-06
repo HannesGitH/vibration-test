@@ -23,8 +23,16 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     // will automatically rebuild the UI when necessary.
   }
 
+  void pauseVib() {
+    if (state.isCurrentlyVibrating) {
+      stopVib();
+      state = state.copyWith(wasPausedToContinue: true, doNotAnimate: false);
+    }
+  }
+
   void changeAmplitudeAtMS({required int newAmplitude, required int atMS}) {
     newAmplitude = newAmplitude.clamp(0, MAX_VIBRATION_AMPLITUDE);
+    // pauseVib();
     // final oldElements = state.elements;
     final closest = state.elements.indexOfClosest((elem) => atMS - elem.xy!.x);
 
@@ -92,12 +100,7 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
 
   void setSpeedModifier(num speedModifier) {
     state = state.copyWith(speedModifier: speedModifier, doNotAnimate: false);
-    if (state.isCurrentlyVibrating) {
-      stopVib();
-      _wasPausedToContinue = true;
-
-      // startVib();
-    }
+    pauseVib();
   }
 
   void resetPattern() {
@@ -128,9 +131,15 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       await Vibration.vibrate(
           pattern: state.durationMSsScaled, intensities: state.amplitudes);
 
-      if (animate)
+      if (animate) {
+        // if (prevTouch != null && isCurrentlyDown) {
+        //   final Point converted = PatternController.convertTouchToAmpMs(
+        //       x_: prevTouch!.x, y_: prevTouch!.y, pattern: this.state);
+        //   changeAmplitudeAtMS(
+        //       newAmplitude: converted.y.toInt(), atMS: converted.x.toInt());
+        // }
         await animateVibration();
-      else
+      } else
         await Future.delayed(Duration(
             milliseconds: state.totalDurationMS ~/ state.speedModifier));
     }
@@ -158,9 +167,10 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
     Vibration.cancel();
   }
 
-  bool _wasPausedToContinue = false;
   void maybeContinueVib() {
-    if (_wasPausedToContinue) startVib();
-    _wasPausedToContinue = false;
+    if (state.wasPausedToContinue) {
+      startVib();
+      state = state.copyWith(wasPausedToContinue: false, doNotAnimate: false);
+    }
   }
 }
