@@ -74,12 +74,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void setSpeedModifier(num speedModifier) {
   state = state.copyWith(speedModifier: speedModifier, doNotAnimate: false);
-  if (state.isCurrentlyVibrating) {
-    stopVib();
-    _wasPausedToContinue = true;
-
-    &#47;&#47; startVib();
-  }
+  pauseVib();
 }</code></pre>
 </section>
 
@@ -127,6 +122,7 @@
           <li class="inherited"><a href="https://pub.dev/documentation/state_notifier/0.7.2+1/state_notifier/StateNotifier/dispose.html">dispose</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/maybeContinueVib.html">maybeContinueVib</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/pauseVib.html">pauseVib</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/resetPattern.html">resetPattern</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/setOnRepeat.html">setOnRepeat</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/setPattern.html">setPattern</a></li>
@@ -154,7 +150,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.8+18
+      2.1.9+19
   </span>
 
   

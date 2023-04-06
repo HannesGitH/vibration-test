@@ -117,21 +117,20 @@ and</li>
 Widget build(BuildContext context, WidgetRef ref) {
   VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
 
-  onTouch(num relativeX, num relativeY) {
+  onTouch(num x_, num y_) {
     final notifier = ref.read(activeVibrationPatternProvider.notifier);
-    num x = max(
-      ((relativeX.clamp(0, 1) + (1 &#47; pattern.elements.length)) *
-          pattern.totalDurationMS),
-      pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~&#47; 2),
-    );
-    num y = (1 - relativeY.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+
+    &#47;&#47; notifier.stopVib();
+
+    final Point touch = convertTouchToAmpMs(x_: x_, y_: y_, pattern: pattern);
+    num x = touch.x;
+    num y = touch.y;
+
     if (_prevTouch != null) {
-      num xp = max(
-        ((_prevTouch!.x.clamp(0, 1) + (1 &#47; pattern.elements.length)) *
-            pattern.totalDurationMS),
-        pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~&#47; 2),
-      );
-      num yp = (1 - _prevTouch!.y.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+      final Point prev = convertTouchToAmpMs(
+          x_: _prevTouch!.x, y_: _prevTouch!.y, pattern: pattern);
+      num xp = prev.x;
+      num yp = prev.y;
 
       if (xp != x) {
         if (xp &lt; x) {
@@ -162,6 +161,12 @@ Widget build(BuildContext context, WidgetRef ref) {
       pattern.elements.isEmpty ? 0 : pattern.elements.first.durationMS;
 
   final data = pattern.points;
+
+  &#47;&#47; if (pattern.isCurrentlyVibrating &amp;&amp;
+  &#47;&#47;     _isCurrentlyDown &amp;&amp;
+  &#47;&#47;     _prevTouch != null) {
+  &#47;&#47;   onTouch(_prevTouch!.x, _prevTouch!.y);
+  &#47;&#47; }
   return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -194,16 +199,66 @@ Widget build(BuildContext context, WidgetRef ref) {
                         right: 20.0,
                         left: 20.0,
                       ),
-                      child: MyLineChart(
-                        onTouchCallBack: onTouch,
-                        data: data,
-                        min: Point(firstDuration, 0),
-                        max: Point(
-                          pattern.totalDurationMS,
-                          MAX_VIBRATION_AMPLITUDE,
-                        ),
-                        animationDuration: pattern.doNotAnimate ? 5 : 100,
-                        showDot: pattern.isCurrentlyVibrating,
+                      child: Stack(
+                        children: [
+                          &#47;&#47; MyLineChart(
+                          &#47;&#47;   onTouchCallBack: onTouch,
+                          &#47;&#47;   data: data,
+                          &#47;&#47;   min: Point(firstDuration, 0),
+                          &#47;&#47;   max: Point(
+                          &#47;&#47;     pattern.totalDurationMS,
+                          &#47;&#47;     MAX_VIBRATION_AMPLITUDE,
+                          &#47;&#47;   ),
+                          &#47;&#47;   animationDuration: pattern.doNotAnimate ? 5 : 100,
+                          &#47;&#47;   showDot: pattern.isCurrentlyVibrating,
+                          &#47;&#47; ),
+                          Listener(
+                            onPointerDown: (event) =&gt; ref
+                                .read(activeVibrationPatternProvider.notifier)
+                                .pauseVib(),
+                            onPointerUp: (event) =&gt; ref
+                                .read(activeVibrationPatternProvider.notifier)
+                                .maybeContinueVib(),
+                            &#47;&#47; GestureDetector(
+                            &#47;&#47;   behavior: HitTestBehavior.opaque,
+                            &#47;&#47; onTapDown: (_) =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .pauseVib(),
+                            &#47;&#47; onTapUp: (_) =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            &#47;&#47; onTapCancel: () =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            &#47;&#47; onLongPressUp: () =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            &#47;&#47; onLongPressCancel: () =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            &#47;&#47; onLongPressEnd: (details) =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            &#47;&#47; onPanEnd: (details) =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            &#47;&#47; onPanCancel: () =&gt; ref
+                            &#47;&#47;     .read(activeVibrationPatternProvider.notifier)
+                            &#47;&#47;     .maybeContinueVib(),
+                            child: MyLineChart(
+                              onTouchCallBack: onTouch,
+                              data: data,
+                              min: Point(firstDuration, 0),
+                              max: Point(
+                                pattern.totalDurationMS,
+                                MAX_VIBRATION_AMPLITUDE,
+                              ),
+                              animationDuration:
+                                  pattern.doNotAnimate ? 5 : 100,
+                              showDot: pattern.isCurrentlyVibrating,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -267,6 +322,8 @@ Widget build(BuildContext context, WidgetRef ref) {
 
 
 
+        <li class="section-title"><a href="../../widgets_pattern_pattern/PatternController-class.html#static-methods">Static methods</a></li>
+          <li><a href="../../widgets_pattern_pattern/PatternController/convertTouchToAmpMs.html">convertTouchToAmpMs</a></li>
 
 </ol>
 
@@ -280,7 +337,7 @@ Widget build(BuildContext context, WidgetRef ref) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.8+18
+      2.1.9+19
   </span>
 
   

@@ -65,7 +65,8 @@
 <li><span class="parameter" id="copyWith-param-speedModifier"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?</span> <span class="parameter-name">speedModifier</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-isCurrentlyVibrating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isCurrentlyVibrating</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-onRepeat"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">onRepeat</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-doNotAnimate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">doNotAnimate</span>}</span></li>
+<li><span class="parameter" id="copyWith-param-doNotAnimate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">doNotAnimate</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-wasPausedToContinue"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">wasPausedToContinue</span>}</span></li>
 </ol>)
 
       
@@ -84,6 +85,7 @@
   bool? isCurrentlyVibrating,
   bool? onRepeat,
   bool? doNotAnimate,
+  bool? wasPausedToContinue,
 }) {
   return VibrationPattern(
     elements ?? this.elements,
@@ -92,6 +94,7 @@
     isCurrentlyVibrating: isCurrentlyVibrating ?? this.isCurrentlyVibrating,
     onRepeat: onRepeat ?? this.onRepeat,
     doNotAnimate: doNotAnimate ?? this.doNotAnimate,
+    wasPausedToContinue: wasPausedToContinue ?? this.wasPausedToContinue,
   );
 }</code></pre>
 </section>
@@ -141,6 +144,7 @@
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPattern/speedModifier.html">speedModifier</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPattern/totalDurationMS.html">totalDurationMS</a></li>
+          <li><a href="../../models_vibration_vibration/VibrationPattern/wasPausedToContinue.html">wasPausedToContinue</a></li>
 
         <li class="section-title"><a href="../../models_vibration_vibration/VibrationPattern-class.html#instance-methods">Methods</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPattern/copyWith.html">copyWith</a></li>
@@ -166,7 +170,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.8+18
+      2.1.9+19
   </span>
 
   

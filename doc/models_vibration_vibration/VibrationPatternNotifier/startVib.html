@@ -96,9 +96,15 @@
     await Vibration.vibrate(
         pattern: state.durationMSsScaled, intensities: state.amplitudes);
 
-    if (animate)
+    if (animate) {
+      &#47;&#47; if (prevTouch != null &amp;&amp; isCurrentlyDown) {
+      &#47;&#47;   final Point converted = PatternController.convertTouchToAmpMs(
+      &#47;&#47;       x_: prevTouch!.x, y_: prevTouch!.y, pattern: this.state);
+      &#47;&#47;   changeAmplitudeAtMS(
+      &#47;&#47;       newAmplitude: converted.y.toInt(), atMS: converted.x.toInt());
+      &#47;&#47; }
       await animateVibration();
-    else
+    } else
       await Future.delayed(Duration(
           milliseconds: state.totalDurationMS ~&#47; state.speedModifier));
   }
@@ -150,6 +156,7 @@
           <li class="inherited"><a href="https://pub.dev/documentation/state_notifier/0.7.2+1/state_notifier/StateNotifier/dispose.html">dispose</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/maybeContinueVib.html">maybeContinueVib</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/pauseVib.html">pauseVib</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/resetPattern.html">resetPattern</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/setOnRepeat.html">setOnRepeat</a></li>
           <li><a href="../../models_vibration_vibration/VibrationPatternNotifier/setPattern.html">setPattern</a></li>
@@ -177,7 +184,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.8+18
+      2.1.9+19
   </span>
 
   

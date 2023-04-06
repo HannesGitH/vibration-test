@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the PatternGalleryPage constructor from Class PatternGalleryPage from the gallery library, for the Dart programming language.">
-  <title>PatternGalleryPage constructor - PatternGalleryPage - gallery library - Dart API</title>
+  <meta name="description" content="API docs for the convertTouchToAmpMs method from the PatternController class, for the Dart programming language.">
+  <title>convertTouchToAmpMs method - PatternController class - pattern library - Dart API</title>
 
 
   
@@ -29,11 +29,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">vibrationtest</a></li>
-    <li><a href="../../pages_gallery/pages_gallery-library.html">gallery</a></li>
-    <li><a href="../../pages_gallery/PatternGalleryPage-class.html">PatternGalleryPage</a></li>
-    <li class="self-crumb">PatternGalleryPage const constructor</li>
+    <li><a href="../../widgets_pattern_pattern/widgets_pattern_pattern-library.html">pattern</a></li>
+    <li><a href="../../widgets_pattern_pattern/PatternController-class.html">PatternController</a></li>
+    <li class="self-crumb">convertTouchToAmpMs static method</li>
   </ol>
-  <div class="self-name">PatternGalleryPage</div>
+  <div class="self-name">convertTouchToAmpMs</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -53,26 +53,37 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-constructor">PatternGalleryPage</span> constructor 
+<h1><span class="kind-method">convertTouchToAmpMs</span> static method 
 </h1></div>
 
     <section class="multi-line-signature">
-      const
-      <span class="name ">PatternGalleryPage</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-key">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span></li>
-<li><span class="parameter" id="-param-elemsPerRow"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">elemsPerRow</span> = <span class="default-value">2</span>}</span></li>
-</ol>)
-    </section>
+      
 
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-math/Point-class.html">Point</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>&gt;</span></span>
+<span class="name ">convertTouchToAmpMs</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="convertTouchToAmpMs-param-x_">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">x_</span>, </span></li>
+<li><span class="parameter" id="convertTouchToAmpMs-param-y_"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">y_</span>, </span></li>
+<li><span class="parameter" id="convertTouchToAmpMs-param-pattern"><span>required</span> <span class="type-annotation"><a href="../../models_vibration_vibration/VibrationPattern-class.html">VibrationPattern</a></span> <span class="parameter-name">pattern</span>}</span></li>
+</ol>)
+
+      
+
+    </section>
     
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">const PatternGalleryPage({
-  Key? key,
-  this.elemsPerRow = 2,
-}) : super(key: key);</code></pre>
+  <pre class="language-dart"><code class="language-dart">static Point convertTouchToAmpMs(
+    {required num x_, required num y_, required VibrationPattern pattern}) {
+  num x = max(
+    ((x_.clamp(0, 1) + (1 &#47; pattern.elements.length)) *
+        pattern.totalDurationMS),
+    pattern.elements.safeAt(2)?.durationMS ?? 0 - (resolutionInMS ~&#47; 2),
+  );
+  num y = (1 - y_.clamp(0, 1.1)) * MAX_VIBRATION_AMPLITUDE;
+  return Point(x, y);
+}</code></pre>
 </section>
 
 
@@ -87,29 +98,28 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">vibrationtest</a></li>
-  <li><a href="../../pages_gallery/pages_gallery-library.html">gallery</a></li>
-  <li><a href="../../pages_gallery/PatternGalleryPage-class.html">PatternGalleryPage</a></li>
-  <li class="self-crumb">PatternGalleryPage const constructor</li>
+  <li><a href="../../widgets_pattern_pattern/widgets_pattern_pattern-library.html">pattern</a></li>
+  <li><a href="../../widgets_pattern_pattern/PatternController-class.html">PatternController</a></li>
+  <li class="self-crumb">convertTouchToAmpMs static method</li>
 </ol>
 
 
-    <h5>PatternGalleryPage class</h5>
+    <h5>PatternController class</h5>
     <ol>
 
-        <li class="section-title"><a href="../../pages_gallery/PatternGalleryPage-class.html#constructors">Constructors</a></li>
-          <li><a href="../../pages_gallery/PatternGalleryPage/PatternGalleryPage.html">PatternGalleryPage</a></li>
+        <li class="section-title"><a href="../../widgets_pattern_pattern/PatternController-class.html#constructors">Constructors</a></li>
+          <li><a href="../../widgets_pattern_pattern/PatternController/PatternController.html">PatternController</a></li>
 
 
-        <li class="section-title">
-          <a href="../../pages_gallery/PatternGalleryPage-class.html#instance-properties">Properties</a>
+        <li class="section-title inherited">
+          <a href="../../widgets_pattern_pattern/PatternController-class.html#instance-properties">Properties</a>
         </li>
-          <li><a href="../../pages_gallery/PatternGalleryPage/elemsPerRow.html">elemsPerRow</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
-        <li class="section-title"><a href="../../pages_gallery/PatternGalleryPage-class.html#instance-methods">Methods</a></li>
-          <li><a href="../../pages_gallery/PatternGalleryPage/build.html">build</a></li>
+        <li class="section-title"><a href="../../widgets_pattern_pattern/PatternController-class.html#instance-methods">Methods</a></li>
+          <li><a href="../../widgets_pattern_pattern/PatternController/build.html">build</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/flutter_riverpod/1.0.4/flutter_riverpod/ConsumerStatefulWidget/createElement.html">createElement</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/flutter_riverpod/1.0.4/flutter_riverpod/ConsumerWidget/createState.html">createState</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/debugDescribeChildren.html">debugDescribeChildren</a></li>
@@ -121,15 +131,17 @@
           <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringShallow.html">toStringShallow</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/toStringShort.html">toStringShort</a></li>
 
-        <li class="section-title inherited"><a href="../../pages_gallery/PatternGalleryPage-class.html#operators">Operators</a></li>
+        <li class="section-title inherited"><a href="../../widgets_pattern_pattern/PatternController-class.html#operators">Operators</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/operator_equals.html">operator ==</a></li>
 
 
 
+        <li class="section-title"><a href="../../widgets_pattern_pattern/PatternController-class.html#static-methods">Static methods</a></li>
+          <li><a href="../../widgets_pattern_pattern/PatternController/convertTouchToAmpMs.html">convertTouchToAmpMs</a></li>
 
 </ol>
 
-  </div><!--/.sidebar-offcanvas-left-->
+  </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
