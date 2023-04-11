@@ -1,2 +1,2 @@
 improved visuals and ux
-(speedslighter vibrates and chnanging the pattern pauses the animation)
+(speed-slider has animated vibration and changing the pattern pauses the animation)
