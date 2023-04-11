@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "772602021666",
+    "project_id": "vibration-359907",
+    "storage_bucket": "vibration-359907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772602021666:android:06ff31e2478bfde3d3077b",
+        "android_client_info": {
+          "package_name": "hannepps.tools.vibrationtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772602021666-1r1i74usphe1tgifqq63ik8b7krdt531.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4vZqOFRB8eFSP2m8fFjcv2uM0Sm0wRNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772602021666-1r1i74usphe1tgifqq63ik8b7krdt531.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
