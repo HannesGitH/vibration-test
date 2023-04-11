@@ -48,6 +48,7 @@ dependencies:
   intl_utils: ^2.7.0
 
   squiggly_slider: ^1.0.0
+  firebase_analytics: ^10.2.0
 
 dev_dependencies:
   flutter_test:
