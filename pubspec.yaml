@@ -41,7 +41,7 @@ dependencies:
   json_serializable: ^6.1.1
   localstore: ^1.2.3
   # to display current app-version
-  package_info_plus: ^1.0.6
+  package_info_plus: any
   fluttertoast: ^8.0.9
   fl_chart: ^0.55.1
   dynamic_color: ^1.4.0
