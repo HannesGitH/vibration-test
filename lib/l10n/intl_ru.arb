@@ -1,0 +1,22 @@
+{
+  "appTitle": "Custom Vibrator",
+  "settings": "Настройки",
+  "counter": "Счетчик",
+  "speed": "Скорость",
+  "repeat": "Повтор",
+  "noVibratorFound": "Вибратор не найден",
+  "noCustomVibrationSupport": "Ваш браузер не поддерживает кастомные вибрации",
+  "defaultPattern": "Стандартный",
+  "stillWorkInProgress": "Все еще в разработке",
+  "vibrationStoreTitle": "Магазин вибраций",
+  "pattern": "Модель",
+  "presetTitle": "Предустановленные",
+  "saveCurrentPatternTitle": "Сохранить текущую модель",
+  "saveCurrentPatternNameField": "Имя",
+  "ok": "ОК",
+  "patternSavedSuccess": "Модель успешно сохранена",
+  "patternSavedFailure": "Не удалось сохранить модель",
+  "buzzMode": "Режим вибрации",
+  "buzzmodeInstruction": "Нажмите и удерживайте, чтобы начать вибрацию",
+  "buzzmodeStopInstruction": "Отпустите, чтобы остановить вибрацию"
+}

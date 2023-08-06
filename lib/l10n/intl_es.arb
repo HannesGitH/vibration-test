@@ -1,0 +1,22 @@
+{
+  "appTitle": "Custom Vibrador",
+  "settings": "Ajustes",
+  "counter": "Contador",
+  "speed": "Velocidad",
+  "repeat": "Repetir",
+  "noVibratorFound": "No se ha encontrado ningún vibrador",
+  "noCustomVibrationSupport": "Tu navegador no soporta la vibración personalizada",
+  "defaultPattern": "Patrón por defecto",
+  "stillWorkInProgress": "Todavía estamos trabajando en ello",
+  "vibrationStoreTitle": "Tienda de vibraciones",
+  "pattern": "Patrón",
+  "presetTitle": "Predefinido",
+  "saveCurrentPatternTitle": "Guardar patrón actual",
+  "saveCurrentPatternNameField": "Nombre del patrón",
+  "ok": "Aceptar",
+  "patternSavedSuccess": "Patrón guardado correctamente",
+  "patternSavedFailure": "No se ha podido guardar el patrón",
+  "buzzMode": "Modo zumbido",
+  "buzzmodeInstruction": "Mantén pulsado para vibrar",
+  "buzzmodeStopInstruction": "Suelta para parar"
+}
