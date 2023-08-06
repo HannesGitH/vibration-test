@@ -9,7 +9,7 @@ import dynamic_color
 import firebase_analytics
 import firebase_core
 import package_info_plus_macos
-import path_provider_macos
+import path_provider_foundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   DynamicColorPlugin.register(with: registry.registrar(forPlugin: "DynamicColorPlugin"))

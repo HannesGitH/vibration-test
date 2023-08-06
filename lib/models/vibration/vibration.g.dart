@@ -14,7 +14,8 @@ VibrationPattern _$VibrationPatternFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       speedModifier: json['speedModifier'] as num? ?? 1.0,
       isCurrentlyVibrating: json['isCurrentlyVibrating'] as bool? ?? false,
-      onRepeat: json['onRepeat'] as bool? ?? false,
+      onRepeat: json['onRepeat'] as bool? ?? true,
+      wasPausedToContinue: json['wasPausedToContinue'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$VibrationPatternToJson(VibrationPattern instance) =>
@@ -24,12 +25,13 @@ Map<String, dynamic> _$VibrationPatternToJson(VibrationPattern instance) =>
       'speedModifier': instance.speedModifier,
       'isCurrentlyVibrating': instance.isCurrentlyVibrating,
       'onRepeat': instance.onRepeat,
+      'wasPausedToContinue': instance.wasPausedToContinue,
     };
 
 VibrationElement _$VibrationElementFromJson(Map<String, dynamic> json) =>
     VibrationElement(
       duration: json['duration'] == null
-          ? const Duration(milliseconds: 100)
+          ? const Duration(milliseconds: resolutionInMS * 5)
           : Duration(microseconds: json['duration'] as int),
       amplitude: json['amplitude'] as int? ?? 0,
     );

@@ -95,6 +95,7 @@ class VibrationElement {
   final Duration duration;
   int get durationMS => duration.inMilliseconds;
   final int amplitude;
+  @JsonKey(ignore: true)
   final Point<int>? xy;
 
   factory VibrationElement.fromJson(Map<String, dynamic> json) =>
