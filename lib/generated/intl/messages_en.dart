@@ -42,7 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "patternSavedSuccess":
             MessageLookupByLibrary.simpleMessage("pattern Saved"),
         "presetTitle": MessageLookupByLibrary.simpleMessage("Presets"),
-        "repeat": MessageLookupByLibrary.simpleMessage("Repeat"),
+        "repeat": MessageLookupByLibrary.simpleMessage("Loop"),
         "saveCurrentPatternNameField":
             MessageLookupByLibrary.simpleMessage("name"),
         "saveCurrentPatternTitle":

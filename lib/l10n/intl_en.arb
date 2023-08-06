@@ -3,7 +3,7 @@
   "settings": "Settings",
   "counter": "Counter",
   "speed": "Speed",
-  "repeat": "Repeat",
+  "repeat": "Loop",
   "noVibratorFound": "No vibrator found",
   "noCustomVibrationSupport": "This device does not support custom vibrations",
   "defaultPattern": "default pattern",

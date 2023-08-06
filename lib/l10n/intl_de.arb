@@ -1,0 +1,22 @@
+{
+  "appTitle": "Custom Vibrator",
+  "settings": "Einstellungen",
+  "counter": "Zähler",
+  "speed": "Geschwindigkeit",
+  "repeat": "Wiederholen",
+  "noVibratorFound": "Kein Vibrator gefunden",
+  "noCustomVibrationSupport": "Dein Gerät unterstützt keine benutzerdefinierten Vibrationen",
+  "defaultPattern": "Standardmuster",
+  "stillWorkInProgress": "noch in Arbeit",
+  "vibrationStoreTitle": "Vibrations-Shop",
+  "pattern": "Muster",
+  "presetTitle": "Muster",
+  "saveCurrentPatternTitle": "Muster speichern",
+  "saveCurrentPatternNameField": "Name",
+  "ok": "OK",
+  "patternSavedSuccess": "Muster gespeichert",
+  "patternSavedFailure": "Muster konnte nicht gespeichert werden",
+  "buzzMode": "Buzz-Modus",
+  "buzzmodeInstruction": "Drücke und halte, um zu vibrieren",
+  "buzzmodeStopInstruction": "Loslassen, um zu stoppen"
+}

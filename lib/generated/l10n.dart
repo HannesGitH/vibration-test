@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Repeat`
+  /// `Loop`
   String get repeat {
     return Intl.message(
-      'Repeat',
+      'Loop',
       name: 'repeat',
       desc: '',
       args: [],
@@ -257,6 +257,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
     ];
   }
 
