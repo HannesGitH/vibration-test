@@ -1,1 +1,1 @@
-translated
+translated (de, ru, es)
