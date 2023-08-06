@@ -64,6 +64,12 @@ dev_dependencies:
 
   flutter_launcher_icons: "^0.10.0"
 
+dependency_overrides:
+  package_info_plus: ^4.0.1
+  wakelock_windows: any
+  win32: any
+
+
 flutter_icons:
   android: "launcher_icon"
   ios: true

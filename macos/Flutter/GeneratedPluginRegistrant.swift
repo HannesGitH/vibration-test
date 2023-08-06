@@ -8,7 +8,7 @@ import Foundation
 import dynamic_color
 import firebase_analytics
 import firebase_core
-import package_info_plus_macos
+import package_info_plus
 import path_provider_foundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
