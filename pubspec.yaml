@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.1.21+21
+version: 2.1.22+22
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -50,7 +50,9 @@ dependencies:
   squiggly_slider: ^1.0.0
   firebase_analytics: ^10.0.2
   wakelock_plus:
-    path: ../wakelock_plus/wakelock_plus
+    git:
+      url: https://github.com/hannesgith/wakelock_plus
+      path: wakelock_plus
   riverpod_annotation: ^2.3.5
   shared_preferences: ^2.2.2
 
