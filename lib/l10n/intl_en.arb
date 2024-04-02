@@ -18,5 +18,7 @@
   "patternSavedFailure": "Pattern could not be saved",
   "buzzMode": "Buzz Mode",
   "buzzmodeInstruction": "tap anywhere to go brrrrrr",
-  "buzzmodeStopInstruction": "release to stop"
+  "buzzmodeStopInstruction": "release to stop",
+  "keepScreenOn": "Keep Screen On",
+  "keepVibrationScreenOff": "Keep vibrating, even when screen is off"
 }

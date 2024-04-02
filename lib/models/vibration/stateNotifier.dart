@@ -14,8 +14,15 @@ final defaultPattern = VibrationPattern(
   name: S.current.defaultPattern,
 );
 
-class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
-  VibrationPatternNotifier() : super(defaultPattern);
+@riverpod
+class VibrationPatternNotifier extends _$VibrationPatternNotifier {
+  @override
+  VibrationPattern build() {
+    return defaultPattern;
+  }
+
+  bool get allowCPUWL => ref.read(wakeLockOptionsProvider).cpu;
+  bool get allowScreenWL => ref.read(wakeLockOptionsProvider).screen;
 
   void setPattern(VibrationPattern pattern) {
     state = pattern;
@@ -116,8 +123,8 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       }
       if (!(await Vibration.hasCustomVibrationsSupport() ?? false)) {
         showToast(S.current.noCustomVibrationSupport, context: context);
-        WakelockPlus.toggleCPU(enable: true);
-        WakelockPlus.toggle(enable: true);
+        if (allowCPUWL) WakelockPlus.toggleCPU(enable: true);
+        if (allowScreenWL) WakelockPlus.toggle(enable: true);
         Vibration.vibrate();
         return;
       }

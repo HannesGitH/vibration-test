@@ -30,6 +30,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Отпустите, чтобы остановить вибрацию"),
         "counter": MessageLookupByLibrary.simpleMessage("Счетчик"),
         "defaultPattern": MessageLookupByLibrary.simpleMessage("Стандартный"),
+        "keepScreenOn":
+            MessageLookupByLibrary.simpleMessage("Не выключать экран"),
+        "keepVibrationScreenOff": MessageLookupByLibrary.simpleMessage(
+            "Не выключать экран во время вибрации"),
         "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
             "Ваш браузер не поддерживает кастомные вибрации"),
         "noVibratorFound":

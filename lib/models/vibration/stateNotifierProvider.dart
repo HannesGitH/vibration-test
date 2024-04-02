@@ -1,9 +1,6 @@
 part of 'vibration.dart';
 
-final activeVibrationPatternProvider =
-    StateNotifierProvider<VibrationPatternNotifier, VibrationPattern>((ref) {
-  return VibrationPatternNotifier();
-});
+final activeVibrationPatternProvider = vibrationPatternNotifierProvider;
 
 final allPatternsProvider =
     StateNotifierProvider<AllPatternNotifier, List<VibrationPattern>>((ref) {

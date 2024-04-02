@@ -249,6 +249,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Keep Screen On`
+  String get keepScreenOn {
+    return Intl.message(
+      'Keep Screen On',
+      name: 'keepScreenOn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep vibrating, even when screen is off`
+  String get keepVibrationScreenOff {
+    return Intl.message(
+      'Keep vibrating, even when screen is off',
+      name: 'keepVibrationScreenOff',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

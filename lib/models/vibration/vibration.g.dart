@@ -41,3 +41,27 @@ Map<String, dynamic> _$VibrationElementToJson(VibrationElement instance) =>
       'duration': instance.duration.inMicroseconds,
       'amplitude': instance.amplitude,
     };
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$vibrationPatternNotifierHash() =>
+    r'4bd2a8108f0e1b0e4cde55e802d44ea009dd275f';
+
+/// See also [VibrationPatternNotifier].
+@ProviderFor(VibrationPatternNotifier)
+final vibrationPatternNotifierProvider = AutoDisposeNotifierProvider<
+    VibrationPatternNotifier, VibrationPattern>.internal(
+  VibrationPatternNotifier.new,
+  name: r'vibrationPatternNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$vibrationPatternNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$VibrationPatternNotifier = AutoDisposeNotifier<VibrationPattern>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "counter": MessageLookupByLibrary.simpleMessage("Contador"),
         "defaultPattern":
             MessageLookupByLibrary.simpleMessage("Patrón por defecto"),
+        "keepScreenOn":
+            MessageLookupByLibrary.simpleMessage("Mantener pantalla encendida"),
         "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
             "Tu navegador no soporta la vibración personalizada"),
         "noVibratorFound": MessageLookupByLibrary.simpleMessage(

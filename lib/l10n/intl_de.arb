@@ -18,5 +18,7 @@
   "patternSavedFailure": "Muster konnte nicht gespeichert werden",
   "buzzMode": "Buzz-Modus",
   "buzzmodeInstruction": "Drücke und halte, um zu vibrieren",
-  "buzzmodeStopInstruction": "Loslassen, um zu stoppen"
+  "buzzmodeStopInstruction": "Loslassen, um zu stoppen",
+  "keepScreenOn": "Bildschirm anlassen",
+  "keepVibrationScreenOff": "Vibration bei ausgeschaltetem Bildschirm"
 }

@@ -31,6 +31,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "counter": MessageLookupByLibrary.simpleMessage("Zähler"),
         "defaultPattern":
             MessageLookupByLibrary.simpleMessage("Standardmuster"),
+        "keepScreenOn":
+            MessageLookupByLibrary.simpleMessage("Bildschirm anlassen"),
+        "keepVibrationScreenOff": MessageLookupByLibrary.simpleMessage(
+            "Vibration bei ausgeschaltetem Bildschirm"),
         "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
             "Dein Gerät unterstützt keine benutzerdefinierten Vibrationen"),
         "noVibratorFound":

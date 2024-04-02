@@ -18,5 +18,7 @@
   "patternSavedFailure": "No se ha podido guardar el patrón",
   "buzzMode": "Modo zumbido",
   "buzzmodeInstruction": "Mantén pulsado para vibrar",
-  "buzzmodeStopInstruction": "Suelta para parar"
+  "buzzmodeStopInstruction": "Suelta para parar",
+  "keepScreenOn": "Mantener pantalla encendida",
+  "keepVibratingScreenOff": "Sigue vibrando, incluso cuando la pantalla está apagada"
 }

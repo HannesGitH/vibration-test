@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:vibrationtest/models/wakelock.dart';
+import 'package:vibrationtest/widgets/myListTile.dart';
 
 import '../generated/l10n.dart';
 import '../widgets/openNewViewTile.dart';
@@ -30,6 +33,38 @@ class MainDrawer extends StatelessWidget {
       route: '/store',
     );
 
+    var screenWLTile = MyCardListTile1(
+      icon: Icons.screen_lock_portrait,
+      text: S.of(context).keepScreenOn,
+      noChevron: true,
+      child: Consumer(
+        builder: (context, ref, child) {
+          return Switch(
+            value: ref.watch(wakeLockOptionsProvider).screen,
+            onChanged: (value) {
+              ref.read(wakeLockOptionsProvider.notifier).setScreen(value);
+            },
+          );
+        },
+      ),
+    );
+
+    var cpuWLTile = MyCardListTile1(
+      icon: Icons.screen_lock_portrait,
+      text: S.of(context).keepVibrationScreenOff,
+      noChevron: true,
+      child: Consumer(
+        builder: (context, ref, child) {
+          return Switch(
+            value: ref.watch(wakeLockOptionsProvider).cpu,
+            onChanged: (value) {
+              ref.read(wakeLockOptionsProvider.notifier).setCpu(value);
+            },
+          );
+        },
+      ),
+    );
+
     return Drawer(
       child: Column(
         // Important: Remove any padding from the ListView.
@@ -37,6 +72,9 @@ class MainDrawer extends StatelessWidget {
         children: <Widget>[
           const MainDrawerHeader(),
           storeTile,
+          const Spacer(),
+          screenWLTile,
+          cpuWLTile,
           const Spacer(),
           const SafeArea(
             child: Padding(

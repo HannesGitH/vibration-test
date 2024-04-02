@@ -18,5 +18,7 @@
   "patternSavedFailure": "Не удалось сохранить модель",
   "buzzMode": "Режим вибрации",
   "buzzmodeInstruction": "Нажмите и удерживайте, чтобы начать вибрацию",
-  "buzzmodeStopInstruction": "Отпустите, чтобы остановить вибрацию"
+  "buzzmodeStopInstruction": "Отпустите, чтобы остановить вибрацию",
+  "keepScreenOn": "Не выключать экран",
+  "keepVibrationScreenOff": "Не выключать экран во время вибрации"
 }

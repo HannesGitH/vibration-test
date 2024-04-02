@@ -6,6 +6,7 @@ class MyCardListTile1 extends StatelessWidget {
   final String? subtext;
   final Widget? child;
   final void Function()? onTap;
+  final bool noChevron;
 
   const MyCardListTile1({
     super.key,
@@ -15,6 +16,7 @@ class MyCardListTile1 extends StatelessWidget {
     this.onTap,
     this.child,
     // ignore: unnecessary_this
+    this.noChevron = false,
   }) : this.icon = icon ?? Icons.apps;
 
   @override
@@ -43,9 +45,10 @@ class MyCardListTile1 extends StatelessWidget {
                 //style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
         subtitle: (subtext != null) ? Text(subtext ?? "") : null,
-        trailing: const Icon(
-            Icons.keyboard_arrow_right) //, color: Colors.white, size: 30.0),
-        );
+        trailing: (!noChevron)
+            ? const Icon(Icons
+                .keyboard_arrow_right) //, color: Colors.white, size: 30.0),
+            : null);
 
     return Card(
       clipBehavior: Clip.antiAlias,
