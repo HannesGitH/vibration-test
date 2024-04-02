@@ -1,1 +1,1 @@
-wakelocks
+keep vibrating

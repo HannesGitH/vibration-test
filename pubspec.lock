@@ -957,17 +957,21 @@ packages:
   wakelock_plus:
     dependency: "direct main"
     description:
-      path: "../wakelock_plus/wakelock_plus"
-      relative: true
-    source: path
-    version: "1.1.6"
+      path: wakelock_plus
+      ref: HEAD
+      resolved-ref: a8b95fcbc68d80dee5bdfcb401baac53c9fe43af
+      url: "https://github.com/hannesgith/wakelock_plus"
+    source: git
+    version: "1.1.7"
   wakelock_plus_platform_interface:
     dependency: transitive
     description:
-      path: "../wakelock_plus/wakelock_plus_platform_interface"
-      relative: true
-    source: path
-    version: "1.1.0"
+      path: wakelock_plus_platform_interface
+      ref: HEAD
+      resolved-ref: a8b95fcbc68d80dee5bdfcb401baac53c9fe43af
+      url: "https://github.com/hannesgith/wakelock_plus"
+    source: git
+    version: "1.1.1"
   watcher:
     dependency: transitive
     description:
