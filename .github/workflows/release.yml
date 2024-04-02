@@ -80,7 +80,7 @@ jobs:
             {
               "web": {
                 "buildpath": "web",
-                "args": " --base-href '/vibration-test/app/'"
+                "buildargs": " --base-href '/vibration-test/app/'"
               },
               "apk": {
                 "buildpath": "app/outputs/flutter-apk/app-release.apk",
