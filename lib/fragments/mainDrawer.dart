@@ -58,6 +58,7 @@ class MainDrawer extends StatelessWidget {
           return Switch(
             value: ref.watch(wakeLockOptionsProvider).cpu,
             onChanged: (value) {
+              debugPrint('cpuWLTile onChanged: $value');
               ref.read(wakeLockOptionsProvider.notifier).setCpu(value);
             },
           );

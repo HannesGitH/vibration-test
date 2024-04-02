@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,14 +18,15 @@ class WakeLockOptions extends _$WakeLockOptions {
   }
 
   toggleScreen() {
-    state.screen = !state.screen;
+    state = state.copyWith(screen: !state.screen);
     SharedPreferences.getInstance().then((prefs) {
       prefs.setBool('screenWL', state.screen);
     });
   }
 
   toggleCpu() {
-    state.cpu = !state.cpu;
+    debugPrint("toggling CPU WL");
+    state = state.copyWith(cpu: !state.cpu);
     SharedPreferences.getInstance().then((prefs) {
       prefs.setBool('cpuWL', state.cpu);
     });
@@ -60,6 +62,7 @@ class WakeLockOptions extends _$WakeLockOptions {
 
   setCpu(bool value) {
     if (value) {
+      debugPrint('allowing CPU WL');
       allowCpu();
     } else {
       disallowCpu();
@@ -70,4 +73,10 @@ class WakeLockOptions extends _$WakeLockOptions {
 class WakeLockData {
   bool screen = false;
   bool cpu = false;
+
+  WakeLockData copyWith({bool? screen, bool? cpu}) {
+    return WakeLockData()
+      ..screen = screen ?? this.screen
+      ..cpu = cpu ?? this.cpu;
+  }
 }
