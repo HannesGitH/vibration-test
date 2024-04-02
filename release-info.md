@@ -1,1 +1,1 @@
-keep vibrating
+keep vibrating with screen off
