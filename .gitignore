@@ -1,3 +1,6 @@
+# nix
+.direnv
+
 # Miscellaneous
 *.class
 *.log

@@ -7,9 +7,10 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, flake-utils, ... }:
+
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
-      let
+    let
         pkg-opts = {
           inherit system;
           config = {
@@ -18,15 +19,14 @@
           };
         };
         pkgs = import nixpkgs { inherit (pkg-opts) system config;};
-        pkgs-stable = import nixpkgs-stable { inherit (pkg-opts) system config; };
+        pkgs-stable = import inputs.nixpkgs-stable { inherit (pkg-opts) system config; };
         mympv = pkgs-stable.mpv;
-      in {
-        devShells.default =
-          let 
-            java = pkgs.jdk17;
-            android = pkgs-stable.callPackage ./nix/android.nix { };
-          in pkgs.mkShell {
-            buildInputs = with pkgs; [
+
+
+        java = pkgs.jdk17;
+        android = pkgs-stable.callPackage ./nix/android.nix { };
+
+        deps = with pkgs; [
               git 
 
               #  myflutter 
@@ -52,6 +52,28 @@
               # pkgs-stable.pcre.dev
               libepoxy.dev
             ];
+      in rec {
+
+        # packages = {
+        #   myflutter = pkgs.stdenvNoCC.mkDerivation {
+        #     name = "myflutter";
+        #     buildInputs = deps;
+        #     src = self;
+        #     phases = [ "unpackPhase" "buildPhase" "installPhase" ];
+        #     buildPhase = ''
+        #       flutter build apk
+        #     '';
+        #     installPhase = ''
+        #       mkdir -p $out
+        #     '';
+        #     shellHook = ''
+        #       export PATH=$PATH:${pkgs.flutter}/bin/cache/dart-sdk/bin
+        #     '';
+        #   };
+        # };
+
+        devShell = pkgs.mkShell {
+            buildInputs = deps;
 
             ANDROID_HOME = "${android.androidsdk}/libexec/android-sdk";
             JAVA_HOME = java;
@@ -74,5 +96,7 @@
               export PATH=$PATH:${pkgs.flutter}/bin/cache/dart-sdk/bin
             '';
           };
+
+        # defaultPackage = packages.myflutter;
       });
 }

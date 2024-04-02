@@ -48,7 +48,9 @@ dependencies:
   intl_utils: ^2.7.0
 
   squiggly_slider: ^1.0.0
-  firebase_analytics: ^10.2.0
+  firebase_analytics: ^10.0.2
+  wakelock_plus:
+    path: ../wakelock_plus/wakelock_plus
 
 dev_dependencies:
   flutter_test:
@@ -66,8 +68,8 @@ dev_dependencies:
 
 dependency_overrides:
   package_info_plus: ^4.0.1
-  wakelock_windows: any
   win32: any
+  js: ^0.6.3
 
 
 flutter_icons:
