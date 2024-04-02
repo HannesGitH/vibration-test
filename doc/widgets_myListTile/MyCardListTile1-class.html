@@ -11,7 +11,7 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="../static-assets/github.css?v1">
   <link rel="stylesheet" href="../static-assets/styles.css?v1">
@@ -29,33 +29,33 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">vibrationtest</a></li>
-    <li><a href="../widgets_myListTile/widgets_myListTile-library.html">myListTile</a></li>
+    <li><a href="../widgets_myListTile/widgets_myListTile-library.html">widgets&#47;myListTile.dart</a></li>
     <li class="self-crumb">MyCardListTile1 class</li>
   </ol>
   <div class="self-name">MyCardListTile1</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button">
+  <div class="toggle" id="theme-button" title="Toggle brightness">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
       <span id="dark-theme-button" class="material-symbols-outlined">
-        brightness_4
+        dark_mode
       </span>
       <span id="light-theme-button" class="material-symbols-outlined">
-        brightness_5
+        light_mode
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div
-      id="dartdoc-main-content"
-      class="main-content"
-      data-above-sidebar="widgets_myListTile&#47;widgets_myListTile-library-sidebar.html"
-      data-below-sidebar="widgets_myListTile&#47;MyCardListTile1-class-sidebar.html">
-      <div>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="widgets_myListTile&#47;widgets_myListTile-library-sidebar.html"
+    data-below-sidebar="widgets_myListTile&#47;MyCardListTile1-class-sidebar.html">
+    <div>
 <h1><span class="kind-class">MyCardListTile1</span> class 
  
 </h1></div>
@@ -94,7 +94,7 @@
 
     <dl class="constructor-summary-list">
         <dt id="MyCardListTile1" class="callable">
-          <span class="name"><a href="../widgets_myListTile/MyCardListTile1/MyCardListTile1.html">MyCardListTile1</a></span><span class="signature">(<span class="parameter" id="-param-key">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="-param-icon"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a>?</span> <span class="parameter-name">icon</span>, </span><span class="parameter" id="-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span> = <span class="default-value">&quot;Click mich if you dare&quot;</span>, </span><span class="parameter" id="-param-subtext"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">subtext</span>, </span><span class="parameter" id="-param-onTap"><span class="type-annotation">void</span> <span class="parameter-name">onTap</span>()?, </span><span class="parameter" id="-param-child"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>?</span> <span class="parameter-name">child</span>}</span>)</span>
+          <span class="name"><a href="../widgets_myListTile/MyCardListTile1/MyCardListTile1.html">MyCardListTile1</a></span><span class="signature">(<span class="parameter" id="-param-key">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="-param-icon"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a>?</span> <span class="parameter-name">icon</span>, </span><span class="parameter" id="-param-text"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">text</span> = <span class="default-value">&quot;Click mich if you dare&quot;</span>, </span><span class="parameter" id="-param-subtext"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">subtext</span>, </span><span class="parameter" id="-param-onTap"><span class="type-annotation">void</span> <span class="parameter-name">onTap</span>()?, </span><span class="parameter" id="-param-child"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>?</span> <span class="parameter-name">child</span>, </span><span class="parameter" id="-param-noChevron"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">noChevron</span> = <span class="default-value">false</span>}</span>)</span>
         </dt>
         <dd>
           
@@ -109,7 +109,8 @@
       <dl class="properties">
         <dt id="child" class="property">
   <span class="name"><a href="../widgets_myListTile/MyCardListTile1/child.html">child</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>?</span>
+  
 
 </dt>
 <dd>
@@ -120,18 +121,20 @@
 
         <dt id="hashCode" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/hashCode.html">hashCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
 
 </dt>
 <dd class="inherited">
   The hash code for this object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="icon" class="property">
   <span class="name"><a href="../widgets_myListTile/MyCardListTile1/icon.html">icon</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a></span>
+  
 
 </dt>
 <dd>
@@ -142,7 +145,8 @@
 
         <dt id="key" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/foundation/Key-class.html">Key</a>?</span>
+  
 
 </dt>
 <dd class="inherited">
@@ -151,9 +155,22 @@
 
 </dd>
 
+        <dt id="noChevron" class="property">
+  <span class="name"><a href="../widgets_myListTile/MyCardListTile1/noChevron.html">noChevron</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="onTap" class="property">
   <span class="name"><a href="../widgets_myListTile/MyCardListTile1/onTap.html">onTap</a></span>
-  <span class="signature">&#8594; (void Function<span class="signature">()</span>?)</span> 
+  <span class="signature">&#8594; (void Function<span class="signature">()</span>?)</span>
+  
 
 </dt>
 <dd>
@@ -164,18 +181,20 @@
 
         <dt id="runtimeType" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
 
 </dt>
 <dd class="inherited">
   A representation of the runtime type of the object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="subtext" class="property">
   <span class="name"><a href="../widgets_myListTile/MyCardListTile1/subtext.html">subtext</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
 
 </dt>
 <dd>
@@ -186,7 +205,8 @@
 
         <dt id="text" class="property">
   <span class="name"><a href="../widgets_myListTile/MyCardListTile1/text.html">text</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
 
 </dt>
 <dd>
@@ -381,7 +401,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 </ol>
 
 
-    <!--<h5>myListTile library</h5>-->
+    <h5>myListTile library</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div>
 
@@ -393,7 +413,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.21+21
+      2.1.22+22
   </span>
 
   

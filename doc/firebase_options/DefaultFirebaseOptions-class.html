@@ -11,7 +11,7 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="../static-assets/github.css?v1">
   <link rel="stylesheet" href="../static-assets/styles.css?v1">
@@ -29,40 +29,40 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">vibrationtest</a></li>
-    <li><a href="../firebase_options/firebase_options-library.html">firebase_options</a></li>
+    <li><a href="../firebase_options/firebase_options-library.html">firebase_options.dart</a></li>
     <li class="self-crumb">DefaultFirebaseOptions class</li>
   </ol>
   <div class="self-name">DefaultFirebaseOptions</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button">
+  <div class="toggle" id="theme-button" title="Toggle brightness">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
       <span id="dark-theme-button" class="material-symbols-outlined">
-        brightness_4
+        dark_mode
       </span>
       <span id="light-theme-button" class="material-symbols-outlined">
-        brightness_5
+        light_mode
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div
-      id="dartdoc-main-content"
-      class="main-content"
-      data-above-sidebar="firebase_options&#47;firebase_options-library-sidebar.html"
-      data-below-sidebar="firebase_options&#47;DefaultFirebaseOptions-class-sidebar.html">
-      <div>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="firebase_options&#47;firebase_options-library-sidebar.html"
+    data-below-sidebar="firebase_options&#47;DefaultFirebaseOptions-class-sidebar.html">
+    <div>
 <h1><span class="kind-class">DefaultFirebaseOptions</span> class 
  
 </h1></div>
 
     
 <section class="desc markdown">
-  <p>Default <a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a> for use with your Firebase apps.</p>
+  <p>Default <a href="https://pub.dev/documentation/firebase_core_platform_interface/5.0.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a> for use with your Firebase apps.</p>
 <p>Example:</p>
 <pre class="language-dart"><code class="language-dart">import 'firebase_options.dart';
 // ...
@@ -94,23 +94,25 @@ await Firebase.initializeApp(
       <dl class="properties">
         <dt id="hashCode" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
 
 </dt>
 <dd class="inherited">
   The hash code for this object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="runtimeType" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
 
 </dt>
 <dd class="inherited">
   A representation of the runtime type of the object.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
 
 </dd>
 
@@ -179,12 +181,13 @@ await Firebase.initializeApp(
     <dl class="properties">
         <dt id="currentPlatform" class="property">
   <span class="name"><a href="../firebase_options/DefaultFirebaseOptions/currentPlatform.html">currentPlatform</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span> 
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/firebase_core_platform_interface/5.0.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
+  
 
 </dt>
 <dd>
   
-  <div class="features"><span class="feature">read-only</span></div>
+  <div class="features"><span class="feature">no setter</span></div>
 
 </dd>
 
@@ -199,7 +202,7 @@ await Firebase.initializeApp(
     <dl class="properties">
         <dt id="android" class="constant">
     <span class="name "><a href="../firebase_options/DefaultFirebaseOptions/android-constant.html">android</a></span>
-  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
+  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/5.0.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
   
 
 </dt>
@@ -207,14 +210,11 @@ await Firebase.initializeApp(
   
   
 
-    <div>
-      <span class="signature"><code><a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions/FirebaseOptions.html">FirebaseOptions</a>(apiKey: &#39;AIzaSyA4vZqOFRB8eFSP2m8fFjcv2uM0Sm0wRNI&#39;, appId: &#39;1:772602021666:android:06ff31e2478bfde3d3077b&#39;, messagingSenderId: &#39;772602021666&#39;, projectId: &#39;vi…</code></span>
-    </div>
 </dd>
 
         <dt id="ios" class="constant">
     <span class="name "><a href="../firebase_options/DefaultFirebaseOptions/ios-constant.html">ios</a></span>
-  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
+  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/5.0.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
   
 
 </dt>
@@ -222,14 +222,11 @@ await Firebase.initializeApp(
   
   
 
-    <div>
-      <span class="signature"><code><a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions/FirebaseOptions.html">FirebaseOptions</a>(apiKey: &#39;AIzaSyCv9OJnIWOHxdkMWkNgmuT2rQFW3pg97SQ&#39;, appId: &#39;1:772602021666:ios:044633bc9c982740d3077b&#39;, messagingSenderId: &#39;772602021666&#39;, projectId: &#39;vibrat…</code></span>
-    </div>
 </dd>
 
         <dt id="macos" class="constant">
     <span class="name "><a href="../firebase_options/DefaultFirebaseOptions/macos-constant.html">macos</a></span>
-  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
+  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/5.0.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
   
 
 </dt>
@@ -237,14 +234,11 @@ await Firebase.initializeApp(
   
   
 
-    <div>
-      <span class="signature"><code><a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions/FirebaseOptions.html">FirebaseOptions</a>(apiKey: &#39;AIzaSyCv9OJnIWOHxdkMWkNgmuT2rQFW3pg97SQ&#39;, appId: &#39;1:772602021666:ios:044633bc9c982740d3077b&#39;, messagingSenderId: &#39;772602021666&#39;, projectId: &#39;vibrat…</code></span>
-    </div>
 </dd>
 
         <dt id="web" class="constant">
     <span class="name "><a href="../firebase_options/DefaultFirebaseOptions/web-constant.html">web</a></span>
-  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
+  <span class="signature">&#8594; const <a href="https://pub.dev/documentation/firebase_core_platform_interface/5.0.0/firebase_core_platform_interface/FirebaseOptions-class.html">FirebaseOptions</a></span>
   
 
 </dt>
@@ -252,9 +246,6 @@ await Firebase.initializeApp(
   
   
 
-    <div>
-      <span class="signature"><code><a href="https://pub.dev/documentation/firebase_core_platform_interface/4.8.0/firebase_core_platform_interface/FirebaseOptions/FirebaseOptions.html">FirebaseOptions</a>(apiKey: &#39;AIzaSyD26C7Phls4zW2_qZHhjCGC60Zmlyhztts&#39;, appId: &#39;1:772602021666:web:3e325f92df0dd3a9d3077b&#39;, messagingSenderId: &#39;772602021666&#39;, projectId: &#39;vibrat…</code></span>
-    </div>
 </dd>
 
     </dl>
@@ -277,7 +268,7 @@ await Firebase.initializeApp(
 </ol>
 
 
-    <!--<h5>firebase_options library</h5>-->
+    <h5>firebase_options library</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div>
 
@@ -289,7 +280,7 @@ await Firebase.initializeApp(
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.21+21
+      2.1.22+22
   </span>
 
   
