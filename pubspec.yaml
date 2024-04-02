@@ -37,7 +37,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^1.0.4
-  vibration: ^1.7.5
+  vibration: ^1.8.4
   json_serializable: ^6.1.1
   localstore: ^1.2.3
   # to display current app-version

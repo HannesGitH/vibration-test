@@ -116,6 +116,8 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
       }
       if (!(await Vibration.hasCustomVibrationsSupport() ?? false)) {
         showToast(S.current.noCustomVibrationSupport, context: context);
+        WakelockPlus.toggleCPU(enable: true);
+        WakelockPlus.toggle(enable: true);
         Vibration.vibrate();
         return;
       }
@@ -164,6 +166,8 @@ class VibrationPatternNotifier extends StateNotifier<VibrationPattern> {
 
   void stopVib() {
     state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
+    WakelockPlus.toggleCPU(enable: false);
+    WakelockPlus.toggle(enable: false);
     Vibration.cancel();
   }
 
