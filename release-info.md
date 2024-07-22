@@ -1,1 +1,1 @@
-new build: support newer android versions
+new build: support newer android versions.
