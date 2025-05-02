@@ -42,7 +42,7 @@ dependencies:
   # to display current app-version
   package_info_plus: any
   fluttertoast: ^8.0.9
-  fl_chart: ^0.55.1
+  fl_chart: ^0.65.0
   dynamic_color: ^1.4.0
   intl_utils: ^2.8.10
 
@@ -73,8 +73,6 @@ dev_dependencies:
 
 dependency_overrides:
   package_info_plus: ^4.0.1
-  win32: any
-  js: ^0.6.3
 
 
 flutter_icons:

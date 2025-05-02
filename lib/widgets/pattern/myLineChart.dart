@@ -112,8 +112,7 @@ class MyLineChart extends StatelessWidget {
 
     return LineChart(
       mainData(),
-      swapAnimationDuration:
-          Duration(milliseconds: animationDuration), // Optional
+      duration: Duration(milliseconds: animationDuration),
     );
   }
 }
