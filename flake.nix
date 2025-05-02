@@ -23,7 +23,7 @@
         mympv = pkgs-stable.mpv;
 
 
-        java = pkgs.jdk17;
+        java = pkgs.jdk21;
         android = pkgs-stable.callPackage ./nix/android.nix { };
 
         deps = with pkgs; [
