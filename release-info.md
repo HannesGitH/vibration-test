@@ -1,1 +1,1 @@
-keep vibrating with screen off
+new build: support newer android versions.

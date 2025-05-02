@@ -13,7 +13,7 @@ runs:
   steps:
     - uses: actions/setup-java@v1
       with:
-        java-version: '12.x'
+        java-version: '17.x'
     - uses: subosito/flutter-action@v1
       with:
         flutter-version: '3.29.3' 
