@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: HannesGitH/vibration-test/.github/actions/setup@main
       - name: run tests and report coverage
         run: flutter test --coverage
@@ -41,7 +41,7 @@ jobs:
       API_KEY: irrelevant
       API_URL: irrelevant
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: HannesGitH/vibration-test/.github/actions/setup@main
       - name: Build Documentation
         run: |
@@ -63,7 +63,7 @@ jobs:
         platform: [web, apk, appbundle]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: HannesGitH/vibration-test/.github/actions/setup@main
 
       - name: create key.properties for signing
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v2 # no idea why but apperently this creates a folder structure (i dont need my repo to be checked out tho)
+      - uses: actions/checkout@v4 # no idea why but apperently this creates a folder structure (i dont need my repo to be checked out tho)
       - name: download web artifact
         uses: actions/download-artifact@v2
         with:
@@ -145,7 +145,7 @@ jobs:
     name: Release to GH
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Read release notes
         id: release-info
         uses: juliangruber/read-file-action@v1
@@ -182,7 +182,7 @@ jobs:
     name: Release to the google playstore
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # need release notes
+      - uses: actions/checkout@v4 # need release notes
       - name: download aab
         uses: actions/download-artifact@v2
         with:

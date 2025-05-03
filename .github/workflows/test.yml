@@ -10,7 +10,7 @@ jobs:
       API_KEY: irrelevant
       API_URL: irrelevant
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: HannesGitH/vibration-test/.github/actions/setup@main
       - name: run tests and report coverage
         run: flutter test --coverage
