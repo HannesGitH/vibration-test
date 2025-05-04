@@ -119,7 +119,7 @@ jobs:
           path: web
 
       - name: download doc artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: doc
           path: doc
@@ -153,17 +153,17 @@ jobs:
           path: ./release-info.md
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: release_v_${{ github.run_number }}${{ github.ref_name != 'release' && '-dev' || ' ' }}
-          release_name: AutoRelease (v${{ github.run_number }})
+          name: AutoRelease (v${{ github.run_number }})
           body: ${{ steps.release-info.outputs.content }}
           draft: false
           prerelease: false
       - name: download apk
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: apk
       - name: upload apk
@@ -184,7 +184,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4 # need release notes
       - name: download aab
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: appbundle
       - name: create release notes #TODO make this actual notes
