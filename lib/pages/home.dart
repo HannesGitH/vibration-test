@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibrationtest/fragments/mainDrawer.dart';
+import 'package:vibrationtest/widgets/ads/wrapper.dart';
 import 'package:vibrationtest/widgets/pattern/pattern.dart';
 import 'package:vibrationtest/widgets/patternGallery.dart';
 import 'package:vibrationtest/widgets/vibration/repeatController.dart';
@@ -10,7 +10,6 @@ import 'package:vibrationtest/widgets/vibration/startVibrationFAB.dart';
 import 'package:vibrationtest/widgets/vibration/storePatternButton.dart';
 
 import '../generated/l10n.dart';
-import '../models/vibration/vibration.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,10 +28,11 @@ class HomePage extends StatelessWidget {
           SaveCurrentPatternButton(),
         ],
       ),
-      body: Column(
+      body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.end,
-        children: const [
+        children: [
+          MyBannerAdWidget(),
           Expanded(
             flex: 1,
             child: Spacer(),

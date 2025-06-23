@@ -12,6 +12,7 @@
 .history
 .svn/
 migrate_working_dir/
+.cxx
 
 # IntelliJ related
 *.iml
