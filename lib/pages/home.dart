@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:vibrationtest/fragments/mainDrawer.dart';
 import 'package:vibrationtest/widgets/ads/wrapper.dart';
 import 'package:vibrationtest/widgets/pattern/pattern.dart';
@@ -19,8 +20,9 @@ class HomePage extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Theme.of(context).colorScheme.surface,
     ));
+    final maxAdHeight = MediaQuery.of(context).size.height * 0.25;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       drawer: const MainDrawer(),
       appBar: AppBar(
         title: Text(S.of(context).appTitle),
@@ -28,19 +30,24 @@ class HomePage extends StatelessWidget {
           SaveCurrentPatternButton(),
         ],
       ),
-      body: const Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          MyBannerAdWidget(),
-          Expanded(
-            flex: 1,
-            child: Spacer(),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: maxAdHeight,
+            ),
+            child: MyBannerAdWidget(
+                adSize: AdSize.getInlineAdaptiveBannerAdSize(
+              MediaQuery.of(context).size.width.toInt(),
+              maxAdHeight.toInt(),
+            )),
           ),
-          Expanded(flex: 5, child: PatternGallery()),
-          SpeedController(),
-          Expanded(flex: 10, child: PatternController()),
-          RepeatController(),
+          const Expanded(flex: 5, child: PatternGallery()),
+          const SpeedController(),
+          const Expanded(flex: 10, child: PatternController()),
+          const RepeatController(),
         ],
       ),
       floatingActionButton: const StartVibrationFAB(),

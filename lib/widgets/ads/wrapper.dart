@@ -8,7 +8,8 @@ class MyBannerAdWidget extends StatefulWidget {
   /// The AdMob ad unit to show.
   ///
   /// TODO: use different ones for android and ios
-  final String adUnitId = 'ca-app-pub-3059560602817026/8409073054';
+  final String adUnitId =
+      'ca-app-pub-3940256099942544/6300978111'; //'ca-app-pub-3059560602817026/8409073054';
 
   const MyBannerAdWidget({super.key, this.adSize = AdSize.banner});
 
@@ -20,12 +21,15 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
   /// The banner ad to show. This is `null` until the ad is actually loaded.
   BannerAd? _bannerAd;
 
+  AdSize? _platformAdSize;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
         width: widget.adSize.width.toDouble(),
-        height: widget.adSize.height.toDouble(),
+        height: _platformAdSize?.height.toDouble() ??
+            widget.adSize.height.toDouble(),
         child: _bannerAd == null
             // Nothing to render yet.
             ? const SizedBox()
@@ -62,6 +66,11 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
           }
           setState(() {
             _bannerAd = ad as BannerAd;
+            _bannerAd?.getPlatformAdSize().then((value) {
+              setState(() {
+                _platformAdSize = value;
+              });
+            });
           });
         },
         // Called when an ad request failed.
