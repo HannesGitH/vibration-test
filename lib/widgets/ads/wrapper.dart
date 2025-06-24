@@ -8,8 +8,7 @@ class MyBannerAdWidget extends StatefulWidget {
   /// The AdMob ad unit to show.
   ///
   /// TODO: use different ones for android and ios
-  final String adUnitId =
-      'ca-app-pub-3940256099942544/6300978111'; //'ca-app-pub-3059560602817026/8409073054';
+  final String adUnitId = 'ca-app-pub-3059560602817026/8705985320';
 
   const MyBannerAdWidget({super.key, this.adSize = AdSize.banner});
 
@@ -27,7 +26,8 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        width: widget.adSize.width.toDouble(),
+        width: /*_platformAdSize?.width.toDouble() ?? */
+            widget.adSize.width.toDouble(),
         height: _platformAdSize?.height.toDouble() ??
             widget.adSize.height.toDouble(),
         child: _bannerAd == null

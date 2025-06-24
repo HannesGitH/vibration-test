@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Theme.of(context).colorScheme.surface,
     ));
-    final maxAdHeight = MediaQuery.of(context).size.height * 0.25;
+    final maxAdHeight = MediaQuery.of(context).size.height * 0.2;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       drawer: const MainDrawer(),
