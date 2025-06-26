@@ -22,40 +22,48 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrator"),
-        "buzzMode": MessageLookupByLibrary.simpleMessage("Buzz-Modus"),
-        "buzzmodeInstruction": MessageLookupByLibrary.simpleMessage(
-            "Drücke und halte, um zu vibrieren"),
-        "buzzmodeStopInstruction":
-            MessageLookupByLibrary.simpleMessage("Loslassen, um zu stoppen"),
-        "counter": MessageLookupByLibrary.simpleMessage("Zähler"),
-        "defaultPattern":
-            MessageLookupByLibrary.simpleMessage("Standardmuster"),
-        "keepScreenOn":
-            MessageLookupByLibrary.simpleMessage("Bildschirm anlassen"),
-        "keepVibrationScreenOff": MessageLookupByLibrary.simpleMessage(
-            "Vibration bei ausgeschaltetem Bildschirm"),
-        "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
-            "Dein Gerät unterstützt keine benutzerdefinierten Vibrationen"),
-        "noVibratorFound":
-            MessageLookupByLibrary.simpleMessage("Kein Vibrator gefunden"),
-        "ok": MessageLookupByLibrary.simpleMessage("OK"),
-        "pattern": MessageLookupByLibrary.simpleMessage("Muster"),
-        "patternSavedFailure": MessageLookupByLibrary.simpleMessage(
-            "Muster konnte nicht gespeichert werden"),
-        "patternSavedSuccess":
-            MessageLookupByLibrary.simpleMessage("Muster gespeichert"),
-        "presetTitle": MessageLookupByLibrary.simpleMessage("Muster"),
-        "repeat": MessageLookupByLibrary.simpleMessage("Wiederholen"),
-        "saveCurrentPatternNameField":
-            MessageLookupByLibrary.simpleMessage("Name"),
-        "saveCurrentPatternTitle":
-            MessageLookupByLibrary.simpleMessage("Muster speichern"),
-        "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
-        "speed": MessageLookupByLibrary.simpleMessage("Geschwindigkeit"),
-        "stillWorkInProgress":
-            MessageLookupByLibrary.simpleMessage("noch in Arbeit"),
-        "vibrationStoreTitle":
-            MessageLookupByLibrary.simpleMessage("Vibrations-Shop")
-      };
+    "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrator"),
+    "buzzMode": MessageLookupByLibrary.simpleMessage("Buzz-Modus"),
+    "buzzmodeInstruction": MessageLookupByLibrary.simpleMessage(
+      "Drücke und halte, um zu vibrieren",
+    ),
+    "buzzmodeStopInstruction": MessageLookupByLibrary.simpleMessage(
+      "Loslassen, um zu stoppen",
+    ),
+    "counter": MessageLookupByLibrary.simpleMessage("Zähler"),
+    "defaultPattern": MessageLookupByLibrary.simpleMessage("Standardmuster"),
+    "keepScreenOn": MessageLookupByLibrary.simpleMessage("Bildschirm anlassen"),
+    "keepVibrationScreenOff": MessageLookupByLibrary.simpleMessage(
+      "Vibration bei ausgeschaltetem Bildschirm",
+    ),
+    "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
+      "Dein Gerät unterstützt keine benutzerdefinierten Vibrationen",
+    ),
+    "noVibratorFound": MessageLookupByLibrary.simpleMessage(
+      "Kein Vibrator gefunden",
+    ),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
+    "pattern": MessageLookupByLibrary.simpleMessage("Muster"),
+    "patternSavedFailure": MessageLookupByLibrary.simpleMessage(
+      "Muster konnte nicht gespeichert werden",
+    ),
+    "patternSavedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Muster gespeichert",
+    ),
+    "presetTitle": MessageLookupByLibrary.simpleMessage("Muster"),
+    "repeat": MessageLookupByLibrary.simpleMessage("Wiederholen"),
+    "saveCurrentPatternNameField": MessageLookupByLibrary.simpleMessage("Name"),
+    "saveCurrentPatternTitle": MessageLookupByLibrary.simpleMessage(
+      "Muster speichern",
+    ),
+    "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
+    "speed": MessageLookupByLibrary.simpleMessage("Geschwindigkeit"),
+    "stillWorkInProgress": MessageLookupByLibrary.simpleMessage(
+      "noch in Arbeit",
+    ),
+    "supportMe": MessageLookupByLibrary.simpleMessage("Unterstütze mich"),
+    "vibrationStoreTitle": MessageLookupByLibrary.simpleMessage(
+      "Vibrations-Shop",
+    ),
+  };
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:vibrationtest/models/in_app_purchases.dart';
 
 class MyBannerAdWidget extends StatefulWidget {
   /// The requested size of the banner. Defaults to [AdSize.banner].
@@ -83,5 +85,23 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
 
     // Start loading.
     bannerAd.load();
+  }
+}
+
+class AdsWidget extends ConsumerWidget {
+  const AdsWidget({super.key, this.adSize = AdSize.banner});
+
+  /// The requested size of the banner. Defaults to [AdSize.banner].
+  final AdSize adSize;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showAds =
+        ref.watch(inAppPurchasesProvider.select((state) => state.showAds));
+    return showAds
+        ? MyBannerAdWidget(
+            adSize: adSize,
+          )
+        : const SizedBox.shrink();
   }
 }

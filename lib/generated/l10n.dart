@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -62,42 +67,22 @@ class S {
 
   /// `Settings`
   String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
   /// `Counter`
   String get counter {
-    return Intl.message(
-      'Counter',
-      name: 'counter',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Counter', name: 'counter', desc: '', args: []);
   }
 
   /// `Speed`
   String get speed {
-    return Intl.message(
-      'Speed',
-      name: 'speed',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Speed', name: 'speed', desc: '', args: []);
   }
 
   /// `Loop`
   String get repeat {
-    return Intl.message(
-      'Loop',
-      name: 'repeat',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Loop', name: 'repeat', desc: '', args: []);
   }
 
   /// `No vibrator found`
@@ -152,22 +137,12 @@ class S {
 
   /// `Pattern`
   String get pattern {
-    return Intl.message(
-      'Pattern',
-      name: 'pattern',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Pattern', name: 'pattern', desc: '', args: []);
   }
 
   /// `Presets`
   String get presetTitle {
-    return Intl.message(
-      'Presets',
-      name: 'presetTitle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Presets', name: 'presetTitle', desc: '', args: []);
   }
 
   /// `Save Pattern`
@@ -192,12 +167,7 @@ class S {
 
   /// `OK`
   String get ok {
-    return Intl.message(
-      'OK',
-      name: 'ok',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('OK', name: 'ok', desc: '', args: []);
   }
 
   /// `pattern Saved`
@@ -222,12 +192,7 @@ class S {
 
   /// `Buzz Mode`
   String get buzzMode {
-    return Intl.message(
-      'Buzz Mode',
-      name: 'buzzMode',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Buzz Mode', name: 'buzzMode', desc: '', args: []);
   }
 
   /// `tap anywhere to go brrrrrr`
@@ -268,6 +233,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Support me`
+  String get supportMe {
+    return Intl.message('Support me', name: 'supportMe', desc: '', args: []);
   }
 }
 

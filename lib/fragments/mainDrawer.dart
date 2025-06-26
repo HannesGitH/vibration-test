@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:vibrationtest/models/in_app_purchases.dart';
 import 'package:vibrationtest/models/wakelock.dart';
 import 'package:vibrationtest/widgets/myListTile.dart';
 
@@ -66,6 +67,29 @@ class MainDrawer extends StatelessWidget {
       ),
     );
 
+    var adFreeTile = Consumer(
+      builder: (context, ref, child) {
+        final bought = ref.watch(inAppPurchasesProvider).isAdsRemoved;
+        if (bought == null) {
+          return const SizedBox.shrink();
+        }
+        if (bought) {
+          return const Icon(Icons.star_rounded);
+        }
+        return MyCardListTile1(
+          icon: Icons.star_outline_rounded,
+          text: S.of(context).supportMe,
+          noChevron: true,
+          onTap: () {
+            if (!bought) {
+              ref.read(inAppPurchasesProvider.notifier).buyAdFree();
+            }
+          },
+          child: const Icon(Icons.chevron_right_rounded),
+        );
+      },
+    );
+
     return Drawer(
       child: Column(
         // Important: Remove any padding from the ListView.
@@ -77,6 +101,7 @@ class MainDrawer extends StatelessWidget {
           screenWLTile,
           cpuWLTile,
           const Spacer(),
+          adFreeTile,
           const SafeArea(
             child: Padding(
               padding: EdgeInsets.all(8.0),

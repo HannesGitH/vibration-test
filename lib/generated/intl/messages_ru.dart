@@ -22,40 +22,48 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrator"),
-        "buzzMode": MessageLookupByLibrary.simpleMessage("Режим вибрации"),
-        "buzzmodeInstruction": MessageLookupByLibrary.simpleMessage(
-            "Нажмите и удерживайте, чтобы начать вибрацию"),
-        "buzzmodeStopInstruction": MessageLookupByLibrary.simpleMessage(
-            "Отпустите, чтобы остановить вибрацию"),
-        "counter": MessageLookupByLibrary.simpleMessage("Счетчик"),
-        "defaultPattern": MessageLookupByLibrary.simpleMessage("Стандартный"),
-        "keepScreenOn":
-            MessageLookupByLibrary.simpleMessage("Не выключать экран"),
-        "keepVibrationScreenOff": MessageLookupByLibrary.simpleMessage(
-            "Не выключать экран во время вибрации"),
-        "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
-            "Ваш браузер не поддерживает кастомные вибрации"),
-        "noVibratorFound":
-            MessageLookupByLibrary.simpleMessage("Вибратор не найден"),
-        "ok": MessageLookupByLibrary.simpleMessage("ОК"),
-        "pattern": MessageLookupByLibrary.simpleMessage("Модель"),
-        "patternSavedFailure":
-            MessageLookupByLibrary.simpleMessage("Не удалось сохранить модель"),
-        "patternSavedSuccess":
-            MessageLookupByLibrary.simpleMessage("Модель успешно сохранена"),
-        "presetTitle":
-            MessageLookupByLibrary.simpleMessage("Предустановленные"),
-        "repeat": MessageLookupByLibrary.simpleMessage("Повтор"),
-        "saveCurrentPatternNameField":
-            MessageLookupByLibrary.simpleMessage("Имя"),
-        "saveCurrentPatternTitle":
-            MessageLookupByLibrary.simpleMessage("Сохранить текущую модель"),
-        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
-        "speed": MessageLookupByLibrary.simpleMessage("Скорость"),
-        "stillWorkInProgress":
-            MessageLookupByLibrary.simpleMessage("Все еще в разработке"),
-        "vibrationStoreTitle":
-            MessageLookupByLibrary.simpleMessage("Магазин вибраций")
-      };
+    "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrator"),
+    "buzzMode": MessageLookupByLibrary.simpleMessage("Режим вибрации"),
+    "buzzmodeInstruction": MessageLookupByLibrary.simpleMessage(
+      "Нажмите и удерживайте, чтобы начать вибрацию",
+    ),
+    "buzzmodeStopInstruction": MessageLookupByLibrary.simpleMessage(
+      "Отпустите, чтобы остановить вибрацию",
+    ),
+    "counter": MessageLookupByLibrary.simpleMessage("Счетчик"),
+    "defaultPattern": MessageLookupByLibrary.simpleMessage("Стандартный"),
+    "keepScreenOn": MessageLookupByLibrary.simpleMessage("Не выключать экран"),
+    "keepVibrationScreenOff": MessageLookupByLibrary.simpleMessage(
+      "Не выключать экран во время вибрации",
+    ),
+    "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
+      "Ваш браузер не поддерживает кастомные вибрации",
+    ),
+    "noVibratorFound": MessageLookupByLibrary.simpleMessage(
+      "Вибратор не найден",
+    ),
+    "ok": MessageLookupByLibrary.simpleMessage("ОК"),
+    "pattern": MessageLookupByLibrary.simpleMessage("Модель"),
+    "patternSavedFailure": MessageLookupByLibrary.simpleMessage(
+      "Не удалось сохранить модель",
+    ),
+    "patternSavedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Модель успешно сохранена",
+    ),
+    "presetTitle": MessageLookupByLibrary.simpleMessage("Предустановленные"),
+    "repeat": MessageLookupByLibrary.simpleMessage("Повтор"),
+    "saveCurrentPatternNameField": MessageLookupByLibrary.simpleMessage("Имя"),
+    "saveCurrentPatternTitle": MessageLookupByLibrary.simpleMessage(
+      "Сохранить текущую модель",
+    ),
+    "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+    "speed": MessageLookupByLibrary.simpleMessage("Скорость"),
+    "stillWorkInProgress": MessageLookupByLibrary.simpleMessage(
+      "Все еще в разработке",
+    ),
+    "supportMe": MessageLookupByLibrary.simpleMessage("Поддержать меня"),
+    "vibrationStoreTitle": MessageLookupByLibrary.simpleMessage(
+      "Магазин вибраций",
+    ),
+  };
 }

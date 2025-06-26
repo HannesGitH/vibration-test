@@ -22,38 +22,51 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrador"),
-        "buzzMode": MessageLookupByLibrary.simpleMessage("Modo zumbido"),
-        "buzzmodeInstruction":
-            MessageLookupByLibrary.simpleMessage("Mantén pulsado para vibrar"),
-        "buzzmodeStopInstruction":
-            MessageLookupByLibrary.simpleMessage("Suelta para parar"),
-        "counter": MessageLookupByLibrary.simpleMessage("Contador"),
-        "defaultPattern":
-            MessageLookupByLibrary.simpleMessage("Patrón por defecto"),
-        "keepScreenOn":
-            MessageLookupByLibrary.simpleMessage("Mantener pantalla encendida"),
-        "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
-            "Tu navegador no soporta la vibración personalizada"),
-        "noVibratorFound": MessageLookupByLibrary.simpleMessage(
-            "No se ha encontrado ningún vibrador"),
-        "ok": MessageLookupByLibrary.simpleMessage("Aceptar"),
-        "pattern": MessageLookupByLibrary.simpleMessage("Patrón"),
-        "patternSavedFailure": MessageLookupByLibrary.simpleMessage(
-            "No se ha podido guardar el patrón"),
-        "patternSavedSuccess": MessageLookupByLibrary.simpleMessage(
-            "Patrón guardado correctamente"),
-        "presetTitle": MessageLookupByLibrary.simpleMessage("Predefinido"),
-        "repeat": MessageLookupByLibrary.simpleMessage("Repetir"),
-        "saveCurrentPatternNameField":
-            MessageLookupByLibrary.simpleMessage("Nombre del patrón"),
-        "saveCurrentPatternTitle":
-            MessageLookupByLibrary.simpleMessage("Guardar patrón actual"),
-        "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
-        "speed": MessageLookupByLibrary.simpleMessage("Velocidad"),
-        "stillWorkInProgress": MessageLookupByLibrary.simpleMessage(
-            "Todavía estamos trabajando en ello"),
-        "vibrationStoreTitle":
-            MessageLookupByLibrary.simpleMessage("Tienda de vibraciones")
-      };
+    "appTitle": MessageLookupByLibrary.simpleMessage("Custom Vibrador"),
+    "buzzMode": MessageLookupByLibrary.simpleMessage("Modo zumbido"),
+    "buzzmodeInstruction": MessageLookupByLibrary.simpleMessage(
+      "Mantén pulsado para vibrar",
+    ),
+    "buzzmodeStopInstruction": MessageLookupByLibrary.simpleMessage(
+      "Suelta para parar",
+    ),
+    "counter": MessageLookupByLibrary.simpleMessage("Contador"),
+    "defaultPattern": MessageLookupByLibrary.simpleMessage(
+      "Patrón por defecto",
+    ),
+    "keepScreenOn": MessageLookupByLibrary.simpleMessage(
+      "Mantener pantalla encendida",
+    ),
+    "noCustomVibrationSupport": MessageLookupByLibrary.simpleMessage(
+      "Tu navegador no soporta la vibración personalizada",
+    ),
+    "noVibratorFound": MessageLookupByLibrary.simpleMessage(
+      "No se ha encontrado ningún vibrador",
+    ),
+    "ok": MessageLookupByLibrary.simpleMessage("Aceptar"),
+    "pattern": MessageLookupByLibrary.simpleMessage("Patrón"),
+    "patternSavedFailure": MessageLookupByLibrary.simpleMessage(
+      "No se ha podido guardar el patrón",
+    ),
+    "patternSavedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Patrón guardado correctamente",
+    ),
+    "presetTitle": MessageLookupByLibrary.simpleMessage("Predefinido"),
+    "repeat": MessageLookupByLibrary.simpleMessage("Repetir"),
+    "saveCurrentPatternNameField": MessageLookupByLibrary.simpleMessage(
+      "Nombre del patrón",
+    ),
+    "saveCurrentPatternTitle": MessageLookupByLibrary.simpleMessage(
+      "Guardar patrón actual",
+    ),
+    "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
+    "speed": MessageLookupByLibrary.simpleMessage("Velocidad"),
+    "stillWorkInProgress": MessageLookupByLibrary.simpleMessage(
+      "Todavía estamos trabajando en ello",
+    ),
+    "supportMe": MessageLookupByLibrary.simpleMessage("Soporta mi trabajo"),
+    "vibrationStoreTitle": MessageLookupByLibrary.simpleMessage(
+      "Tienda de vibraciones",
+    ),
+  };
 }

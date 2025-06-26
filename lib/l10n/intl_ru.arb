@@ -20,5 +20,6 @@
   "buzzmodeInstruction": "Нажмите и удерживайте, чтобы начать вибрацию",
   "buzzmodeStopInstruction": "Отпустите, чтобы остановить вибрацию",
   "keepScreenOn": "Не выключать экран",
-  "keepVibrationScreenOff": "Не выключать экран во время вибрации"
+  "keepVibrationScreenOff": "Не выключать экран во время вибрации",
+  "supportMe": "Поддержать меня"
 }

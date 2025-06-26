@@ -20,5 +20,6 @@
   "buzzmodeInstruction": "Drücke und halte, um zu vibrieren",
   "buzzmodeStopInstruction": "Loslassen, um zu stoppen",
   "keepScreenOn": "Bildschirm anlassen",
-  "keepVibrationScreenOff": "Vibration bei ausgeschaltetem Bildschirm"
+  "keepVibrationScreenOff": "Vibration bei ausgeschaltetem Bildschirm",
+  "supportMe": "Unterstütze mich"
 }

@@ -20,5 +20,6 @@
   "buzzmodeInstruction": "tap anywhere to go brrrrrr",
   "buzzmodeStopInstruction": "release to stop",
   "keepScreenOn": "Keep Screen On",
-  "keepVibrationScreenOff": "Keep vibrating, even when screen is off"
+  "keepVibrationScreenOff": "Keep vibrating, even when screen is off",
+  "supportMe": "Support me"
 }

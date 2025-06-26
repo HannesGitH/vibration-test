@@ -20,5 +20,6 @@
   "buzzmodeInstruction": "Mantén pulsado para vibrar",
   "buzzmodeStopInstruction": "Suelta para parar",
   "keepScreenOn": "Mantener pantalla encendida",
-  "keepVibratingScreenOff": "Sigue vibrando, incluso cuando la pantalla está apagada"
+  "keepVibratingScreenOff": "Sigue vibrando, incluso cuando la pantalla está apagada",
+  "supportMe": "Soporta mi trabajo"
 }
