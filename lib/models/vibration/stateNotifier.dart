@@ -35,6 +35,9 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
       stopVib();
       state = state.copyWith(wasPausedToContinue: true, doNotAnimate: false);
     }
+    if (ref.read(variantProvider) is AdVariant) {
+      Review.request();
+    }
   }
 
   void changeAmplitudeAtMS({required int newAmplitude, required int atMS}) {
