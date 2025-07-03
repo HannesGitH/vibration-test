@@ -18,7 +18,8 @@ final defaultPattern = VibrationPattern(
 class VibrationPatternNotifier extends _$VibrationPatternNotifier {
   @override
   VibrationPattern build() {
-    return defaultPattern;
+    final first = ref.watch(allPatternsProvider).firstOrNull;
+    return first ?? defaultPattern;
   }
 
   bool get allowCPUWL => ref.read(wakeLockOptionsProvider).cpu;
