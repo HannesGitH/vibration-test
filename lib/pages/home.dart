@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    MyBannerAdWidget(
+                    AdsWidget(
                         adSize: AdSize.getInlineAdaptiveBannerAdSize(
                       MediaQuery.of(context).size.width.toInt() - 30,
                       maxAdHeight.toInt(),

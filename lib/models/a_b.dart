@@ -18,17 +18,25 @@ class Variant extends _$Variant {
   void load() async {
     final variantString = await _prefs.getString(_key);
     if (variantString == null) {
-      state = _createVariant();
+      _createVariant();
       return;
     }
     state = VariantState.fromString(variantString);
   }
 
-  VariantState _createVariant() {
+  // void boughtAdFree() {
+  //   state = ReviewVariant();
+  //   _persist();
+  // }
+
+  void _persist([VariantState? variant]) {
+    _prefs.setString(_key, (variant ?? state).toString());
+  }
+
+  void _createVariant() {
     final random = Random();
-    final variant = random.nextBool() ? AdVariant() : ReviewVariant();
-    _prefs.setString(_key, variant.toString());
-    return variant;
+    state = random.nextBool() ? AdVariant() : ReviewVariant();
+    _persist();
   }
 }
 

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vibrationtest/models/a_b.dart';
 
 part 'in_app_purchases.g.dart';
 
@@ -25,14 +27,26 @@ class InAppPurchases extends _$InAppPurchases {
     }, onError: (error) {
       // handle error here.
     });
+
     InAppPurchase.instance
         .queryProductDetails(_productIds)
         .then(updateProducts);
+    _loadBoughtItems();
     return PurchasesState(
       initialized: false,
       allProducts: [],
-      purchases: [],
+      boughtItems: {},
     );
+  }
+
+  void _loadBoughtItems() async {
+    final prefs = SharedPreferencesAsync();
+    for (var id in _productIds) {
+      final bought = await prefs.getBool('bought:$id');
+      state = state
+          .copyWith(boughtItems: {...state.boughtItems, id: bought ?? false});
+    }
+    state = state.copyWith(initialized: true);
   }
 
   void updateProducts(ProductDetailsResponse productDetailsResponse) {
@@ -44,20 +58,19 @@ class InAppPurchases extends _$InAppPurchases {
   }
 
   void _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) {
-    state = state.copyWith(
-      purchases: purchaseDetailsList,
-      initialized: true,
-    );
     for (var purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
         continue;
       }
       if (purchaseDetails.status == PurchaseStatus.purchased) {
+        final id = purchaseDetails.productID;
         state = state.copyWith(
-          purchases: state.purchases
-              .where((purchase) => purchase.status != PurchaseStatus.purchased)
-              .toList(),
+          boughtItems: {
+            ...state.boughtItems,
+            id: true,
+          },
         );
+        SharedPreferencesAsync().setBool('bought:$id', true);
       }
     }
   }
@@ -76,24 +89,24 @@ class InAppPurchases extends _$InAppPurchases {
 
 class PurchasesState {
   final List<ProductDetails> allProducts;
-  final List<PurchaseDetails> purchases;
+  final Map<String, bool> boughtItems;
 
   final bool initialized;
 
   PurchasesState({
     required this.allProducts,
-    required this.purchases,
+    required this.boughtItems,
     this.initialized = false,
   });
 
   PurchasesState copyWith({
     List<ProductDetails>? allProducts,
-    List<PurchaseDetails>? purchases,
+    Map<String, bool>? boughtItems,
     bool? initialized,
   }) {
     return PurchasesState(
       allProducts: allProducts ?? this.allProducts,
-      purchases: purchases ?? this.purchases,
+      boughtItems: boughtItems ?? this.boughtItems,
       initialized: initialized ?? this.initialized,
     );
   }
@@ -103,9 +116,7 @@ extension PurchasesHelper on PurchasesState {
   bool? get isAdsRemoved {
     if (!initialized) return null;
 
-    return purchases.any((purchase) =>
-        purchase.status == PurchaseStatus.purchased &&
-        purchase.productID == InAppPurchases._adsProductId);
+    return boughtItems[InAppPurchases._adsProductId] ?? false;
   }
 
   bool get showAds => isAdsRemoved == false;
