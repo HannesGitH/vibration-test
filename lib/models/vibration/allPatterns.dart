@@ -11,13 +11,11 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
   }
 
   Future<void> loadDefaultsIfNeeded() async {
-    const zigZagName = 'd:zigzag';
-    // if (state.any((p) => p.name == zigZagName)) return;
     const max = MAX_VIBRATION_AMPLITUDE;
     final zigZagWave = VibrationPattern(
       List.generate(
           50, (i) => VibrationElement(amplitude: ((i / 50) * max).toInt())),
-      name: zigZagName,
+      name: 'd:zigzag',
     );
     final sineWave = VibrationPattern(
       List.generate(
@@ -40,7 +38,7 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
           50, (i) => VibrationElement(amplitude: random.nextInt(max))),
       name: 'd:chaos',
     );
-    final low_middle_high = VibrationPattern(
+    final lowMiddleHighWave = VibrationPattern(
       List.generate(
           60,
           (i) => VibrationElement(
@@ -51,7 +49,7 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
               })),
       name: 'd:low_middle_high',
     );
-    final riseAndShine = VibrationPattern(
+    final riseAndShineWave = VibrationPattern(
       List.generate(
           60,
           (i) => VibrationElement(
@@ -66,8 +64,8 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
       sineWave,
       squareWave,
       chaosWave,
-      low_middle_high,
-      riseAndShine,
+      lowMiddleHighWave,
+      riseAndShineWave,
     ];
     for (var preset in presets) {
       await local.savePattern(preset);
