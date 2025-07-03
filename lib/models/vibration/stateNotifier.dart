@@ -175,11 +175,11 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
     }
   }
 
-  void stopVib() {
+  Future<void> stopVib() async {
+    await Vibration.cancel();
     state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
     WakelockPlus.toggleCPU(enable: false);
     WakelockPlus.toggle(enable: false);
-    Vibration.cancel();
   }
 
   void maybeContinueVib() {
