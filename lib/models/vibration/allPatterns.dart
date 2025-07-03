@@ -12,6 +12,10 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
 
   Future<void> loadDefaultsIfNeeded() async {
     const max = MAX_VIBRATION_AMPLITUDE;
+    // bail early we already have the newest pattern
+    const riseAndShineName = 'd:rise_and_shine';
+    if (state.any((p) => p.name == riseAndShineName)) return;
+
     final zigZagWave = VibrationPattern(
       List.generate(
           50, (i) => VibrationElement(amplitude: ((i / 50) * max).toInt())),
@@ -57,7 +61,7 @@ class AllPatternNotifier extends StateNotifier<List<VibrationPattern>> {
                 < 30 => (Curves.easeInOut.transform(i / 30) * max).toInt(),
                 _ => max,
               })),
-      name: 'd:rise_and_shine',
+      name: riseAndShineName,
     );
     final presets = [
       zigZagWave,
