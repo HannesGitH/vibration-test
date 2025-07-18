@@ -73,11 +73,10 @@ jobs:
           printf "${{ secrets.KEY_PROPERTIES }}" >> key.properties
 
       - name: Decode Keystore
-        id: decode_keystore
-        uses: timheuer/base64-to-file@v1
-        with:
-          fileName: 'android/app/keystore.jks'
-          encodedString: ${{ secrets.KEYSTORE_B64 }}
+        env:
+            ENCODED_STRING: ${{ secrets.KEYSTORE_B64 }}
+        run: |
+            echo $ENCODED_STRING | base64 -di > android/app/keystore.jks
 
       - name: check keystore
         run: |
