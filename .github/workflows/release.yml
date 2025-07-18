@@ -79,6 +79,11 @@ jobs:
           fileName: 'android/app/keystore.jks'
           encodedString: ${{ secrets.KEYSTORE_B64 }}
 
+      - name: check keystore
+        run: |
+          ls -a android/app/
+          pwd
+
       - name: map build-type (platform) to path
         uses: kanga333/variable-mapper@v0.2.2
         with:
