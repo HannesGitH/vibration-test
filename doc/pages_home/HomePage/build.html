@@ -33,17 +33,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -115,8 +112,9 @@ Widget build(BuildContext context) {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Theme.of(context).colorScheme.surface,
   ));
+  final maxAdHeight = MediaQuery.of(context).size.height * 0.2;
   return Scaffold(
-    backgroundColor: Theme.of(context).colorScheme.background,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     drawer: const MainDrawer(),
     appBar: AppBar(
       title: Text(S.of(context).appTitle),
@@ -124,14 +122,46 @@ Widget build(BuildContext context) {
         SaveCurrentPatternButton(),
       ],
     ),
-    body: Column(
+    body: const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.end,
-      children: const [
-        Expanded(
-          flex: 1,
-          child: Spacer(),
-        ),
+      children: [
+        &#47;&#47; &#47;&#47; ConstrainedBox(
+        &#47;&#47; &#47;&#47;   constraints: BoxConstraints(
+        &#47;&#47; &#47;&#47;     maxHeight: maxAdHeight,
+        &#47;&#47; &#47;&#47;   ),
+        &#47;&#47; &#47;&#47;   child: Consumer(builder: (context, ref, child) {
+        &#47;&#47; &#47;&#47;     final variant = ref.watch(variantProvider);
+        &#47;&#47; &#47;&#47;     if (variant is AdVariant) {
+        &#47;&#47; &#47;&#47;       return Row(
+        &#47;&#47; &#47;&#47;         crossAxisAlignment: CrossAxisAlignment.start,
+        &#47;&#47; &#47;&#47;         mainAxisAlignment: MainAxisAlignment.start,
+        &#47;&#47; &#47;&#47;         children: [
+        &#47;&#47; &#47;&#47;           AdsWidget(
+        &#47;&#47; &#47;&#47;               adSize: AdSize.getInlineAdaptiveBannerAdSize(
+        &#47;&#47; &#47;&#47;             MediaQuery.of(context).size.width.toInt() - 30,
+        &#47;&#47; &#47;&#47;             maxAdHeight.toInt(),
+        &#47;&#47; &#47;&#47;           )),
+        &#47;&#47; &#47;&#47;           Consumer(
+        &#47;&#47; &#47;&#47;             builder: (context, ref, child) {
+        &#47;&#47; &#47;&#47;               final showAds =
+        &#47;&#47; &#47;&#47;                   ref.watch(inAppPurchasesProvider).showAds;
+        &#47;&#47; &#47;&#47;               if (showAds)
+        &#47;&#47; &#47;&#47;                 return GestureDetector(
+        &#47;&#47; &#47;&#47;                   onTap: ref
+        &#47;&#47; &#47;&#47;                       .read(inAppPurchasesProvider.notifier)
+        &#47;&#47; &#47;&#47;                       .buyAdFree,
+        &#47;&#47; &#47;&#47;                   child: const Icon(Icons.close, size: 30),
+        &#47;&#47; &#47;&#47;                 );
+        &#47;&#47; &#47;&#47;               return const SizedBox.shrink();
+        &#47;&#47; &#47;&#47;             },
+        &#47;&#47; &#47;&#47;           ),
+        &#47;&#47; &#47;&#47;         ],
+        &#47;&#47; &#47;&#47;       );
+        &#47;&#47; &#47;&#47;     }
+        &#47;&#47; &#47;&#47;     return const SizedBox.shrink();
+        &#47;&#47; &#47;&#47;   }),
+        &#47;&#47; &#47;&#47; ),
         Expanded(flex: 5, child: PatternGallery()),
         SpeedController(),
         Expanded(flex: 10, child: PatternController()),
@@ -168,7 +198,7 @@ Widget build(BuildContext context) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.25+25
+      2.3.1+31
   </span>
   
 </footer>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the loadDefaultsIfNeeded method from the AllPatternNotifier class, for the Dart programming language.">
+  <title>loadDefaultsIfNeeded method - AllPatternNotifier class - vibration library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">vibrationtest</a></li>
+    <li><a href="../../models_vibration_vibration/">models&#47;vibration&#47;vibration.dart</a></li>
+    <li><a href="../../models_vibration_vibration/AllPatternNotifier-class.html">AllPatternNotifier</a></li>
+    <li class="self-crumb">loadDefaultsIfNeeded method</li>
+  </ol>
+  <div class="self-name">loadDefaultsIfNeeded</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="models_vibration_vibration&#47;AllPatternNotifier-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">loadDefaultsIfNeeded</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/flutter_test/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+<span class="name ">loadDefaultsIfNeeded</span>(<wbr>)
+
+      
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; loadDefaultsIfNeeded() async {
+  const max = MAX_VIBRATION_AMPLITUDE;
+  &#47;&#47; bail early we already have the newest pattern
+  const riseAndShineName = &#39;d:rise_and_shine&#39;;
+  if (state.any((p) =&gt; p.name == riseAndShineName)) return;
+
+  final zigZagWave = VibrationPattern(
+    List.generate(
+        50, (i) =&gt; VibrationElement(amplitude: ((i &#47; 50) * max).toInt())),
+    name: &#39;d:zigzag&#39;,
+  );
+  final sineWave = VibrationPattern(
+    List.generate(
+        50,
+        (i) =&gt; VibrationElement(
+            amplitude: ((sin(i &#47; 50 * pi * 4) * max &#47; 2 + max &#47; 2).toInt()))),
+    name: &#39;d:sine&#39;,
+  );
+  final squareWave = VibrationPattern(
+    List.generate(
+        50,
+        (i) =&gt; VibrationElement(
+              amplitude: i &lt; 25 ? max : 0,
+            )),
+    name: &#39;d:square&#39;,
+  );
+  final random = Random();
+  final chaosWave = VibrationPattern(
+    List.generate(
+        50, (i) =&gt; VibrationElement(amplitude: random.nextInt(max))),
+    name: &#39;d:chaos&#39;,
+  );
+  final lowMiddleHighWave = VibrationPattern(
+    List.generate(
+        60,
+        (i) =&gt; VibrationElement(
+                amplitude: switch (i) {
+              &lt; 20 =&gt; max ~&#47; 3,
+              &lt; 40 =&gt; max ~&#47; 3 * 2,
+              _ =&gt; max,
+            })),
+    name: &#39;d:low_middle_high&#39;,
+  );
+  final riseAndShineWave = VibrationPattern(
+    List.generate(
+        60,
+        (i) =&gt; VibrationElement(
+                amplitude: switch (i) {
+              &lt; 30 =&gt; (Curves.easeInOut.transform(i &#47; 30) * max).toInt(),
+              _ =&gt; max,
+            })),
+    name: riseAndShineName,
+  );
+  final presets = [
+    zigZagWave,
+    sineWave,
+    squareWave,
+    chaosWave,
+    lowMiddleHighWave,
+    riseAndShineWave,
+  ];
+  for (var preset in presets) {
+    await local.savePattern(preset);
+    if (state.any((p) =&gt; p.name == preset.name)) continue;
+    addPattern(preset);
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">vibrationtest</a></li>
+    <li><a href="../../models_vibration_vibration/">vibration</a></li>
+    <li><a href="../../models_vibration_vibration/AllPatternNotifier-class.html">AllPatternNotifier</a></li>
+    <li class="self-crumb">loadDefaultsIfNeeded method</li>
+</ol>
+
+    <h5>AllPatternNotifier class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    vibrationtest
+      2.3.1+31
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

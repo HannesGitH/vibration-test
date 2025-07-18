@@ -32,17 +32,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -65,7 +62,6 @@
   <dd>
     <ul class="gt-separated dark clazz-relationships">
       <li><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></li>
-        <li><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/BuildlessAutoDisposeNotifier-class.html">BuildlessAutoDisposeNotifier</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span>&gt;</span></li>
         <li>_$WakeLockOptions</li>
       <li>WakeLockOptions</li>
     </ul>
@@ -119,7 +115,7 @@
 </dd>
 
         <dt id="ref" class="property inherited">
-  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/BuildlessAutoDisposeNotifier/ref.html">ref</a></span>
+  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod/AutoDisposeNotifier/ref.html">ref</a></span>
   <span class="signature">&#8594; <a class="deprecated" href="https://pub.dev/documentation/riverpod/2.6.1/riverpod/AutoDisposeNotifierProviderRef-class.html">AutoDisposeNotifierProviderRef</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span>&gt;</span></span>
   
 
@@ -143,7 +139,7 @@
 </dd>
 
         <dt id="state" class="property inherited">
-  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/BuildlessAutoDisposeNotifier/state.html">state</a></span>
+  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod/AutoDisposeNotifier/state.html">state</a></span>
   <span class="signature">&#8596; <a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span>
   
 
@@ -155,7 +151,7 @@
 </dd>
 
         <dt id="stateOrNull" class="property inherited">
-  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/BuildlessAutoDisposeNotifier/stateOrNull.html">stateOrNull</a></span>
+  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod/AutoDisposeNotifier/stateOrNull.html">stateOrNull</a></span>
   <span class="signature">&#8594; <a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a>?</span>
   
 
@@ -241,7 +237,7 @@
 </dd>
 
         <dt id="listenSelf" class="callable inherited">
-  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/BuildlessAutoDisposeNotifier/listenSelf.html">listenSelf</a></span><span class="signature">(<wbr><span class="parameter" id="listenSelf-param-listener"><span class="type-annotation">void</span> <span class="parameter-name">listener</span>(<span class="parameter" id="param-previous"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a>?</span> <span class="parameter-name">previous</span>, </span><span class="parameter" id="param-next"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span> <span class="parameter-name">next</span></span>), {</span><span class="parameter" id="listenSelf-param-onError"><span class="type-annotation">void</span> <span class="parameter-name">onError</span>(<span class="parameter" id="param-error"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">error</span>, </span><span class="parameter" id="param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a></span> <span class="parameter-name">stackTrace</span></span>)?</span>})
+  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod/AutoDisposeNotifier/listenSelf.html">listenSelf</a></span><span class="signature">(<wbr><span class="parameter" id="listenSelf-param-listener"><span class="type-annotation">void</span> <span class="parameter-name">listener</span>(<span class="parameter" id="param-previous"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a>?</span> <span class="parameter-name">previous</span>, </span><span class="parameter" id="param-next"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span> <span class="parameter-name">next</span></span>), {</span><span class="parameter" id="listenSelf-param-onError"><span class="type-annotation">void</span> <span class="parameter-name">onError</span>(<span class="parameter" id="param-error"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">error</span>, </span><span class="parameter" id="param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a></span> <span class="parameter-name">stackTrace</span></span>)?</span>})
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -332,7 +328,7 @@
 </dd>
 
         <dt id="updateShouldNotify" class="callable inherited">
-  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/BuildlessAutoDisposeNotifier/updateShouldNotify.html">updateShouldNotify</a></span><span class="signature">(<wbr><span class="parameter" id="updateShouldNotify-param-previous"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span> <span class="parameter-name">previous</span>, </span><span class="parameter" id="updateShouldNotify-param-next"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span> <span class="parameter-name">next</span></span>)
+  <span class="name"><a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod/AutoDisposeNotifier/updateShouldNotify.html">updateShouldNotify</a></span><span class="signature">(<wbr><span class="parameter" id="updateShouldNotify-param-previous"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span> <span class="parameter-name">previous</span>, </span><span class="parameter" id="updateShouldNotify-param-next"><span class="type-annotation"><a href="../models_wakelock/WakeLockData-class.html">WakeLockData</a></span> <span class="parameter-name">next</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
   </span>
   
@@ -396,7 +392,7 @@ should be notified.
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.25+25
+      2.3.1+31
   </span>
   
 </footer>

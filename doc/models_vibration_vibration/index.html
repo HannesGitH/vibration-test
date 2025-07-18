@@ -31,17 +31,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -153,7 +150,7 @@
       <dl class="properties">
           <dt id="activeVibrationPatternProvider" class="property">
   <span class="name"><a href="../models_vibration_vibration/activeVibrationPatternProvider.html">activeVibrationPatternProvider</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/AutoDisposeNotifierProviderImpl-class.html">AutoDisposeNotifierProviderImpl</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_vibration_vibration/VibrationPatternNotifier-class.html">VibrationPatternNotifier</a></span>, <span class="type-parameter"><a href="../models_vibration_vibration/VibrationPattern-class.html">VibrationPattern</a></span>&gt;</span></span>
+  <span class="signature">&#8594; AutoDisposeNotifierProviderImpl<span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_vibration_vibration/VibrationPatternNotifier-class.html">VibrationPatternNotifier</a></span>, <span class="type-parameter"><a href="../models_vibration_vibration/VibrationPattern-class.html">VibrationPattern</a></span>&gt;</span></span>
   
 
 </dt>
@@ -189,7 +186,7 @@
 
           <dt id="vibrationPatternNotifierProvider" class="property">
   <span class="name"><a href="../models_vibration_vibration/vibrationPatternNotifierProvider.html">vibrationPatternNotifierProvider</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/riverpod/2.6.1/riverpod_annotation/AutoDisposeNotifierProviderImpl-class.html">AutoDisposeNotifierProviderImpl</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_vibration_vibration/VibrationPatternNotifier-class.html">VibrationPatternNotifier</a></span>, <span class="type-parameter"><a href="../models_vibration_vibration/VibrationPattern-class.html">VibrationPattern</a></span>&gt;</span></span>
+  <span class="signature">&#8594; AutoDisposeNotifierProviderImpl<span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_vibration_vibration/VibrationPatternNotifier-class.html">VibrationPatternNotifier</a></span>, <span class="type-parameter"><a href="../models_vibration_vibration/VibrationPattern-class.html">VibrationPattern</a></span>&gt;</span></span>
   
 
 </dt>
@@ -231,6 +228,9 @@
       <li><a href="../generated_intl_messages_ru/">generated/intl/messages_ru</a></li>
       <li><a href="../generated_l10n/">generated/l10n</a></li>
       <li><a href="../main/">main</a></li>
+      <li><a href="../models_a_b/">models/a_b</a></li>
+      <li><a href="../models_in_app_purchases/">models/in_app_purchases</a></li>
+      <li><a href="../models_review/">models/review</a></li>
       <li><a href="../models_vibration_vibration/">models/vibration/vibration</a></li>
       <li><a href="../models_wakelock/">models/wakelock</a></li>
       <li><a href="../pages_buzzmode/">pages/buzzmode</a></li>
@@ -239,6 +239,7 @@
       <li><a href="../pages_home/">pages/home</a></li>
       <li><a href="../pages_vibrationStore_main/">pages/vibrationStore/main</a></li>
       <li><a href="../storage_local/">storage/local</a></li>
+      <li><a href="../widgets_ads_wrapper/">widgets/ads/wrapper</a></li>
       <li><a href="../widgets_myListTile/">widgets/myListTile</a></li>
       <li><a href="../widgets_openNewViewTile/">widgets/openNewViewTile</a></li>
       <li><a href="../widgets_pattern_pattern/">widgets/pattern/pattern</a></li>
@@ -257,7 +258,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.25+25
+      2.3.1+31
   </span>
   
 </footer>

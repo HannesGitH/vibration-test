@@ -33,17 +33,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
 <div
@@ -166,6 +163,29 @@ Widget build(BuildContext context) {
     ),
   );
 
+  var adFreeTile = Consumer(
+    builder: (context, ref, child) {
+      final bought = ref.watch(inAppPurchasesProvider).isAdsRemoved;
+      if (bought == null) {
+        return const SizedBox.shrink();
+      }
+      if (bought) {
+        return const Icon(Icons.star_rounded);
+      }
+      return MyCardListTile1(
+        icon: Icons.star_outline_rounded,
+        text: S.of(context).supportMe,
+        noChevron: true,
+        onTap: () {
+          if (!bought) {
+            ref.read(inAppPurchasesProvider.notifier).buyAdFree();
+          }
+        },
+        child: const Icon(Icons.chevron_right_rounded),
+      );
+    },
+  );
+
   return Drawer(
     child: Column(
       &#47;&#47; Important: Remove any padding from the ListView.
@@ -177,6 +197,7 @@ Widget build(BuildContext context) {
         screenWLTile,
         cpuWLTile,
         const Spacer(),
+        adFreeTile,
         const SafeArea(
           child: Padding(
             padding: EdgeInsets.all(8.0),
@@ -214,7 +235,7 @@ Widget build(BuildContext context) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.1.25+25
+      2.3.1+31
   </span>
   
 </footer>
