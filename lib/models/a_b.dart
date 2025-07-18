@@ -35,7 +35,8 @@ class Variant extends _$Variant {
 
   void _createVariant() {
     final random = Random();
-    state = random.nextDouble() < 0.3 ? AdVariant() : ReviewVariant();
+    // // state = random.nextDouble() < 0.3 ? AdVariant() : ReviewVariant();
+    state = ReviewVariant();
     _persist();
   }
 }

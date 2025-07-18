@@ -1,1 +1,1 @@
-sdk api 35
+totally removed ads
