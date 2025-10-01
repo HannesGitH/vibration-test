@@ -1,4 +1,3 @@
-
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -29,6 +28,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
+      final darkTheme = ThemeData(
+          useMaterial3: true,
+          colorScheme: (darkColorScheme ??
+                  ColorScheme.fromSwatch(
+                    primarySwatch: Colors.pink,
+                    brightness: Brightness.dark,
+                  ))
+              .copyWith(surface: Colors.black),
+        );
       return MaterialApp(
         localizationsDelegates: const [
           S.delegate,
@@ -42,14 +50,11 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: lightColorScheme ??
               ColorScheme.fromSwatch(
-                  primarySwatch: Colors.pink, brightness: Brightness.light),
+                primarySwatch: Colors.pink,
+                brightness: Brightness.light,
+              ),
         ),
-        darkTheme: ThemeData(
-          useMaterial3: true,
-          colorScheme: darkColorScheme ??
-              ColorScheme.fromSwatch(
-                  primarySwatch: Colors.pink, brightness: Brightness.dark),
-        ),
+        darkTheme: darkTheme.copyWith(cardColor: Colors.black, cardTheme: darkTheme.cardTheme.copyWith(color: Colors.black)),
         initialRoute: '/',
         routes: {
           '/': (context) => const HomePage(),

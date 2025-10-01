@@ -86,86 +86,85 @@ class PatternController extends ConsumerWidget {
               ),
             ),
             Expanded(
-              child: SizedBox.expand(
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Card(
-                      shadowColor: Colors.transparent,
-                      elevation: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 30.0,
-                          top: 30.0,
-                          right: 20.0,
-                          left: 20.0,
-                        ),
-                        child: Stack(
-                          children: [
-                            // MyLineChart(
-                            //   onTouchCallBack: onTouch,
-                            //   data: data,
-                            //   min: Point(firstDuration, 0),
-                            //   max: Point(
-                            //     pattern.totalDurationMS,
-                            //     MAX_VIBRATION_AMPLITUDE,
-                            //   ),
-                            //   animationDuration: pattern.doNotAnimate ? 5 : 100,
-                            //   showDot: pattern.isCurrentlyVibrating,
-                            // ),
-                            Listener(
-                              onPointerDown: (event) => ref
-                                  .read(activeVibrationPatternProvider.notifier)
-                                  .pauseVib(),
-                              onPointerUp: (event) => ref
-                                  .read(activeVibrationPatternProvider.notifier)
-                                  .maybeContinueVib(),
-                              // GestureDetector(
-                              //   behavior: HitTestBehavior.opaque,
-                              // onTapDown: (_) => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .pauseVib(),
-                              // onTapUp: (_) => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              // onTapCancel: () => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              // onLongPressUp: () => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              // onLongPressCancel: () => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              // onLongPressEnd: (details) => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              // onPanEnd: (details) => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              // onPanCancel: () => ref
-                              //     .read(activeVibrationPatternProvider.notifier)
-                              //     .maybeContinueVib(),
-                              child: MyLineChart(
-                                onTouchCallBack: onTouch,
-                                data: data,
-                                min: Point(firstDuration, 0),
-                                max: Point(
-                                  pattern.totalDurationMS,
-                                  MAX_VIBRATION_AMPLITUDE,
-                                ),
-                                animationDuration:
-                                    pattern.doNotAnimate ? 5 : 100,
-                                showDot: pattern.isCurrentlyVibrating,
+              child: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Card(
+
+                    shadowColor: Colors.transparent,
+                    elevation: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 30.0,
+                        top: 30.0,
+                        right: 20.0,
+                        left: 20.0,
+                      ),
+                      child: Stack(
+                        children: [
+                          // MyLineChart(
+                          //   onTouchCallBack: onTouch,
+                          //   data: data,
+                          //   min: Point(firstDuration, 0),
+                          //   max: Point(
+                          //     pattern.totalDurationMS,
+                          //     MAX_VIBRATION_AMPLITUDE,
+                          //   ),
+                          //   animationDuration: pattern.doNotAnimate ? 5 : 100,
+                          //   showDot: pattern.isCurrentlyVibrating,
+                          // ),
+                          Listener(
+                            onPointerDown: (event) => ref
+                                .read(activeVibrationPatternProvider.notifier)
+                                .pauseVib(),
+                            onPointerUp: (event) => ref
+                                .read(activeVibrationPatternProvider.notifier)
+                                .maybeContinueVib(),
+                            // GestureDetector(
+                            //   behavior: HitTestBehavior.opaque,
+                            // onTapDown: (_) => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .pauseVib(),
+                            // onTapUp: (_) => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            // onTapCancel: () => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            // onLongPressUp: () => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            // onLongPressCancel: () => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            // onLongPressEnd: (details) => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            // onPanEnd: (details) => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            // onPanCancel: () => ref
+                            //     .read(activeVibrationPatternProvider.notifier)
+                            //     .maybeContinueVib(),
+                            child: MyLineChart(
+                              onTouchCallBack: onTouch,
+                              data: data,
+                              min: Point(firstDuration, 0),
+                              max: Point(
+                                pattern.totalDurationMS,
+                                MAX_VIBRATION_AMPLITUDE,
                               ),
+                              animationDuration:
+                                  pattern.doNotAnimate ? 5 : 100,
+                              showDot: pattern.isCurrentlyVibrating,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    const SaveCurrentPatternButton(),
-                  ],
-                ),
+                  ),
+                  const SaveCurrentPatternButton(),
+                ],
               ),
             ),
           ],
