@@ -145,10 +145,13 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
 
     var didFirst = false;
     state = state.copyWith(isCurrentlyVibrating: true, doNotAnimate: false);
+    final scaledPattern = state.durationMSsScaled;
+    final scaledPatternX5 = [...scaledPattern, ...scaledPattern, ...scaledPattern, ...scaledPattern, ...scaledPattern];
+    final amplitudesX5 = [...state.amplitudes, ...state.amplitudes, ...state.amplitudes, ...state.amplitudes, ...state.amplitudes];
     while ((state.onRepeat || !didFirst) && state.isCurrentlyVibrating) {
       didFirst = true;
-      await Vibration.vibrate(
-          pattern: state.durationMSsScaled, intensities: state.amplitudes);
+      Vibration.vibrate(
+          pattern: scaledPatternX5, intensities: amplitudesX5);
 
       if (animate) {
         // if (prevTouch != null && isCurrentlyDown) {
@@ -169,15 +172,17 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
     for (int i = 0;
         i < state.elements.length && state.isCurrentlyVibrating;
         i++) {
+      final start = DateTime.now();
       final e = state.elements.first;
-      // if (e.amplitude != 0)
-      // await Vibration.vibrate(duration: e.durationMS, amplitude: e.amplitude);
-      await Future.delayed(
-          Duration(milliseconds: e.durationMS ~/ state.speedModifier));
 
       state = state.copyWith(
           elements: [...state.elements.safeSublist(1), e],
           doNotAnimate: (i != 0 && i != state.elements.length - 1));
+
+      final nominalWait = 1000 * (e.durationMS ~/ state.speedModifier);
+      final deltaElapsed = DateTime.now().difference(start).inMicroseconds;
+      await Future.delayed(
+          Duration(microseconds: nominalWait - deltaElapsed));
     }
   }
 
