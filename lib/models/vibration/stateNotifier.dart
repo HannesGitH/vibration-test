@@ -120,15 +120,21 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
 
   void startVib({BuildContext? context}) async {
     // TODO: test whether we need to insert 0s in the pattern for durantion of vibration off
+    if (allowCPUWL)
+      try {
+        WakelockPlus.toggleCPU(enable: true);
+      } catch (e) {}
+    if (allowScreenWL)
+      try {
+        WakelockPlus.toggle(enable: true);
+      } catch (e) {}
     try {
-      if (!(await Vibration.hasVibrator() ?? false)) {
+      if (!(await Vibration.hasVibrator())) {
         showToast(S.current.noVibratorFound, context: context);
         return;
       }
-      if (!(await Vibration.hasCustomVibrationsSupport() ?? false)) {
+      if (!(await Vibration.hasCustomVibrationsSupport())) {
         showToast(S.current.noCustomVibrationSupport, context: context);
-        if (allowCPUWL) WakelockPlus.toggleCPU(enable: true);
-        if (allowScreenWL) WakelockPlus.toggle(enable: true);
         Vibration.vibrate();
         return;
       }
@@ -176,9 +182,14 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
   }
 
   Future<void> stopVib() async {
+    try {
+      await Vibration.vibrate(duration: 0);
+    } catch (e) {}
     await Vibration.cancel();
     state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
-    WakelockPlus.toggleCPU(enable: false);
+    try {
+      WakelockPlus.toggleCPU(enable: false);
+    } catch (e) {}
     WakelockPlus.toggle(enable: false);
   }
 
