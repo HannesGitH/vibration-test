@@ -16,7 +16,7 @@ runs:
         java-version: '21.x'
     - uses: subosito/flutter-action@v1
       with:
-        flutter-version: '3.29.3' 
+        flutter-version: '3.35.5' 
         channel: 'stable'
     - run: |
         echo hi
