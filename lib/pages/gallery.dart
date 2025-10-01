@@ -8,16 +8,16 @@ import '../widgets/patternGallery.dart';
 
 class PatternGalleryPage extends ConsumerWidget {
   const PatternGalleryPage({
-    Key? key,
+    super.key,
     this.elemsPerRow = 2,
-  }) : super(key: key);
+  });
   final int elemsPerRow;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final patterns = ref.watch(allPatternsProvider);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Text(S.of(context).presetTitle),
       ),

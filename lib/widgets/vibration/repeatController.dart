@@ -5,7 +5,7 @@ import 'package:vibrationtest/models/vibration/vibration.dart';
 import '../../generated/l10n.dart';
 
 class RepeatController extends ConsumerWidget {
-  const RepeatController({Key? key}) : super(key: key);
+  const RepeatController({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
@@ -31,13 +31,13 @@ class RepeatController extends ConsumerWidget {
                       .withOpacity(!pattern.onRepeat ? 1 : 0.2)),
               Switch(
                   thumbColor:
-                      MaterialStateProperty.resolveWith<Color>((states) {
+                      WidgetStateProperty.resolveWith<Color>((states) {
                     return Theme.of(context).colorScheme.primary;
                   }),
                   activeTrackColor:
                       Theme.of(context).colorScheme.primaryContainer,
                   inactiveTrackColor:
-                      Theme.of(context).colorScheme.surfaceVariant,
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
                   value: pattern.onRepeat,
                   onChanged: ref
                       .read(activeVibrationPatternProvider.notifier)

@@ -9,7 +9,7 @@ import '../generated/l10n.dart';
 import '../widgets/openNewViewTile.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
+  const MainDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -116,8 +116,8 @@ class MainDrawer extends StatelessWidget {
 
 class VersionInfo extends StatelessWidget {
   const VersionInfo({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -133,14 +133,14 @@ class VersionInfo extends StatelessWidget {
 
 class MainDrawerHeader extends StatelessWidget {
   const MainDrawerHeader({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return DrawerHeader(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         // gradient: LinearGradient(begin: Alignment.topLeft, colors: [
         //   Theme.of(context).primaryColorDark.withAlpha(200),
         //   Theme.of(context).canvasColor,

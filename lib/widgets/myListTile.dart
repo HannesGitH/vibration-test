@@ -17,7 +17,7 @@ class MyCardListTile1 extends StatelessWidget {
     this.child,
     // ignore: unnecessary_this
     this.noChevron = false,
-  }) : this.icon = icon ?? Icons.apps;
+  }) : icon = icon ?? Icons.apps;
 
   @override
   Widget build(BuildContext context) {

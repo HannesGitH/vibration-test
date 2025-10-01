@@ -39,7 +39,7 @@ class PatternPreview extends StatelessWidget {
               ),
               Card(
                 elevation: elevation,
-                color: Theme.of(context).colorScheme.surfaceVariant,
+                color: Theme.of(context).colorScheme.surfaceContainerHighest,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

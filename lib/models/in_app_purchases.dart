@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vibrationtest/models/a_b.dart';
 
 part 'in_app_purchases.g.dart';
 

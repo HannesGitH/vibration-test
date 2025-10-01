@@ -4,7 +4,7 @@ import 'package:vibrationtest/models/vibration/vibration.dart';
 import 'package:vibrationtest/pages/buzzmode.dart';
 
 class StartVibrationFAB extends ConsumerWidget {
-  const StartVibrationFAB({Key? key}) : super(key: key);
+  const StartVibrationFAB({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);

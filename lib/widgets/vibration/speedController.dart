@@ -11,7 +11,7 @@ import '../../generated/l10n.dart';
 
 class SpeedController extends ConsumerWidget {
   static const power = 3;
-  const SpeedController({Key? key}) : super(key: key);
+  const SpeedController({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);

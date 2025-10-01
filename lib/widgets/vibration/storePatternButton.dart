@@ -7,7 +7,7 @@ import '../../generated/l10n.dart';
 import '../../models/vibration/vibration.dart';
 
 class SaveCurrentPatternButton extends ConsumerWidget {
-  const SaveCurrentPatternButton({Key? key}) : super(key: key);
+  const SaveCurrentPatternButton({super.key});
 
   void onSaved(VibrationPattern? pattern, WidgetRef ref) async {
     final success = pattern != null;
@@ -28,8 +28,7 @@ class SaveCurrentPatternButton extends ConsumerWidget {
 }
 
 class StorePatternButton extends StatefulWidget {
-  const StorePatternButton({Key? key, required this.pattern, this.onDone})
-      : super(key: key);
+  const StorePatternButton({super.key, required this.pattern, this.onDone});
 
   final VibrationPattern pattern;
   final Function(VibrationPattern? newPattern)? onDone;
@@ -42,13 +41,13 @@ class _StorePatternButtonState extends State<StorePatternButton> {
   SavingState _state = SavingState.idle;
 
   save(context) {
-    final _controller = TextEditingController(text: widget.pattern.name);
+    final controller = TextEditingController(text: widget.pattern.name);
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
               title: Text(S.of(context).saveCurrentPatternTitle),
               content: TextField(
-                controller: _controller,
+                controller: controller,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
                   labelText: S.of(context).saveCurrentPatternNameField,
@@ -58,13 +57,12 @@ class _StorePatternButtonState extends State<StorePatternButton> {
                 TextButton(
                     onPressed: () {
                       final pattern =
-                          widget.pattern.copyWith(name: _controller.text);
+                          widget.pattern.copyWith(name: controller.text);
                       _save(pattern).then((success) => showToast(
                           success
                               ? S.of(context).patternSavedSuccess
                               : S.of(context).patternSavedFailure,
                           context: context));
-                      ;
                       Navigator.of(context).pop();
                     },
                     child: Text(S.of(context).ok)),

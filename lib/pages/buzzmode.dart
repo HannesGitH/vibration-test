@@ -9,7 +9,7 @@ import '../models/vibration/vibration.dart';
 import '../widgets/pattern/pattern.dart';
 
 class BuzzModePage extends ConsumerWidget {
-  const BuzzModePage({Key? key}) : super(key: key);
+  const BuzzModePage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     VibrationPattern pattern = ref.watch(activeVibrationPatternProvider);
@@ -30,7 +30,7 @@ class BuzzModePage extends ConsumerWidget {
         onTapCancel: () {
           ref.read(activeVibrationPatternProvider.notifier).stopVib();
         },
-        highlightColor: Theme.of(context).colorScheme.background.withOpacity(0),
+        highlightColor: Theme.of(context).colorScheme.surface.withOpacity(0),
         child: Stack(
           children: [
             IgnorePointer(
@@ -53,7 +53,7 @@ class BuzzModePage extends ConsumerWidget {
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: Container()),
             Container(
-              color: Theme.of(context).colorScheme.background.withOpacity(0.5),
+              color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
             ),
             Center(
               child: Card(

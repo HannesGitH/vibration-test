@@ -25,7 +25,7 @@ class MyLineChart extends StatelessWidget {
       Theme.of(context).colorScheme.primary,
     ];
 
-    FlDotPainter _dotPainter(
+    FlDotPainter dotPainter(
         FlSpot spot, double xPercentage, LineChartBarData bar, int index,
         {double? size}) {
       return FlDotCirclePainter(
@@ -88,7 +88,7 @@ class MyLineChart extends StatelessWidget {
             barWidth: 7,
             isStrokeCapRound: true,
             dotData: FlDotData(
-              getDotPainter: _dotPainter,
+              getDotPainter: dotPainter,
               show: showDot,
               checkToShowDot: (spot, barData) => barData.spots.first == spot,
             ),

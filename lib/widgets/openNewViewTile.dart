@@ -13,15 +13,14 @@ class OpenNewViewTile extends StatelessWidget {
     this.icon = Icons.open_in_full,
     required this.title,
     this.newView,
-    Key? key,
+    super.key,
     this.onPop,
     this.route,
     this.pop = true,
   })  : assert((route ?? newView) != null,
             'either route or view must be provided'),
         assert((route == null) || (newView == null),
-            'only one of route or view can be provided'),
-        super(key: key);
+            'only one of route or view can be provided');
 
   final Function? onPop;
 

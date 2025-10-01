@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 // // import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:vibrationtest/fragments/mainDrawer.dart';
-import 'package:vibrationtest/models/a_b.dart';
-import 'package:vibrationtest/models/in_app_purchases.dart';
-import 'package:vibrationtest/widgets/ads/wrapper.dart';
 import 'package:vibrationtest/widgets/pattern/pattern.dart';
 import 'package:vibrationtest/widgets/patternGallery.dart';
 import 'package:vibrationtest/widgets/vibration/repeatController.dart';
@@ -16,7 +12,7 @@ import 'package:vibrationtest/widgets/vibration/storePatternButton.dart';
 import '../generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
