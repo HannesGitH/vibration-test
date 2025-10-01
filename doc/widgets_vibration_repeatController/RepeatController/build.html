@@ -130,16 +130,15 @@ Widget build(BuildContext context, WidgetRef ref) {
                 color: Theme.of(context)
                     .colorScheme
                     .primary
-                    .withOpacity(!pattern.onRepeat ? 1 : 0.2)),
+                    .withValues(alpha: !pattern.onRepeat ? 1 : 0.2)),
             Switch(
-                thumbColor:
-                    MaterialStateProperty.resolveWith&lt;Color&gt;((states) {
+                thumbColor: WidgetStateProperty.resolveWith&lt;Color&gt;((states) {
                   return Theme.of(context).colorScheme.primary;
                 }),
                 activeTrackColor:
                     Theme.of(context).colorScheme.primaryContainer,
                 inactiveTrackColor:
-                    Theme.of(context).colorScheme.surfaceVariant,
+                    Theme.of(context).colorScheme.surfaceContainerHighest,
                 value: pattern.onRepeat,
                 onChanged: ref
                     .read(activeVibrationPatternProvider.notifier)
@@ -148,7 +147,7 @@ Widget build(BuildContext context, WidgetRef ref) {
                 color: Theme.of(context)
                     .colorScheme
                     .primary
-                    .withOpacity(pattern.onRepeat ? 1 : 0.2)),
+                    .withValues(alpha: pattern.onRepeat ? 1 : 0.2)),
           ],
         ),
       ],
@@ -182,7 +181,7 @@ Widget build(BuildContext context, WidgetRef ref) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

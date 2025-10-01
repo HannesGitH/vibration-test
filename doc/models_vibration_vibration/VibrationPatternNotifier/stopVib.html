@@ -67,9 +67,14 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; stopVib() async {
+  try {
+    await Vibration.vibrate(duration: 1);
+  } catch (e) {}
   await Vibration.cancel();
   state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
-  WakelockPlus.toggleCPU(enable: false);
+  try {
+    WakelockPlus.toggleCPU(enable: false);
+  } catch (e) {}
   WakelockPlus.toggle(enable: false);
 }</code></pre>
 </section>
@@ -99,7 +104,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

@@ -131,7 +131,7 @@ Widget build(BuildContext context, WidgetRef ref) {
       SquigglySlider(
         value: pow(pattern.speedModifier, 1 &#47; power).toDouble(),
         min: pow(0.1, 1 &#47; power).toDouble(),
-        max: pow(15, 1 &#47; power).toDouble(),
+        max: pow(5, 1 &#47; power).toDouble(),
         onChanged: (value) {
           ref
               .read(activeVibrationPatternProvider.notifier)
@@ -179,7 +179,7 @@ Widget build(BuildContext context, WidgetRef ref) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

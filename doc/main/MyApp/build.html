@@ -110,6 +110,15 @@ and</li>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   return DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
+    final darkTheme = ThemeData(
+        useMaterial3: true,
+        colorScheme: (darkColorScheme ??
+                ColorScheme.fromSwatch(
+                  primarySwatch: Colors.pink,
+                  brightness: Brightness.dark,
+                ))
+            .copyWith(surface: Colors.black),
+      );
     return MaterialApp(
       localizationsDelegates: const [
         S.delegate,
@@ -123,14 +132,11 @@ Widget build(BuildContext context) {
         useMaterial3: true,
         colorScheme: lightColorScheme ??
             ColorScheme.fromSwatch(
-                primarySwatch: Colors.pink, brightness: Brightness.light),
+              primarySwatch: Colors.pink,
+              brightness: Brightness.light,
+            ),
       ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: darkColorScheme ??
-            ColorScheme.fromSwatch(
-                primarySwatch: Colors.pink, brightness: Brightness.dark),
-      ),
+      darkTheme: darkTheme.copyWith(cardColor: Colors.black, cardTheme: darkTheme.cardTheme.copyWith(color: Colors.black)),
       initialRoute: &#39;&#47;&#39;,
       routes: {
         &#39;&#47;&#39;: (context) =&gt; const HomePage(),
@@ -168,7 +174,7 @@ Widget build(BuildContext context) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

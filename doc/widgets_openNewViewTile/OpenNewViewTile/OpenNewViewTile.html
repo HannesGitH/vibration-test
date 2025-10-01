@@ -73,15 +73,14 @@
   this.icon = Icons.open_in_full,
   required this.title,
   this.newView,
-  Key? key,
+  super.key,
   this.onPop,
   this.route,
   this.pop = true,
 })  : assert((route ?? newView) != null,
           &#39;either route or view must be provided&#39;),
       assert((route == null) || (newView == null),
-          &#39;only one of route or view can be provided&#39;),
-      super(key: key);</code></pre>
+          &#39;only one of route or view can be provided&#39;);</code></pre>
 </section>
 
 
@@ -109,7 +108,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

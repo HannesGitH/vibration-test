@@ -128,7 +128,7 @@ Widget build(BuildContext context, WidgetRef ref) {
       onTapCancel: () {
         ref.read(activeVibrationPatternProvider.notifier).stopVib();
       },
-      highlightColor: Theme.of(context).colorScheme.background.withOpacity(0),
+      highlightColor: Colors.transparent,
       child: Stack(
         children: [
           IgnorePointer(
@@ -151,7 +151,7 @@ Widget build(BuildContext context, WidgetRef ref) {
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Container()),
           Container(
-            color: Theme.of(context).colorScheme.background.withOpacity(0.5),
+            color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.5),
           ),
           Center(
             child: Card(
@@ -209,7 +209,7 @@ Widget build(BuildContext context, WidgetRef ref) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

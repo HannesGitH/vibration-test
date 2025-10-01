@@ -69,15 +69,21 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void startVib({BuildContext? context}) async {
   &#47;&#47; TODO: test whether we need to insert 0s in the pattern for durantion of vibration off
+  if (allowCPUWL)
+    try {
+      WakelockPlus.toggleCPU(enable: true);
+    } catch (e) {}
+  if (allowScreenWL)
+    try {
+      WakelockPlus.toggle(enable: true);
+    } catch (e) {}
   try {
-    if (!(await Vibration.hasVibrator() ?? false)) {
+    if (!(await Vibration.hasVibrator())) {
       showToast(S.current.noVibratorFound, context: context);
       return;
     }
-    if (!(await Vibration.hasCustomVibrationsSupport() ?? false)) {
+    if (!(await Vibration.hasCustomVibrationsSupport())) {
       showToast(S.current.noCustomVibrationSupport, context: context);
-      if (allowCPUWL) WakelockPlus.toggleCPU(enable: true);
-      if (allowScreenWL) WakelockPlus.toggle(enable: true);
       Vibration.vibrate();
       return;
     }
@@ -88,10 +94,23 @@
 
   var didFirst = false;
   state = state.copyWith(isCurrentlyVibrating: true, doNotAnimate: false);
+  var scaledPattern = state.durationMSsScaled;
+  var amplitudes = state.amplitudes;
+  if (resolutionInMS &gt; state.elements.first.durationMS) {
+    &#47;&#47; take only every second element
+    final n = 3;
+    scaledPattern = scaledPattern.indexed
+        .where((e) =&gt; e.$2 % n == 0)
+        .map((e) =&gt; e.$1 * n)
+        .toList();
+    amplitudes = amplitudes.indexed
+        .where((e) =&gt; e.$2 % n == 0)
+        .map((e) =&gt; e.$1)
+        .toList();
+  }
   while ((state.onRepeat || !didFirst) &amp;&amp; state.isCurrentlyVibrating) {
     didFirst = true;
-    await Vibration.vibrate(
-        pattern: state.durationMSsScaled, intensities: state.amplitudes);
+    Vibration.vibrate(pattern: scaledPattern, intensities: amplitudes);
 
     if (animate) {
       &#47;&#47; if (prevTouch != null &amp;&amp; isCurrentlyDown) {
@@ -134,7 +153,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

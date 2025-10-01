@@ -114,7 +114,7 @@ Widget build(BuildContext context) {
     Theme.of(context).colorScheme.primary,
   ];
 
-  FlDotPainter _dotPainter(
+  FlDotPainter dotPainter(
       FlSpot spot, double xPercentage, LineChartBarData bar, int index,
       {double? size}) {
     return FlDotCirclePainter(
@@ -177,7 +177,7 @@ Widget build(BuildContext context) {
           barWidth: 7,
           isStrokeCapRound: true,
           dotData: FlDotData(
-            getDotPainter: _dotPainter,
+            getDotPainter: dotPainter,
             show: showDot,
             checkToShowDot: (spot, barData) =&gt; barData.spots.first == spot,
           ),
@@ -187,7 +187,7 @@ Widget build(BuildContext context) {
               colors: gradientColors
                   .asMap()
                   .map((i, color) =&gt; MapEntry(
-                      i, color.withOpacity(i &#47; gradientColors.length * 0.5)))
+                      i, color.withValues(alpha: i &#47; gradientColors.length * 0.5)))
                   .values
                   .toList(),
               begin: Alignment.bottomCenter,
@@ -231,7 +231,7 @@ Widget build(BuildContext context) {
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>

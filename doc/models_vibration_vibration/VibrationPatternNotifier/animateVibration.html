@@ -67,18 +67,27 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">animateVibration() async {
-  for (int i = 0;
-      i &lt; state.elements.length &amp;&amp; state.isCurrentlyVibrating;
-      i++) {
-    final e = state.elements.first;
-    &#47;&#47; if (e.amplitude != 0)
-    &#47;&#47; await Vibration.vibrate(duration: e.durationMS, amplitude: e.amplitude);
-    await Future.delayed(
-        Duration(milliseconds: e.durationMS ~&#47; state.speedModifier));
-
-    state = state.copyWith(
-        elements: [...state.elements.safeSublist(1), e],
-        doNotAnimate: (i != 0 &amp;&amp; i != state.elements.length - 1));
+  final msPerElement =
+      (state.elements.first.durationMS ~&#47; state.speedModifier);
+  final totalElements = state.elements.length;
+  final start = DateTime.now();
+  var movedElements = 0;
+  while (movedElements &lt;= totalElements &amp;&amp; state.isCurrentlyVibrating) {
+    final elapsedMs = DateTime.now().difference(start).inMilliseconds;
+    final elementsThatShouldHaveBeenMoved = elapsedMs ~&#47; msPerElement;
+    final elementsToMove = elementsThatShouldHaveBeenMoved - movedElements;
+    if (elementsToMove &gt; 0) {
+      movedElements = elementsThatShouldHaveBeenMoved;
+      state = state.copyWith(
+        elements: [
+          ...state.elements.safeSublist(elementsToMove),
+          ...state.elements.safeSublist(0, elementsToMove)
+        ],
+        doNotAnimate: (movedElements != 0 &amp;&amp; movedElements != totalElements),
+      );
+    }
+    &#47;&#47; shitty vsync
+    await Future.delayed(Duration(microseconds: msPerElement));
   }
 }</code></pre>
 </section>
@@ -108,7 +117,7 @@
 <footer>
   <span class="no-break">
     vibrationtest
-      2.3.1+31
+      2.3.2+32
   </span>
   
 </footer>
