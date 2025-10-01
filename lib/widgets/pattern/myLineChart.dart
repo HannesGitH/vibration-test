@@ -98,7 +98,7 @@ class MyLineChart extends StatelessWidget {
                 colors: gradientColors
                     .asMap()
                     .map((i, color) => MapEntry(
-                        i, color.withOpacity(i / gradientColors.length * 0.5)))
+                        i, color.withValues(alpha: i / gradientColors.length * 0.5)))
                     .values
                     .toList(),
                 begin: Alignment.bottomCenter,

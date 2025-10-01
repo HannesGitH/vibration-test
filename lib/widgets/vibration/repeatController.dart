@@ -28,10 +28,9 @@ class RepeatController extends ConsumerWidget {
                   color: Theme.of(context)
                       .colorScheme
                       .primary
-                      .withOpacity(!pattern.onRepeat ? 1 : 0.2)),
+                      .withValues(alpha: !pattern.onRepeat ? 1 : 0.2)),
               Switch(
-                  thumbColor:
-                      WidgetStateProperty.resolveWith<Color>((states) {
+                  thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
                     return Theme.of(context).colorScheme.primary;
                   }),
                   activeTrackColor:
@@ -46,7 +45,7 @@ class RepeatController extends ConsumerWidget {
                   color: Theme.of(context)
                       .colorScheme
                       .primary
-                      .withOpacity(pattern.onRepeat ? 1 : 0.2)),
+                      .withValues(alpha: pattern.onRepeat ? 1 : 0.2)),
             ],
           ),
         ],

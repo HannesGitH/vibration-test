@@ -32,7 +32,7 @@ class Toast extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-          color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.5),
+          color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
