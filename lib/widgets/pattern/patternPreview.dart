@@ -24,7 +24,6 @@ class PatternPreview extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Stack(
-            alignment: Alignment.topLeft,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -37,23 +36,29 @@ class PatternPreview extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                elevation: elevation,
-                color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      child ?? const SizedBox.shrink(),
-                      Expanded(
-                        child: Text(
-                          pattern.name,
-                          style: Theme.of(context).textTheme.labelSmall,
-                          overflow: TextOverflow.fade,
-                        ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                  child: ColoredBox(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primaryContainer
+                        .withValues(alpha: 0.6),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          child ?? const SizedBox.shrink(),
+                          Text(
+                            pattern.name,
+                            style: Theme.of(context).textTheme.labelSmall,
+                            overflow: TextOverflow.fade,
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
