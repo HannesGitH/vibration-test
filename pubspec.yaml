@@ -41,13 +41,13 @@ dependencies:
   localstore: ^1.2.3
   # to display current app-version
   package_info_plus: any
-  fluttertoast: ^8.0.9
-  fl_chart: ^0.65.0
+  fluttertoast: ^9.0.0
+  fl_chart: ^1.1.0
   dynamic_color: ^1.4.0
   intl_utils: ^2.8.10
 
   squiggly_slider: ^1.0.0
-  firebase_analytics: ^10.0.2
+  firebase_analytics: ^12.0.2
   wakelock_plus:
     git:
       url: https://github.com/hannesgith/wakelock_plus
@@ -66,15 +66,15 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
   build_runner: ^2.0.6
   json_annotation: ^4.3.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.4
   riverpod_generator: ^2.4.0
   custom_lint: ^0.7.5
 
-dependency_overrides:
-  package_info_plus: ^4.0.1
+# dependency_overrides:
+#   package_info_plus: ^4.0.1
 
 
 flutter_icons:
