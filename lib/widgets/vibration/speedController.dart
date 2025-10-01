@@ -35,7 +35,7 @@ class SpeedController extends ConsumerWidget {
         SquigglySlider(
           value: pow(pattern.speedModifier, 1 / power).toDouble(),
           min: pow(0.1, 1 / power).toDouble(),
-          max: pow(15, 1 / power).toDouble(),
+          max: pow(5, 1 / power).toDouble(),
           onChanged: (value) {
             ref
                 .read(activeVibrationPatternProvider.notifier)

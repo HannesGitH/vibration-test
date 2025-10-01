@@ -145,13 +145,23 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
 
     var didFirst = false;
     state = state.copyWith(isCurrentlyVibrating: true, doNotAnimate: false);
-    final scaledPattern = state.durationMSsScaled;
-    final scaledPatternX5 = [...scaledPattern, ...scaledPattern, ...scaledPattern, ...scaledPattern, ...scaledPattern];
-    final amplitudesX5 = [...state.amplitudes, ...state.amplitudes, ...state.amplitudes, ...state.amplitudes, ...state.amplitudes];
+    var scaledPattern = state.durationMSsScaled;
+    var amplitudes = state.amplitudes;
+    if (resolutionInMS > state.elements.first.durationMS) {
+      // take only every second element
+      final n = 3;
+      scaledPattern = scaledPattern.indexed
+          .where((e) => e.$2 % n == 0)
+          .map((e) => e.$1 * n)
+          .toList();
+      amplitudes = amplitudes.indexed
+          .where((e) => e.$2 % n == 0)
+          .map((e) => e.$1)
+          .toList();
+    }
     while ((state.onRepeat || !didFirst) && state.isCurrentlyVibrating) {
       didFirst = true;
-      Vibration.vibrate(
-          pattern: scaledPatternX5, intensities: amplitudesX5);
+      Vibration.vibrate(pattern: scaledPattern, intensities: amplitudes);
 
       if (animate) {
         // if (prevTouch != null && isCurrentlyDown) {
@@ -169,26 +179,33 @@ class VibrationPatternNotifier extends _$VibrationPatternNotifier {
   }
 
   animateVibration() async {
-    for (int i = 0;
-        i < state.elements.length && state.isCurrentlyVibrating;
-        i++) {
-      final start = DateTime.now();
-      final e = state.elements.first;
-
-      state = state.copyWith(
-          elements: [...state.elements.safeSublist(1), e],
-          doNotAnimate: (i != 0 && i != state.elements.length - 1));
-
-      final nominalWait = 1000 * (e.durationMS ~/ state.speedModifier);
-      final deltaElapsed = DateTime.now().difference(start).inMicroseconds;
-      await Future.delayed(
-          Duration(microseconds: nominalWait - deltaElapsed));
+    final msPerElement =
+        (state.elements.first.durationMS ~/ state.speedModifier);
+    final totalElements = state.elements.length;
+    final start = DateTime.now();
+    var movedElements = 0;
+    while (movedElements <= totalElements && state.isCurrentlyVibrating) {
+      final elapsedMs = DateTime.now().difference(start).inMilliseconds;
+      final elementsThatShouldHaveBeenMoved = elapsedMs ~/ msPerElement;
+      final elementsToMove = elementsThatShouldHaveBeenMoved - movedElements;
+      if (elementsToMove > 0) {
+        movedElements = elementsThatShouldHaveBeenMoved;
+        state = state.copyWith(
+          elements: [
+            ...state.elements.safeSublist(elementsToMove),
+            ...state.elements.safeSublist(0, elementsToMove)
+          ],
+          doNotAnimate: (movedElements != 0 && movedElements != totalElements),
+        );
+      }
+      // shitty vsync
+      await Future.delayed(Duration(microseconds: msPerElement));
     }
   }
 
   Future<void> stopVib() async {
     try {
-      await Vibration.vibrate(duration: 0);
+      await Vibration.vibrate(duration: 1);
     } catch (e) {}
     await Vibration.cancel();
     state = state.copyWith(isCurrentlyVibrating: false, doNotAnimate: false);
