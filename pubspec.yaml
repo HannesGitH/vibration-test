@@ -42,7 +42,7 @@ dependencies:
   # to display current app-version
   package_info_plus: any
   fluttertoast: ^9.0.0
-  fl_chart: ^1.1.0
+  fl_chart: ^1.1.1
   dynamic_color: ^1.4.0
   intl_utils: ^2.8.10
 
